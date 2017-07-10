@@ -1,5 +1,5 @@
 ---
-title: "Archive Layout with Content"
+title: "About Me"
 layout: archive
 permalink: /about/
 ---
