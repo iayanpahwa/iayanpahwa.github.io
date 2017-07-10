@@ -1,15 +1,10 @@
 ---
 permalink: /about/
 title: "About Me"
-excerpt: "About Me"
-layouts_gallery:
-  - url: https://raw.githubusercontent.com/iayanpahwa/iayanpahwa.github.io/master/images/DP.png
-    image_path: mm-layout-splash.png
-    alt: "splash layout example"
+header:
+  image: /assets/images/Ayan.png
+  
 ---
-
-
-
 
 Hi, I'm Ayan, an Electronics and Instrumentation Engineer by Education, and Embedded  Engineer by Profession. I am based out of New Delhi city, India and work at Automotive Embedded Software Division of Mentor Graphics- A Siemens Business, here in Noida(NCR) facility. I support open source and FOSS by contributing one way or another to different open source projects and communities. I love making things, am a DIY Enthusiast, build things to solve daily problems, hack the way around to make cool projects to become more lazy, automating everything around me ;)
 
