@@ -1,11 +1,12 @@
----
-permalink: /about/
-title: "About Me"
-excerpt: "About Me:
-layouts_gallery:
-  - url: /assets/images/mm-layout-splash.png
-    image_path: /assets/images/mm-layout-splash.png
----
+defaults:
+   _pages
+  - scope:
+      path: "/about/"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
 Hi, I'm Ayan, an Electronics and Instrumentation Engineer by Education, and Embedded  Engineer by Profession. I am based out of New Delhi city, India and work at Automotive Embedded Software Division of Mentor Graphics- A Siemens Business, here in Noida(NCR) facility. I support open source and FOSS by contributing one way or another to different open source projects and communities. I love making things, am a DIY Enthusiast, build things to solve daily problems, hack the way around to make cool projects to become more lazy, automating everything around me ;)
 
 I also manages technical stuff at SDIoT(www.sdiot.in), an educational startup focusing Internet of Things and Maker Movement based in NCR, through which we conducts various technical workshops, meetups and talk sessions on regular basis.
