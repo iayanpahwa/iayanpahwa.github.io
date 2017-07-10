@@ -1,65 +1,91 @@
 ---
-title: "Splash Page"
-layout: splash
+title: "Archive Layout with Content"
+layout: archive
 permalink: /about/
-date: 2016-03-23T11:48:41-04:00
-header:
-  overlay_color: "#000"
-  overlay_filter: "0.5"
-  overlay_image: /assets/images/unsplash-image-1.jpg
-  cta_label: "Download"
-  cta_url: "https://github.com/mmistakes/minimal-mistakes/"
-  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
-excerpt: "Bacon ipsum dolor sit amet salami ham hock ham, hamburger corned beef short ribs kielbasa biltong t-bone drumstick tri-tip tail sirloin pork chop."
-intro: 
-  - excerpt: 'Nullam suscipit et nam, tellus velit pellentesque at malesuada, enim eaque. Quis nulla, netus tempor in diam gravida tincidunt, *proin faucibus* voluptate felis id sollicitudin. Centered with `type="center"`'
-feature_row:
-  - image_path: assets/images/unsplash-gallery-image-1-th.jpg
-    alt: "placeholder image 1"
-    title: "Placeholder 1"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-  - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
-    alt: "placeholder image 2"
-    title: "Placeholder 2"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-    url: "#test-link"
-    btn_label: "Read More"
-    btn_class: "btn--inverse"
-  - image_path: /assets/images/unsplash-gallery-image-3-th.jpg
-    title: "Placeholder 3"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-feature_row2:
-  - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
-    alt: "placeholder image 2"
-    title: "Placeholder Image Left Aligned"
-    excerpt: 'This is some sample content that goes here with **Markdown** formatting. Left aligned with `type="left"`'
-    url: "#test-link"
-    btn_label: "Read More"
-    btn_class: "btn--inverse"
-feature_row3:
-  - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
-    alt: "placeholder image 2"
-    title: "Placeholder Image Right Aligned"
-    excerpt: 'This is some sample content that goes here with **Markdown** formatting. Right aligned with `type="right"`'
-    url: "#test-link"
-    btn_label: "Read More"
-    btn_class: "btn--inverse"
-feature_row4:
-  - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
-    alt: "placeholder image 2"
-    title: "Placeholder Image Center Aligned"
-    excerpt: 'This is some sample content that goes here with **Markdown** formatting. Centered with `type="center"`'
-    url: "#test-link"
-    btn_label: "Read More"
-    btn_class: "btn--inverse"
 ---
 
-{% include feature_row id="intro" type="center" %}
+![](https://raw.githubusercontent.com/iayanpahwa/iayanpahwa.github.io/master/images/DP.png)
 
-{% include feature_row %}
 
-{% include feature_row id="feature_row2" type="left" %}
+Hi, I'm Ayan, an Electronics and Instrumentation Engineer by Education, and Embedded  Engineer by Profession. I am based out of New Delhi city, India and work at Automotive Embedded Software Division of Mentor Graphics- A Siemens Business, here in Noida(NCR) facility. I support open source and FOSS by contributing one way or another to different open source projects and communities. I love making things, am a DIY Enthusiast, build things to solve daily problems, hack the way around to make cool projects to become more lazy, automating everything around me ;)
 
-{% include feature_row id="feature_row3" type="right" %}
+I also manages technical stuff at SDIoT(www.sdiot.in), an educational startup focusing Internet of Things and Maker Movement based in NCR, through which we conducts various technical workshops, meetups and talk sessions on regular basis.
 
-{% include feature_row id="feature_row4" type="center" %}
+The purpose of starting this blog is to document my past and future projects which usually get faded over time, Also would be doing some reviews of DIY and commercial tech and gadgets.
+
+
+# Technical Skills
+
+### Programming Laguages:
+
+* **Compiled**              : C/C++
+* **Scripting**             : Bash, Python, Node.js
+* **Markup**                : HTTP
+* **Notation**              : JSON, XML
+
+### Project Management and DevOps Tools:
+
+* **Issue Trackers**        : JIRA, BugZilla
+* **Continous Integration** : Jenkins, Travis CI
+* **Code Management**       : Github, GitLab(Stash)
+* **Containers**            : LXC, Docker
+* **Testing**               : TestLink
+* **Documentation**         : Confluence, WiKi
+
+### Embedded Software and Design Tools:
+
+* **Custom OS**             : Yocto/Open-Embedded, OpenWRT
+* **Automotive**            : AGL, GEN-IVI
+* **Board Farm**            : Ser2Net, SSH/Telnet/SerialConsole
+* **IDE**                   : PlatformIO, Arduino, Eclipse, Atom, Cloud9, TI-CCS, Atmel Studio
+
+### Hardware:
+
+* **Microcontrollers**      : Intel 8051 family, Atmel AVR Family, ARM7 TDMI, ARM-CortexM4, MSP430
+* **SBCs**                  : Raspberry Pi, BeagleBoards, Intel Galileo/Edison
+* **Reference Boards**      : i.mx6(Sabre SD/AI), Renesas-SalvatorX, Intel AL, Atmel SAM s70
+* **SoCs**                  : Espressif ESP8266, ESP32, Texas Instruments TIVA C, Cypress PSoC
+
+### Operating Systems:
+
+* **Desktop**               : Debian(Ubuntu), SUSE(OpenSuse), Redhat(Fedora, RedHat)
+* **Embedded**              : Arngstrong, Debian(Raspbian), OpenWRT, Yocto based Linux
+* **RTOS**                  : FreeRTOS, TI-RTOS
+
+### Protocols:
+
+* **IoT**                   : HTTP, MQTT, CoAP, LWM2M, 802.11(WiFi), Bluetooth(Claissic and LE)
+* **Embedded**              : UART/RS-232, MODBUS, i2c/TWI, SPI, 1-wire, CAN, LIN
+* **RF**                    : Nordic NRF24, ASK-RF, ZigBee/XBEE, LoRA.
+
+
+### Instrumentation:
+
+* Cathode Ray Oscilloscopes
+* Signal/Function Generators
+* Logic Analyzers
+* Digital Multimeters
+* USB Microscope
+* Digital Multimeter
+
+### Tools:
+
+* Soldering(TH, SMD)
+* Desoldering
+* GlueGun
+* WoodShop
+* SheetMetal
+* Lathe 
+* 3D Printing
+
+### Radio Control Hobby:
+
+* RC Airplanes
+* FPV Racing Drone/Quadcopters
+* Application Specific Drones
+
+### Contact me
+
+I am always looking for new challenges and growth opportunities both in career and community space. Please feel free to reach out to me in case I could be of any help, Thanks!
+
+[iayanpahwa@gmail.com](mailto:iayanpahwa@gmail.com)
