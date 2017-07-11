@@ -15,7 +15,7 @@ header:
     		<p> Phone No: </p><input type="text" name="Phone"><br />
     		<p> Message: </p><input type="text" message="message"><br />
     		<input type="submit" value="Send">
-    		<input type="hidden" name="_next" value="/thanks" />
+    		<input type="hidden" name="_next" value="/thanks/" />
 		</form>
 	</body>
 </html>			
