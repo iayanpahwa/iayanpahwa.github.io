@@ -1,9 +1,9 @@
 ---
 permalink: /thanks/
-title: "Curriculum Vitae"
+title: "Thank You"
 author_profile: true
 header:
-  image: /assets/images/thanks.png
+  image: /assets/images/a.png
 ---
 
 ### Thank you for your message! I'll get back to you soon :)

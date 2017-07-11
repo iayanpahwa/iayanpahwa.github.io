@@ -13,7 +13,7 @@ header:
     		<p> Name: </p><input type="text" name="name"><br />
     		<p> Email: </p><input type="email" name="_replyto"><br />
     		<p> Phone No: </p><input type="text" name="Phone"><br />
-    		<p> Message: </p><input type="text" message="message"><br />
+    		<p> Message: </p><input type="text" name="message"><br />
     		<input type="submit" value="Send">
     		<input type="hidden" name="_next" value="/thanks/" />
 		</form>
