@@ -5,12 +5,12 @@ main:
 
  - title: "Projects"
    url: /projects/
-   
+
  - title: "Blog"
-   url: /blog/ 
+   url: /blog/
 
- - title: "Contact"
-   url: /contact/    
+ - title: "Resume"
+   url: /resume/
 
- - title: "Events"
-   url: /events/
+ - title: "Contact Me"
+   url: /contact/  
