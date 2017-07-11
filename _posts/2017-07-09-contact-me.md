@@ -3,7 +3,7 @@ permalink: /contact/
 title: "Contact Me"
 author_profile: true
 header:
-  image: /assets/images/a.png
+  image: /assets/images/contact.png
 ---
 
 <html>
