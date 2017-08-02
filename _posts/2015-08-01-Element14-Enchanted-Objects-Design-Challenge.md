@@ -11,7 +11,7 @@ Element14 is a great community for DIY enthusiasts like me, and I've been a part
 ![The Porposal](https://iayanpahwa.github.io/assets/images/proposal.png "The Porposal")
 
 ### Edit 1:
-Lucky enough I got selected to compete ahead and build my proposed project with the kit provided. I am very excited to be selected among top and very intelligent community members like Andy Clark, Jan Cumps and others whom do I also used to know from community and twitter interactions. I can't wait for the kit to arrive. I've got mail fro e14 that it has been dispatched but it usually takes a fortnight to arrive in India.
+Lucky enough I got selected to compete ahead among top 15 other selected participants and build my proposed project with the kit provided. I am very excited to be selected among top and very intelligent community members like Andy Clark, Jan Cumps and others whom do I also used to know from community and twitter interactions. I can't wait for the kit to arrive. I've got mail fro e14 that it has been dispatched but it usually takes a fortnight to arrive in India.
 
 ### Edit 2:
 The kit is finally here and I'm loving it already
