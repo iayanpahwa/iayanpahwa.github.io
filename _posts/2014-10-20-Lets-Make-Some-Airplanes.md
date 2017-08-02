@@ -14,4 +14,6 @@ It is comparitively heavy but I still decided to go with it as I had no other op
 
 ### Disclaimer: RC hobby is damn addicted, once you're in there's no going back ;)
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/mustang.jpg" alt="">
+
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/mustang.png" alt="">
