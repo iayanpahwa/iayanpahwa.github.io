@@ -1,6 +1,7 @@
 ---
 title: "MicroPython"
 author_profile: true
+share: true
 header:
   image: /assets/images/micropython.png
 comments: true  

@@ -1,6 +1,7 @@
 ---
 title: "Solar Powered DIY Plant Water Feeder"
 author_profile: true
+share: true
 header:
   image: /assets/images/plants.png
 comments: true  

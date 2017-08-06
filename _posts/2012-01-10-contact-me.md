@@ -1,6 +1,7 @@
 ---
 permalink: /contact/
 title: "Contact Me"
+share: true
 author_profile: true
 header:
   image: /assets/images/contact.png

@@ -1,5 +1,6 @@
 ---
 title: "Let's make some Airplanes"
+share: true
 author_profile: true
 header:
   image: /assets/images/RC.png

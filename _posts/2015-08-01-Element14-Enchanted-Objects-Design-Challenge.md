@@ -1,5 +1,6 @@
 ---
 title: "Element14 Enchanted Objects Design Challenge"
+share: true
 author_profile: true
 header:
   image: /assets/images/enchanted.png
