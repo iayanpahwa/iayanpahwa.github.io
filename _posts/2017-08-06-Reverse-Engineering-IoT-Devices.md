@@ -3,7 +3,7 @@ title: "Reverse Engineering IoT Devices"
 share: true
 author_profile: true
 header:
-  image: /assets/images/RC.png
+  image: /assets/images/re.png
 comments: true  
 ---
 As an IoT enthusiast and night time security researcher, it always intrigues me, how easy our lives have become with IoT applications which we use on daily basis intuitively, and this scratches that part of my brain which always wanted to see what's going on deep down inside, from using a mobile application to monitoring and controlling devices, what all is making it possible.
@@ -217,8 +217,7 @@ done
 exit 0
 ```
 Video:
-
-<iframe width="640" height="360" src="https://www.youtube.com/watch?v=g1_8cY--fIM" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/g1_8cY--fIM" frameborder="0" allowfullscreen></iframe>
 
 ### Thoughts
 Though it was a fun project to reverse engineer the functioning of an IoT Device, it was sad to see the packets were not cryptic or ciphered. Companies are focusing reducing time to market of their IoT product but in this process they're not taking utmost measure to secure there devices, this is a mere Bluetooth Smart bulb which cannot do much cyber harm and damage, the best a hacker can do is change your room lights color :P, but think of same os your smart door lock, then the entry to your garage or home can be compromised, or a tcp based device which can act as botnet in time of DDoS attacks, The most disappointed part is seeing vendor using example codes by chip-manufacturers, Texas Instruments in this case, not even changing 128-bit UUID flexibility of which is provided by Bluetooth protocol itself.
