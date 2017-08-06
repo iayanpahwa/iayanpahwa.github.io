@@ -14,7 +14,7 @@ Unlike other famous smart light bulbs available in the market like Philips Hue, 
 
 After playing with it for couple of weeks, I decided to look whats's under the hood. I've been playing around Bluetooth and Bluetooth LOW energy protocol for quite sometimes now and know the nitty gritty functioning of it ( All thanks to Cypress Semiconductor for sending me a PSoC4 BLE evaluation kit last year ). Basically BLE(short for Bluetooth Low energy), provides a method to make user defined services on communication layer, providing the vendor using BLE in their product with utmost facility to define the protocol profile specific to the device they are making, though the BLE protocol has some already defined profiles such as basic old UART, BLE Heart Rate monitor, Beacons etc, the vendor is free to use what's called GATT or Generic Attribute and create their own custom profile of how they want communication to happen between master and slave.
 
-The fact that this bulb is not using TCP/IP based protocol for communication makes it little hard to reverse enginee, I mean c'mon if it was suppose to be on my home network, things would be bit easier isn't it, I can just use it's MAC or IP to sniff and dump packets in a PCAP file to be later analyzed with Wireshark, it could have been cryptic but easy to sniff, Basically a Man in the Middle sort of thing, even a simple CLI tcpdump would also work, but rather it is using Bluetooth *sigh* which is meant for peer-to-peer networking, means at one time the device can only talk to one master.
+The fact that this bulb is not using TCP/IP based protocol for communication makes it little hard to reverse engineer, I mean c'mon if it was suppose to be on my home network, things would be bit easier isn't it, I can just use it's MAC or IP to sniff and dump packets in a PCAP file to be later analyzed with Wireshark, it could have been cryptic but easy to sniff, Basically a Man in the Middle sort of thing, even a simple CLI tcpdump would also work, but rather it is using Bluetooth (*sigh*) which is meant for peer-to-peer networking, means at one time the device can only talk to one master.
 
 From some previous project on BLE I knew about an amazing application by Nordic Semiconductor which runs on Android and ios called [nrf connect](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) which can be used to explore GATT services and characteristics exposed by the device. I can use this app to connect to my light bulb, know it's Unique Address(sort of MAC address), find which GATT services are exposed by the light bulb and their corresponding characteristics, a good starting point isn't it? I quickly fire up the application on my android device, turn the bluetooth and light bulb on and scan for devices. The device was shown up swiftly with the name 'Cnligh' as shown in screenshot below.
 
@@ -44,46 +44,47 @@ If you've android phone with kitkat and above you can enable this feature by goi
 
 ![Android Bluetooth Sniffer](https://iayanpahwa.github.io/assets/images/BLE/snoop.png "Android Bluetooth Sniffer")
 
-Next step was to bring the file on my workstation and try to visualize it using Wireshark which is a great tool for stuff like this, I've very basic understanding of using this tool but with some basic tutorial and hands-on it, I was able to look around and find some interesting stuff.
+Next step was to bring the file on my workstation and try to visualize it using Wireshark which is a great tool for stuff like this, I've very basic understanding of using this tool but with some basic tutorial and hands-on, I was able to look around and find some interesting stuff.
 
-The way the bulb could be working it by taking Red Green Blue or so called RGB values from the applciation and reflecting it by changing corresponding LED colors inside the bulb, or it could be also just taking color name and have a lookup table in it's EEPROM to map the intensities. From couple of past RGB LED based projects, I know from the fact that any color can be mapped with values of Red Green and Blue intensities which are generally in an 8 bit scale. 0-255, 0 means off and 255 means full intensity of that specific color from RGB, and these intensities are varied using a Pulse Width Modulated signal(PWM) from a timer IC or microcontroller. I've made such kind of project in past, if interested go checkout my project [IoT Holicay Lights](https://github.com/iayanpahwa/IoT-Holiday-Lights) and [OpenHAB RGB Controller](https://github.com/iayanpahwa/OpenHab-Particle-MQTT-master), both uses same concept.
+The way the bulb could be working is by taking Red, Green, and Blue or so called RGB values from the applciation and reflecting it by changing corresponding LED colors inside the bulb, or it could be also just taking color name and have a lookup table in it's EEPROM to map the intensities. From couple of past RGB LED based projects, I know from the fact that any color can be mapped with values of Red Green and Blue intensities which are generally in an 8 bit scale. 0-255, 0 means off and 255 means full intensity of that specific color from RGB, and these intensities are varied using a Pulse Width Modulated signal(PWM) from a timer IC or microcontroller. I've made such kind of project in past, if interested go checkout my project [IoT Holicay Lights](https://github.com/iayanpahwa/IoT-Holiday-Lights) and [OpenHAB RGB Controller](https://github.com/iayanpahwa/OpenHab-Particle-MQTT-master), both uses same concept.
 
-If you look closely on the screenshot below, you'll see some interesting things, which caught my eyes immediately, the destination has two kind of tags/values, the localhost, which is ofcourse our android mobile device, and the other is 'Texas Instruments' with a specific Unique address, Googling it, I found it a BLE based chip by Texas Instruments the 'CC2540' which the bulb is probably using, and the UUIDs we collected from examining GATT services were also example code meant for same chip :D So now without opening the bulb we know what's actually inside of it ;)
+If you look closely on the screenshot below, you'll see some interesting things, which caught my eyes immediately, the destination has two kind of tags/values, the localhost, which is ofcourse our android mobile device, and the other is 'Texas Instruments' with a specific Unique address, Googling it, I found it a BLE based chip by Texas Instruments the 'CC2540' which the bulb is probably using, and the UUIDs we collected from examining GATT services were also example code meant for same chip :D So now without opening the bulb we know what's actually inside it ;)
 
 ![Wireshark](https://iayanpahwa.github.io/assets/images/BLE/wireshark.png "Analyzing snoop log file using Wireshark")
 
 Investigating further, there are few types of protocol involved in overall communication as can be seen in wireshark- HCI_E, HCI_C, ATT etc. The ATT seems interesting and applying filter for ATT will only show ATT related packets. To only show packets fot ATT, I applied filter for Bluetooth Logical Link Control and Adaptation Protocol (btl2cap) and tried to analyze the packets sent from my local host to light bulb.
 
-After investigating 20-40 different packets, I was able to identify the string which was recurrence with slight changes, and here it is
+After investigating 20-40 different packets, I was able to identify the string which had recurrence with slight changes, and here it is
 
-##### Value: 00100006000a03000101000025ff00000000
-##### Value: 00110006000a030001010049ff0000000000
-##### Value: 00120006000a0300010100ff000000000000
-##### Value: 00130006000a030001010049ff0000000000
-##### Value: 00140006000a03000101000025ff00000000
+###### Value: 00100006000a03000101000025ff00000000
+###### Value: 00110006000a030001010049ff0000000000
+###### Value: 00120006000a0300010100ff000000000000
+###### Value: 00130006000a030001010049ff0000000000
+###### Value: 00140006000a03000101000025ff00000000
 
-Found the pattern yet? Let me make it a bit easy for you:
 
-##### Value: 00100006000a0300010100  0025ff  00000000
-##### Value: 00110006000a0300010100  49ff00  00000000
-##### Value: 00120006000a0300010100  ff0000  00000000
-##### Value: 00130006000a0300010100  49ff00  00000000
-##### Value: 00140006000a0300010100  0025ff  00000000
+### Found the pattern yet? Let me make it a bit easy for you:
+
+###### Value: 00100006000a0300010100  0025ff  00000000
+###### Value: 00110006000a0300010100  49ff00  00000000
+###### Value: 00120006000a0300010100  ff0000  00000000
+###### Value: 00130006000a0300010100  49ff00  00000000
+###### Value: 00140006000a0300010100  0025ff  00000000
 
 The first set is clearly a fixed string, some sort of UUID which could be a write instruction Opcode, the last set is just string of 8 zeroes. The middle string is where all the magic is happening, and I was so happy to see it's just exactly as I was speculating, 6 bytes of string with 2 byte each for Red Blue and Green Color:
 
-##### 0025ff  --> 00 25 ff (Red off, Blue at 25 and Green at full intensity)
-##### 9ff00  
-##### ff0000  
-##### 49ff00  
-##### 0025ff   
+###### 0025ff  --> 00 25 ff (Red off, Blue at 25 and Green at full intensity)
+###### 9ff00  
+###### ff0000  
+###### 49ff00  
+###### 0025ff   and so on .........
 
 ![Wireshark Packet Analysis](https://iayanpahwa.github.io/assets/images/BLE/ws.png "Wireshark Packet Analysis")
 
 
-By this way if you want to produce Blue color you can use string 00ff00 concatenated between the uuid and eight zeroes like BLE Packet containing 00140006000a030001010000ff0000000000 and send it to bulb over BLE on that specific address of characteristic which is exposed by GATT, this is all good in theory. In actual practice it could be a reversed string also, like instead of RGB it could be BGR(another common way of color representation), or it can be (255-value) in case of common anode LEDs, where 0 means full brightness and 255 means off, still controllable, but worst it can be nothing, meaning it's not what responsible for controlling colors, can't really tell without controlling it ;) That't the most exciting thing in reverse engineering, you never know ;). The best way to tell this is by controlling it without using the native Syska bulb app.
+By this way if you want to produce Blue color you can use string 00ff00 concatenated between the uuid and eight zeroes like BLE Packet containing *"00140006000a030001010000ff0000000000"* and send it to bulb over BLE on that specific address of characteristic which is exposed by GATT, this is all good in theory. In actual practice it could be a reversed string also, like instead of RGB it could be BGR(another common way of color representation), or it can be (255-value) in case of common anode LEDs, where 0 means full brightness and 255 means off, still controllable, but worst it can be nothing, meaning it's not what responsible for controlling colors, can't really tell without controlling it ;) That't the most exciting thing in reverse engineering, you never know ;). The best way to tell this is by controlling it without using the native Syska bulb app.
 
-I decided to use Bluez software stack which is available on Linux and I used my KALI Linux VM machine, because why not? Ain't we hacking? :P, Anyway, jokes apart, It is only possible to control the light bulb if you have an integrated Bluetooth in your workstation or use a USB Bluetooth Dongle which supports Bluetooth Low Energy, (LE v4). I am pretty sure that my Macbook Air has one. I set up my virtual machine to use host's ( Macbook air's ) built-in bluetooth hardware, at this point I am not sure if Kali have supported driver for it but lets give it a shot, I do have a raspberry pi 3 with bluetooth support as a backup but first I shall use this option.
+I decided to use Bluez software stack which is available on Linux and I used my KALI Linux VM machine, because why not? Ain't we hacking? :P, Anyway, jokes apart, It is only possible to control the light bulb if you have an integrated Bluetooth in your workstation or you can use a USB Bluetooth Dongle which supports Bluetooth Low Energy, (LE v4). I am pretty sure that my Macbook Air has one. I set up my virtual machine to use host's ( Macbook air's ) built-in bluetooth hardware using USB passthrough feature of virtualbox. At this point I am not sure if Kali have supported driver for it but lets give it a shot, I do have a raspberry pi 3 with bluetooth support as a backup but first I shall use this option.
 
 In my linux VM, I opened the terminal and checked if the device has been detected by running:
 
@@ -95,22 +96,23 @@ hci0:	Type: Primary  Bus: USB
 	RX bytes:1859 acl:2 sco:0 events:106 errors:0
 	TX bytes:3059 acl:3 sco:0 commands:94 errors:0
 ```
-Awesome! The device have been detected, mow it's time to install required packages
+Awesome! The device have been detected, now it's time to install required packages
 
 I've worked with bluez stack before, but just to be sure I've all the necessary packages, run:
-`root@kali:~# apt-get install bluez bluez-hcidump, bluez-tools`
 
-Now to scan the BLE devices around run:
+```
+root@kali:~# apt-get install bluez bluez-hcidump, bluez-tools
+```
+Now to scan the BLE devices by running:
 ```
 root@kali:~# hcitool lescan
 LE Scan ...
 88:C2:55:CA:F0:36 (unknown)
 88:C2:55:CA:F0:36 Cnligh
-^Croot@kali:~#
 ```
 Notice the device Cnligh which is our light bulb with same address as seen on nordic app, the other device is probably my smart fitness tracker band.
 
-#### If you cannot find the device, make sure bulb is powered on and not connected to your phone as BLE only scan peer-to-peer communication.
+#### *If you cannot find the device, make sure bulb is powered on and not connected to your phone as BLE only scan peer-to-peer communication.*
 
 Next we'll connect to this device using following command:
 ```
@@ -123,7 +125,7 @@ Connection successful
 
 Here I've used gatttool Bleuz utilitiy to connect to the bulb using it's address:
 
-#### Note: If you see any error such as connection refused, add following lines to the file /etc/bluetooth/main.conf to enable GATT
+#### Note: If you see any error such as connection refused, add following lines to the file *'/etc/bluetooth/main.conf'* to enable GATT
 ```
 EnableLE = true           // Enable Low Energy support. Default is false.
 AttributeServer = true    // Enable the GATT attribute server. Default is false.
@@ -149,10 +151,14 @@ char-write-req  <handle> <new value>           Characteristic Value Write (Write
 char-write-cmd  <handle> <new value>           Characteristic Value Write (No response)
 sec-level       [low | medium | high]          Set security level. Default: low
 mtu             <value>                        Exchange MTU for GATT/ATT
+
+
 [88:C2:55:CA:F0:36][LE]> primary
 attr handle: 0x0001, end grp handle: 0x000b uuid: 00001800-0000-1000-8000-00805f9b34fb
 attr handle: 0x000c, end grp handle: 0x000f uuid: 00001801-0000-1000-8000-00805f9b34fb
 attr handle: 0x0010, end grp handle: 0xffff uuid: 0000f371-0000-1000-8000-00805f9b34fb
+
+
 [88:C2:55:CA:F0:36][LE]> characteristics
 handle: 0x0002, char properties: 0x02, char value handle: 0x0003, uuid: 00002a00-0000-1000-8000-00805f9b34fb
 handle: 0x0004, char properties: 0x02, char value handle: 0x0005, uuid: 00002a01-0000-1000-8000-00805f9b34fb
@@ -177,16 +183,19 @@ Now let's try to control the color of light bulb as we've speculated by sending 
 and it literally does changed it color to RED! Awesome :D
 
 Lets try Blue:
-`[88:C2:55:CA:F0:36][LE]> char-write-cmd 0x0012 00140006000a030001010000ff0000000000`
+```
+[88:C2:55:CA:F0:36][LE]> char-write-cmd 0x0012 00140006000a030001010000ff0000000000`
+```
 and Green
-`[88:C2:55:CA:F0:36][LE]> char-write-cmd 0x0012 00140006000a03000101000000ff00000000`
-And everything worked as expected,
+```
+[88:C2:55:CA:F0:36][LE]> char-write-cmd 0x0012 00140006000a03000101000000ff00000000`
+```
+And everything works as expected :D
 
 'char-write-cmd' is basically sending a string message to address 0x0012 which we found by analyzing bluetooth traffic in Wireshark. So now we've a working API to control our very own Bluetooth LE Smart Light bulb.
 
 ### DEMO
 To demonstrate the working I've prepared a small bash script which cycles color of bulb to Red --> Green --> Blue --> White -- > Off
-Run:
 ```
 #!/bin/bash
 
@@ -216,11 +225,14 @@ gatttool -i hci0 -b 88:C2:55:CA:F0:36 --char-write-req -a 0x0012 -n 00100006000a
 done
 exit 0
 ```
+You can mimic any color using RGB values from a color picker like a [HTML color picker](https://www.w3schools.com/colors/colors_picker.asp).
+
+
 Video:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/g1_8cY--fIM" frameborder="0" allowfullscreen></iframe>
 
 ### Thoughts
-Though it was a fun project to reverse engineer the functioning of an IoT Device, it was sad to see the packets were not cryptic or ciphered. Companies are focusing reducing time to market of their IoT product but in this process they're not taking utmost measure to secure there devices, this is a mere Bluetooth Smart bulb which cannot do much cyber harm and damage, the best a hacker can do is change your room lights color :P, but think of same os your smart door lock, then the entry to your garage or home can be compromised, or a tcp based device which can act as botnet in time of DDoS attacks, The most disappointed part is seeing vendor using example codes by chip-manufacturers, Texas Instruments in this case, not even changing 128-bit UUID flexibility of which is provided by Bluetooth protocol itself.
+Though it was a fun project to reverse engineer the functioning of an IoT Device, it was sad to see the packets were not cryptic or ciphered. Companies are focusing on reducing time to market of their IoT product but in this process they're not taking utmost measure to secure there devices, this is a mere Bluetooth Smart bulb which cannot do much cyber harm and damage, the best a hacker can do is change your room lights color :P, but think of same as your smart door lock, then the entry to your garage or home can be compromised, or a tcp based device which can act as botnet in time of DDoS attacks, The most disappointed part is seeing vendor using example codes by chip-manufacturers, Texas Instruments in this case. Not even changing 128-bit UUID flexibility of which is provided by Bluetooth protocol itself.
 
 ### Next step
-Since I've a working API now, I am planning to make a small project, fetching weather data of my lcoation from an online service such as Yahoo Weather or Weather Underground and making my bulb reflect to weather changes, like breathing blue in case of rain, white if bright sunny or orange on a warm day. Stay Tuned :)
+Since I've a working API now, I am planning to make a small project, fetching weather data of my location from an online service such as Yahoo Weather or Weather Underground and making my bulb reflect to weather changes, like breathing blue in case of rain, white if bright sunny or orange on a warm day. I may use Python Bluez API(pyBlue or something) Stay Tuned and thanks for reading :)
