@@ -38,7 +38,7 @@ Now looking at the service I was very much sure that one of the characteristics 
 I heard about a device called [Ubertooth One By Great Scott gadgets](https://greatscottgadgets.com/ubertoothone/) which makes possible sniffing of Bluetooth packets but seeing at the price tag and local availability, I decided to look for an alternative, there were some other hardwares too from Nordic and Cypress Semiconductor but spending more bucks than price of a light bulb wont make sense isn't it.
 ![ubertoothone](https://iayanpahwa.github.io/assets/images/BLE/ubertooth.png "UberToothOne")
 
-Further Googling, I found on stackoverflow, that with Android KitKat update it is possible to log bluetooth packets in a file, I explored that option, basically you need to enable the option in developer's mode, connect to bluetooth device and interact with it as you do, all the packets transaction will be logged to a file in your SD card with name 'btsnoop_hci'.
+Further Googling, I found on StackOverflow, that with Android KitKat update it is possible to log bluetooth packets in a file, I explored that option, basically you need to enable the option in developer's mode, connect to bluetooth device and interact with it as you do, all the packets transaction will be logged to a file in your SD card with name 'btsnoop_hci'.
 
 If you've android phone with kitkat and above you can enable this feature by going to settings > Developer option > Enable Bluetooth HCI snoop log. This is basicaly a bluetooth debugging tool, after enabling it all the bluetooth transaction will be logged to the file 'btsnoop_hci'. I enabled the feature, and run the app controlling my light bulb changing different colors as I normally would, and focusing more on basic colors this time like pure red, blue and green which would help me filter data stream while analyzing packets, close the app and wolla! the file was actually generated, a merely 20Kb log file which could open the gates to the bulb without opening the hood :P .
 
@@ -46,13 +46,13 @@ If you've android phone with kitkat and above you can enable this feature by goi
 
 Next step was to bring the file on my workstation and try to visualize it using Wireshark which is a great tool for stuff like this, I've very basic understanding of using this tool but with some basic tutorial and hands-on, I was able to look around and find some interesting stuff.
 
-The way the bulb could be working is by taking Red, Green, and Blue or so called RGB values from the applciation and reflecting it by changing corresponding LED colors inside the bulb, or it could be also just taking color name and have a lookup table in it's EEPROM to map the intensities. From couple of past RGB LED based projects, I know from the fact that any color can be mapped with values of Red Green and Blue intensities which are generally in an 8 bit scale. 0-255, 0 means off and 255 means full intensity of that specific color from RGB, and these intensities are varied using a Pulse Width Modulated signal(PWM) from a timer IC or microcontroller. I've made such kind of project in past, if interested go checkout my project [IoT Holicay Lights](https://github.com/iayanpahwa/IoT-Holiday-Lights) and [OpenHAB RGB Controller](https://github.com/iayanpahwa/OpenHab-Particle-MQTT-master), both uses same concept.
+The way the bulb could be working is by taking Red, Green, and Blue or so called RGB values from the application and reflecting it by changing corresponding LED colors inside the bulb, or it could be also just taking color name and have a lookup table in it's EEPROM to map the intensities. From couple of past RGB LED based projects, I know from the fact that any color can be mapped with values of Red Green and Blue intensities which are generally in an 8 bit scale. 0-255, 0 means off and 255 means full intensity of that specific color from RGB, and these intensities are varied using a Pulse Width Modulated signal(PWM) from a timer IC or microcontroller. I've made such kind of project in past, if interested go checkout my project [IoT Holicay Lights](https://github.com/iayanpahwa/IoT-Holiday-Lights) and [OpenHAB RGB Controller](https://github.com/iayanpahwa/OpenHab-Particle-MQTT-master), both uses same concept.
 
 If you look closely on the screenshot below, you'll see some interesting things, which caught my eyes immediately, the destination has two kind of tags/values, the localhost, which is ofcourse our android mobile device, and the other is 'Texas Instruments' with a specific Unique address, Googling it, I found it a BLE based chip by Texas Instruments the 'CC2540' which the bulb is probably using, and the UUIDs we collected from examining GATT services were also example code meant for same chip :D So now without opening the bulb we know what's actually inside it ;)
 
 ![Wireshark](https://iayanpahwa.github.io/assets/images/BLE/wireshark.png "Analyzing snoop log file using Wireshark")
 
-Investigating further, there are few types of protocol involved in overall communication as can be seen in wireshark- HCI_E, HCI_C, ATT etc. The ATT seems interesting and applying filter for ATT will only show ATT related packets. To only show packets fot ATT, I applied filter for Bluetooth Logical Link Control and Adaptation Protocol (btl2cap) and tried to analyze the packets sent from my local host to light bulb.
+Investigating further, there are few types of protocol involved in overall communication as can be seen in wireshark- HCI_E, HCI_C, ATT etc. The ATT seems interesting and applying filter for ATT will only show ATT related packets. To only show packets for ATT, I applied filter for Bluetooth Logical Link Control and Adaptation Protocol (btl2cap) and tried to analyze the packets sent from my local host to light bulb.
 
 After investigating 20-40 different packets, I was able to identify the string which had recurrence with slight changes, and here it is
 
@@ -65,13 +65,13 @@ After investigating 20-40 different packets, I was able to identify the string w
 
 ### Found the pattern yet? Let me make it a bit easy for you:
 
-###### Value: 00100006000a0300010100  0025ff  00000000
-###### Value: 00110006000a0300010100  49ff00  00000000
-###### Value: 00120006000a0300010100  ff0000  00000000
-###### Value: 00130006000a0300010100  49ff00  00000000
-###### Value: 00140006000a0300010100  0025ff  00000000
+###### Value: 0010000 6000a0300010100  0025ff  00000000
+###### Value: 0011000 6000a0300010100  49ff00  00000000
+###### Value: 0012000 6000a0300010100  ff0000  00000000
+###### Value: 0013000 6000a0300010100  49ff00  00000000
+###### Value: 0014000 6000a0300010100  0025ff  00000000
 
-The first set is clearly a fixed string, some sort of UUID which could be a write instruction Opcode, the last set is just string of 8 zeroes. The middle string is where all the magic is happening, and I was so happy to see it's just exactly as I was speculating, 6 bytes of string with 2 byte each for Red Blue and Green Color:
+The first set is clearly an incrementing string, some sort of serial number for packets(maybe), which could be a write instruction Opcode or jsut packet number, the last set is just string of 8 zeroes. The middle string is where all the magic is happening, and I was so happy to see it's just exactly as I was speculating, 6 bytes of string with 2 byte each for Red Blue and Green Color:
 
 ###### 0025ff  --> 00 25 ff (Red off, Blue at 25 and Green at full intensity)
 ###### 9ff00  
@@ -190,7 +190,7 @@ and Green
 ```
 [88:C2:55:CA:F0:36][LE]> char-write-cmd 0x0012 00140006000a03000101000000ff00000000`
 ```
-And everything works as expected :D
+And everything works as expected even keeping the first string of serial number same(non-incrementing) :D
 
 'char-write-cmd' is basically sending a string message to address 0x0012 which we found by analyzing bluetooth traffic in Wireshark. So now we've a working API to control our very own Bluetooth LE Smart Light bulb.
 
