@@ -6,6 +6,10 @@ header:
   image: /assets/images/re.png
 comments: true  
 ---
+
+#### Edit 1: This blog post has been featured on [Hackaday](http://hackaday.com/2017/08/13/reverse-engineering-a-ble-service-to-control-a-light-bulb/), Go checkout!!
+
+
 As an IoT enthusiast and night time security researcher, it always intrigues me, how easy our lives have become with IoT applications which we use on daily basis intuitively, and this scratches that part of my brain which always wanted to see what's going on deep down inside, from using a mobile application to monitoring and controlling devices, what all is making it possible.
 
 I recently bought a smart LED RGB light bulb for my work desk from Amazon, A 7 watts [Syska Smartlight Rainbow LED bulb](http://www.amazon.in/Syska-Smartlight-Rainbow-smart-bulb/dp/B01FXQW3M8?_encoding=UTF8&portal-device-attributes=desktop&psc=1&redirect=true&ref_=oh_aui_detailpage_o01_s01) which can be controlled using a mobile application compatible with Android and Bluetooth. It was fun playing with it, a perfect mood lamp for my study room, blinks to notify of any new whatsApp message on phone, can wake me up in the morning and I can interact with it in so many ways BUT only through it's native application.
