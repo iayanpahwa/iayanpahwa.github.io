@@ -234,6 +234,8 @@ gatttool -i hci0 -b 88:C2:55:CA:F0:36 --char-write-req -a 0x0012 -n 00100006000a
 done
 exit 0
 ```
+Script also available on [Github](https://github.com/iayanpahwa/ReverseEngineeringIoTDevices)
+
 You can mimic any color using RGB values from a color picker like a [HTML color picker](https://www.w3schools.com/colors/colors_picker.asp).
 
 
