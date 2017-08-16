@@ -10,7 +10,7 @@ comments: true
 ### Edit 1: This blog post has been featured on:
 #### [Hackaday](http://hackaday.com/2017/08/13/reverse-engineering-a-ble-service-to-control-a-light-bulb/)
 #### [O'reilly](https://www.oreilly.com/ideas/four-short-links-16-august-2017)
-#### [Apple iBeacons](Apple iBeacons)
+#### [Apple iBeacons](http://appleibeacons.com/reverse-engineering-a-ble-service-to-control-a-light-bulb-hackaday/)
 #### [HckrNews](https://news.ycombinator.com/item?id=15022631)
 #### [Appmarsh](https://www.appmarsh.com/reverse-engineering-a-ble-service-to-control-a-light-bulb/), Go Checkout!!
 
