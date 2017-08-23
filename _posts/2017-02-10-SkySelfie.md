@@ -8,7 +8,7 @@ comments: true
 
 ---
 
-We conducted a workshop on Getting Started with First Person View Drone Racing at JRE group of Institutions, Greater Noida, The very same institute I completed my undergrad from. It was highly demanded by most of my juniors who have seen me flying after my college hours.
+We conducted a workshop on Getting Started with First Person View Drone Racing at JRE group of Institutions, Greater Noida, The very same institute I completed my undergrad from. It was highly demanded by most of my juniors who have seen me flying after my college hours. The workshop was in conducted in collaboration with [Indian Drone Racing League](https://droneracingindia.com)
 
 Workshop survey can be found on [Github Page](https://github.com/Team-SDIoT/SDIoT_Events/tree/master/Workshops/FPV-Drone-Racing-101/JRE)
 
