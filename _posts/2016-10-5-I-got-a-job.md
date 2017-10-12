@@ -1,5 +1,5 @@
 ---
-title: "I Got A Job at Mentor Graphics"
+title: "I got a Job at Mentor Graphics"
 share: true
 author_profile: true
 header:
