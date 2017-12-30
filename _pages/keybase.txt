@@ -1,12 +1,3 @@
----
-title: "My Keybase Identity"
-share: true
-author_profile: true
-header:
-  image: /assets/images/keybase.png
-comments: true
----
-
 ==================================================================
 https://keybase.io/iayanpahwa
 --------------------------------------------------------------------
@@ -18,7 +9,7 @@ I hereby claim:
   * I have a public key with fingerprint 90FD C30F 9247 EEAF 050C  9001 2662 88B1 6512 286F
 
 To do so, I am signing this object:
-'''
+
 {
   "body": {
     "key": {
@@ -43,8 +34,6 @@ To do so, I am signing this object:
   "seqno": 7,
   "tag": "signature"
 }
-
-'''
 
 which yields the signature:
 
