@@ -33,7 +33,6 @@ Server is hosted on a public domain, you can use AWS, DigitalOcean or any public
 
 Front End contains a page where you can see the color palette and live feed of the Christmas tree, on Click event triggers mqtt client which sends value to the topic and Esp8266 listening over the topic will listen to the value from the broker and changes the led color. Thanks to [Akshay Kumar](https://github.com/git-akshay) for creating this amazing frontend for this project
 
-
 ![Fig: Screen grab of the user platform](https://iayanpahwa.github.io/assets/images/fe.jpg "Fig: Screen grab of the user platform")
 
 ## The Backend:
