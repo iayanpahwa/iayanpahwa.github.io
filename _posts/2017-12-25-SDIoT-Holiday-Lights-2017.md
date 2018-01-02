@@ -8,7 +8,7 @@ comments: true
 
 ---
 
-[SDIoT](http://sdiot.in) Holiday Lights is a smart Christmas tree lights project meant for adding smart, bright and colorful lights to holiday season. It is based around Neopixel addressable LEDs which can display virtually any color imaginable. The controller deliver animation in single as well as expanded color light strands. The basic idea is to design, develop and deploy a platform that interfaces user with the Christmas Holiday light at our office premise in order to control color and animations of these LEDs over internet and see the live feed of the same over the platform using Raspberry Pi camera. It is also Alexa enabled uses Alexa Skill kit and python script based around Flask Ask framework acting as Alexa to MQTT bridge. It is a heavily scaled down version of IoT holiday Lights I made last year, which was based around Particle Photon board.
+[SDIoT](http://sdiot.in) Holiday Lights is a smart Christmas tree lights project meant for adding smart, bright and colorful lights to holiday season. It is based around Neopixel addressable LEDs which can display virtually any color imaginable. The controller deliver animation in single as well as expanded color light strands. The basic idea is to design, develop and deploy a platform that interfaces user with the Christmas Holiday light at our office premise in order to control color and animations of these LEDs over internet and see the live feed of the same over the platform using Raspberry Pi camera. It is also Alexa enabled uses Alexa Skill kit and python script based around Flask Ask framework acting as Alexa to MQTT bridge. It is a heavily scaled up version of IoT holiday Lights I made last year, which was based around Particle Photon board.
 
 ## Features:
 
@@ -17,6 +17,7 @@ comments: true
 3. Real time live feed using RaspberryPi camera.
 4. An offline Star for tree top Bling made using Arduino ;)
 5. Exposing an API for future expansion over MQTT.
+6. Alexa to MQTT bridge API which can be very useful for your next weekend project 
 
 ## The Hardware:
 
