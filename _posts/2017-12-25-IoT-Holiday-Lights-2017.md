@@ -1,5 +1,5 @@
 ---
-title: "SDIoT Holiday Lights"
+title: "IoT Holiday Lights"
 share: true
 author_profile: true
 header:
