@@ -14,6 +14,15 @@ comments: true
 #### [HckrNews](https://news.ycombinator.com/item?id=15022631)
 #### [Appmarsh](https://www.appmarsh.com/reverse-engineering-a-ble-service-to-control-a-light-bulb/), Go Checkout!!
 
+======================================================================
+
+
+Video:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tbqPOHwuPiw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+
+======================================================================
 
 As an IoT enthusiast and night time security researcher, it always intrigues me, how easy our lives have become with IoT applications which we use on daily basis intuitively, and this scratches that part of my brain which always wanted to see what's going on deep down inside, from using a mobile application to monitoring and controlling devices, what all is making it possible.
 
