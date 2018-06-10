@@ -8,9 +8,9 @@ comments: true
 
 ---
 
-I've been into Aeromodelling since many years now and started early during my engineering undergrad days, but one thing I always missed is the lack of community participation in this amazing hobby. There are aeromodellers who meet and fly every weekend but the idea of having an ever growing community around was missing especially in Delhi-NCR. I knew about few flying spots around the city but never really get a chance to go there or meet other pilots in person. The idea of having a free and open community based model around RC hobby was always somewhere in my mind which has finally been turned to reality with kicking off the first Meetup of KnifeEDGE-RC Aeromodelling club on 6th May 2018 and next one coming very soon. 
+I've been into Aeromodelling since almost 6+ years now, started early during my engineering undergrad days, but one thing I always missed is the lack of community participation in this amazing hobby. There are aeromodellers who meet and fly every weekend but the idea of having an ever growing community around was missing especially in Delhi-NCR. I knew about few flying spots around the city but never really get a chance to go there or meet other pilots in person. The idea of having a free and open community based model around RC hobby was always somewhere in my mind which has finally been turned to reality with kicking off the first Meetup of KnifeEDGE-RC Aeromodelling club on 6th May 2018 and next one coming very soon. 
 
-### Challenges building the community
+### Challenges in building this community
 
 ###### 1. Finance: 
 Ofcourse you need finance to set up a basic infrastructure for your community, in this case involves mostly for venue booking, proceuring couple of safety equipments and refreshments for attendees. It is true we can gather and fly in free spaces saving the venue booking cost which was around 15k for Gautam Buddha University Football field, but again flying in a park is not safe for anybody and keeping in view the DGCA ban on model flying it was better to do it in an educational institute which are exempted by DGCA for such activities. Thanks to [SDIoT](https://sdiot.io), [Flaunt70](https://flaunt7.com/) for sponsoring the meetups with enough funds to take care of venue bookings and refreshments for pilots.
@@ -28,7 +28,7 @@ For every community it is very important to build memories, since a community is
 
 The plans ahead is to involve everyone more actively , the moto of the club is to Build, Fly, Crash and Repeat together. Here everyone is a member and organizer and is owned by no individual. All the expenses are shared with members and the club meets are possible only because of members participation. For the very same reason it is important for everyone to participate, come up with new ideas, help other people experience hobby, help make new pilots and help organize the meets in a any way possible. The bigger goal is to organize yearly mega events where hobbyists and pilots from all over the country can come and adore this awesome hobby of RC Aeromodelling. 
 
-At last, thanks to [IDRL- Indian Drone Racing League](https://droneracingindia.com/), [Satya, Quadkopters](Quadkopters), and Nilesh from [GetTBS](http://gettbs.in) for their support to the club.
+At last, thanks to [IDRL- Indian Drone Racing League](https://droneracingindia.com/), [Satya, Quadkopters](Quadkopters),[AMAI- Aeromodellers association of India](http://www.amai.in/) and Nilesh from [GetTBS](http://gettbs.in) for their support to the club. The meetup was amazing, definitely missed few pilots but got to learn so much more from experienced pilots and had an honour to meet them in person and talk about the hobby I love. It was an amazing experience.
 
 Please follow the club updates on following links:
 
@@ -52,4 +52,11 @@ Adding few photos and a 2 video from the meetup. Stay tuned for next one :) chee
     <img src="/assets/images/kn/9.JPG">
 </figure>
 
+#### Club Intro
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MvViAy3yq94" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+#### DroneEye View 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oyy9nQof60A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+i
