@@ -26,7 +26,10 @@ For every community it is very important to build memories, since a community is
 
 #### Forward plans
 
-The plans ahead is to involve everyone more actively , the moto of the club is to Build, Fly, Crash and Repeat together. Here everyone is a member and organizer and is owned by no individual. All the expenses are shared with members and the club meets are possible only because of members participation. For the very same reason it is important for everyone to participate, come up with new ideas, help other people experience hobby, help make new pilots and help organize the meets in a any way possible. The bigger goal is to organize yearly mega events where hobbyists and pilots from all over the country can come and adore this awesome hobby of RC Aeromodelling. 
+- The plans ahead is to involve everyone more actively , the moto of the club is to Build, Fly, Crash and Repeat together. Here everyone is a member and organizer and is owned by no individual. All the expenses are shared with members and the club meets are possible only because of members participation. For the very same reason it is important for everyone to participate, come up with new ideas, help other people experience hobby, help make new pilots and help organize the meets in a any way possible. The bigger goal is to organize yearly mega events where hobbyists and pilots from all over the country can come and adore this awesome hobby of RC Aeromodelling. 
+
+- One key thing in my mind is to promote more women in drones or Aeromodelling in general. This meetup we had a woman drone pilot but we need more :) Hence would be promoting it and provide support for more women pilots to join.
+
 
 At last, thanks to [IDRL- Indian Drone Racing League](https://droneracingindia.com/), [Satya, Quadkopters](Quadkopters), [AMAI- Aeromodellers association of India](http://www.amai.in/) and Nilesh from [GetTBS](http://gettbs.in) for their support to the club. The meetup was amazing, definitely missed few pilots but got to learn so much more from experienced pilots and had an honour to meet them in person and talk about the hobby I love. It was an amazing experience.
 
