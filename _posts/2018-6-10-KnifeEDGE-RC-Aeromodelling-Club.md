@@ -3,7 +3,7 @@ title: "KnifeEDGE RC Aeromodelling club"
 share: true
 author_profile: true
 header:
-  image: /assets/images/knife.png
+  image: /assets/images/knife.jpg
 comments: true  
 
 ---
@@ -13,7 +13,7 @@ I've been into Aeromodelling since almost 6+ years now, started early during my 
 ### Challenges in building this community
 
 ###### 1. Finance: 
-Ofcourse you need finance to set up a basic infrastructure for your community, in this case involves mostly for venue booking, proceuring couple of safety equipments and refreshments for attendees. It is true we can gather and fly in free spaces saving the venue booking cost which was around 15k for Gautam Buddha University Football field, but again flying in a park is not safe for anybody and keeping in view the DGCA ban on model flying it was better to do it in an educational institute which are exempted by DGCA for such activities. Thanks to [SDIoT](https://sdiot.io), [Flaunt70](https://flaunt7.com/) for sponsoring the meetups with enough funds to take care of venue bookings and refreshments for pilots.
+Ofcourse you need finance to set up a basic infrastructure for your community, in this case involves mostly for venue booking, proceuring couple of safety equipments and refreshments for attendees. It is true we can gather and fly in free spaces saving the venue booking cost which was around 15k for Gautam Buddha University Football field, but again flying in a park is not safe for anybody and keeping in view the DGCA ban on model flying it was better to do it in an educational institute which are exempted by DGCA for such activities. Thanks to [SDIoT](https://sdiot.io), [Flaunt7](https://flaunt7.com/) for sponsoring the meetups with enough funds to take care of venue bookings and refreshments for pilots.
 
 ###### 2. Safety:
 Paramount requirement to consider, it is always wise idea to be prepared for the worst and for the very same reason there was a Fire Extinguisher, First Aid Kit and safety flying line to ensure everything is smooth during the meet.
@@ -24,11 +24,11 @@ Connecting to aeromodellers or pilots was the most difficult challenge we faced 
 ###### 4. Memories:
 For every community it is very important to build memories, since a community is like a family where people wants to come and enjoy, hence we wanted to capture as many moments we can, but capturing flying machines and fast moving drones was a big challenge. Thanks to [TakenIN tean](http://www.takenincompany.com/) for helping us with that.
 
-### Forward plans
+#### Forward plans
 
 The plans ahead is to involve everyone more actively , the moto of the club is to Build, Fly, Crash and Repeat together. Here everyone is a member and organizer and is owned by no individual. All the expenses are shared with members and the club meets are possible only because of members participation. For the very same reason it is important for everyone to participate, come up with new ideas, help other people experience hobby, help make new pilots and help organize the meets in a any way possible. The bigger goal is to organize yearly mega events where hobbyists and pilots from all over the country can come and adore this awesome hobby of RC Aeromodelling. 
 
-At last, thanks to [IDRL- Indian Drone Racing League](https://droneracingindia.com/), [Satya, Quadkopters](Quadkopters),[AMAI- Aeromodellers association of India](http://www.amai.in/) and Nilesh from [GetTBS](http://gettbs.in) for their support to the club. The meetup was amazing, definitely missed few pilots but got to learn so much more from experienced pilots and had an honour to meet them in person and talk about the hobby I love. It was an amazing experience.
+At last, thanks to [IDRL- Indian Drone Racing League](https://droneracingindia.com/), [Satya, Quadkopters](Quadkopters), [AMAI- Aeromodellers association of India](http://www.amai.in/) and Nilesh from [GetTBS](http://gettbs.in) for their support to the club. The meetup was amazing, definitely missed few pilots but got to learn so much more from experienced pilots and had an honour to meet them in person and talk about the hobby I love. It was an amazing experience.
 
 Please follow the club updates on following links:
 
