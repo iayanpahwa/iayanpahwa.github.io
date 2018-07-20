@@ -176,7 +176,7 @@ brew install repo
 ```
 
 
-Now, repo tools needs a git hosted manifest xml file to read meta data of your dependencies. So will create a GitHub repo to hold the file. By default repo tools looks for default.xml files in your master branch but repo command link options allows you to use different manifest located at some different branch with some different name. 
+Now, repo tools needs a git hosted manifest xml file to read meta data of your dependencies. So will create a GitHub repo to hold the file. By default repo tools looks for default.xml files in your master branch but repo command line options allows you to use different manifest located at some different branch with some different name. 
 
 This is very powerful feature of repo, say for ex: Android version Kitkat depends on 100 libraries then you can use Kitkat.xml for fetching their source instead of Oreo.xml which may has 900 new and unique libraries. You can also has say testing.xml or QA.xml which will have additional testing and Quality assurance dependencies to build testing tools along with your main project, powerful right :)
 
@@ -208,7 +208,7 @@ Next will push the default.xml file to our GitHub and use this to create the pro
 
 Create a project directory such as “EazyExit” in this case or any other name
 
-Cd to project directory and execute:
+cd to project directory and execute:
 
 ```
 
@@ -231,7 +231,7 @@ These are the two easy ways to manage independent project dependencies using git
 
 ### Difference between submodules and repo:
 
-I found repo more appropriate for big projects, since there are lot of options to customise the project such as adding seperat manifests for developers and QA. On other hand repo requires you to maintain an extra manifest git repo. Submodules are easy and built-in but difficult to maintain for project havingf enormous dependencies.
+I found repo more appropriate for big projects, since there are lot of options to customise the project such as adding seperate manifests for developers and QA. On other hand repo requires you to maintain an extra manifest git repo. Submodules are easy and built-in unlike repo which needs to be downloaded(Adding one more dependency :P ) but difficult to maintain for project having enormous dependencies.
 
 This blogs talks about pros and cons of each very well: [BLOG](https://www.edureka.co/blog/git-submodules-versus-googles-repo-tool)
 
@@ -240,16 +240,16 @@ This blogs talks about pros and cons of each very well: [BLOG](https://www.edure
 
 ### Git remotes :
 
-Generally your GitHub repo has one remote by default that is the main repository where it has been fetched from you can pull and push to it. Big projects has multiple developers working simultaneously on same source tree each having their own forks where the push code . Suppose developer A has made some changes on it’s fork and you want to check it before developer A opens the pull request. In that case you can add developer A’s fork as your another remote and fetch his code changes.
+Generally your GitHub repo has one remote by default that is the main repository where it has been fetched from you can pull and push to it. Big projects has multiple developers working simultaneously on same source tree each having their own forks where the push code . Suppose developer A has made some changes on it’s fork and you want to check it before developer A opens the pull request(or even after that, you want to test before merging). In that case you can add developer A’s fork as your another remote and fetch his/her code changes.
 
 
-Consider remotes as multiple copies of your project with some changes kept by different developers which you can see, and fetch.
+Consider remotes as multiple copies of a git tracked project with some changes kept by different developers which you can see, and fetch.
 
 
-I’ll use an open source project named Lottie by Airbnb for this demo which is an amazing utility to Render After effects animations on mobile platforms. 
+I’ll use an open source project named *Lottie by Airbnb* for this demo which is an amazing utility to Render Adobe AfterEffects animations on mobile platforms. 
 
 
-First we will clone the my fork of the project 
+First we will clone my fork of the project 
 
 ```
 
@@ -341,7 +341,7 @@ This will bring commits by these two developers to my local machine which I can 
 
 ### Git- cherry-picking:
 
-Git cherry-picking Is a way of manually applying changes caused by a specific commit on your current code. 
+Git cherry-picking Is a way of manually applying changes caused by a specific commit on top of your current code. 
 
 I’ll explain git cherry-picking using a real life example so it is more clear where you want to use it.
 
@@ -349,49 +349,48 @@ Lets say you’re maintaining an open source project which receives great number
 
 Now say you received Pull Requests from 2-3 different developers and you want to test them all together. Why together?
 
--> To save time and efforts
-—> One PR depends on other and so on.
+* To save time and efforts
+* Maybe one PR depends on other and so on.
 
 You first need to add those developers as your remotes, same way as mentioned above .
 
-Then fetch their code using git fetch command
+Then fetch their code using git fetch command. Once all their commits are available we can cheery-pick them and the best way to do so is first create a new branch:
 
-Once all their commits are available we can cheery-pick them 
-
-Best way to do so is first create a new branch
-
-Git checkout -b my new branch
-
-And pick their commits one by one
-
-Git cherry-pick < commit _ hash>
 ```
-Git cherry-pick commid_id_1
+git checkout -b my new branch
+```
+
+And pick their commits one by one:
+
+```
+git cherry-pick < commit _ hash>
+git cherry-pick commid_id_1
 git cherry-pick commid_id_2
 git cherry-pick commid_id_3
 ```
 
-Using last repo example I see  comMIT ID  648c61f5275998c461347b5045dc900405306b31 MADE BY  sorotokin  which I think can impact my current code so I need to see , I can do following:
+Using last repo example I see  commit ID *648c61f5275998c461347b5045dc900405306b31* by contributor *sorotokin* which I think can impact my current code so I need to see , I can do following:
 
 > First I’ll create a new branch from my existing codebase
 ```
-Git checkout -b test_commit 
+git checkout -b test_commit 
 ```
 
 Verify I am on new branch:
-
+```
 git branch 
-Now cherry pick commit 648c61f5275998c461347b5045dc900405306b31  by sorotokin 
+```
+
+Now cherry pick commit 648c61f5275998c461347b5045dc900405306b31  by sorotokin :
 ```
 git cherry-pick 648c61f5275998c461347b5045dc900405306b31
 ```
 
 This will bring changes done by serotonin on this commit to top of my current code so I can test and do whatever I want with it :)
 
-
-
 Once you’ve all the commits you want to test together you can move ahead building the project and testing it :)
 
-Hope you liked this blog post, If you do please comment down below, give me a follow on Github and if you have any questions feel free to reach out to me. Toodles!….
+
+#### Hope you liked this blog post, If you do please comment down below, give me a follow on Github and if you have any questions feel free to reach out to me. Toodles!….
 
 
