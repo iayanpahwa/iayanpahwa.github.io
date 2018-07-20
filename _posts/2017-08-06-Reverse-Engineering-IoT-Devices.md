@@ -24,6 +24,20 @@ Video:
 
 ======================================================================
 
+
+Talk PPT presented at Indian Linux User Group - Delhi 
+
+======================================================================
+
+
+Presentation:
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/qQt0ysA5V5HUuf" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/AyanPahwa1/reverse-engineering-iot-devices-86475004" title="Reverse engineering IoT Devices" target="_blank">Reverse engineering IoT Devices</a> </strong> from <strong><a href="https://www.slideshare.net/AyanPahwa1" target="_blank">Ayan Pahwa</a></strong> </div>
+
+
+
+======================================================================
+
 As an IoT enthusiast and night time security researcher, it always intrigues me, how easy our lives have become with IoT applications which we use on daily basis intuitively, and this scratches that part of my brain which always wanted to see what's going on deep down inside, from using a mobile application to monitoring and controlling devices, what all is making it possible.
 
 I recently bought a smart LED RGB light bulb for my work desk from Amazon, A 7 watts [Syska Smartlight Rainbow LED bulb](http://www.amazon.in/Syska-Smartlight-Rainbow-smart-bulb/dp/B01FXQW3M8?_encoding=UTF8&portal-device-attributes=desktop&psc=1&redirect=true&ref_=oh_aui_detailpage_o01_s01) which can be controlled using a mobile application compatible with Android and Bluetooth. It was fun playing with it, a perfect mood lamp for my study room, blinks to notify of any new whatsApp message on phone, can wake me up in the morning and I can interact with it in so many ways BUT only through it's native application.
