@@ -3,7 +3,7 @@ title: "Managing Dependencies with Git and bonus advance concepts"
 share: true
 author_profile: true
 header:
-  image: /assets/images/git/git.png
+  image: /assets/images/git/git.jpg
 comments: true  
 ---
 
