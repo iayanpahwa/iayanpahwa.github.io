@@ -9,6 +9,10 @@ comments: true
 
 So I am supposed to deliver a talk at [LinuxChixIndia](http://india.linuxchix.org) meet-up coming sunday on how to maintain open source projects which depends on other open source projects so I thought of writing this blog to help attendees use it as reference later on. 
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a_Ua0I9KVwY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
 Basically if your project has dependencies on other projects you need to keep them updated and in sync with your tree so nothing breaks with a change or your project is not outdated or have any known CVE / bugs in your codebase. 
 
 Let us assume your project name “HelloWorld” depends on an open source library say “Print” for the scenarios below.
