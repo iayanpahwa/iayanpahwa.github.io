@@ -20,7 +20,8 @@ Now in this partition we need to create a file with exact name -> wpa_supplicant
 
 ```
 
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+country=in
+ctrl_interface=/var/run/wpa_supplicant 
 update_config=1
 
  
