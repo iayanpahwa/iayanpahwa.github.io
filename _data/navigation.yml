@@ -6,8 +6,13 @@ main:
  - title: "Blog"
    url: /
 
- - title: "Resume"
-   url: /resume/
+ - title: "Youtube"
+   url: https://youtube.com/iAyanPahwa
+   
+ - title: "Decompiled Podcast"
+   url: https://decompiled.in     
 
- - title: "Contact Me"
+- title: "Contact Me"
    url: /contact/  
+   
+   
