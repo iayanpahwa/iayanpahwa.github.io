@@ -7,12 +7,10 @@ main:
    url: /
 
  - title: "Youtube"
-   href: https://youtube.com/iAyanPahwa
-   external: true
+   url: https://youtube.com/iAyanPahwa
    
 - title: "Decompiled Podcast"
-   href: https://decompiled.in
-   external: true     
+   url: https://decompiled.in  
 
 - title: "Contact Me"
    url: /contact/  
