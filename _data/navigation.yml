@@ -7,7 +7,8 @@ main:
    url: /
 
  - title: "Youtube"
-   url: 
+    href: https://youtube.com/iAyanPahwa
+    external: true
    
 - title: "Decompiled Podcast"
    url:      
