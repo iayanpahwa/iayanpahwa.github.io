@@ -11,7 +11,8 @@ main:
     external: true
    
 - title: "Decompiled Podcast"
-   url:      
+    href: https://decompiled.in
+    external: true     
 
 - title: "Contact Me"
    url: /contact/  
