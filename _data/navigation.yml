@@ -5,8 +5,6 @@ main:
 
  - title: "Blog"
    url: /
-
-- title: "Contact Me"
-   url: /contact/  
    
-   
+ - title: "Contact Me"
+   url: /contact/
