@@ -15,4 +15,4 @@ It is comparatively heavy but I still decided to go with it as I had no other op
 
 ### Disclaimer: RC hobby is damn addictive, once you're in there's no going back ;)
 ####Edit 1: My instructable reached more than 20k views, thanks everyone :)
-![FT-Mustang in the field](https://iayanpahwa.github.io/assets/images/mustang.png "FT-Mustang")
+![FT-Mustang in the field](/optimized/assets/images/mustang.webp "FT-Mustang")

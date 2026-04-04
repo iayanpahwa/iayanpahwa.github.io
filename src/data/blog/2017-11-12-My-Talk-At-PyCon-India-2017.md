@@ -26,9 +26,9 @@ Though, there were a few glitches, I had trouble getting my workstation connecti
 
 <figure class="third">
 	<figcaption>PyCon India 2017 experiences:</figcaption>
-	<img src="/assets/images/pycon/1.JPG">
-	<img src="/assets/images/pycon/2.JPG">
-	<img src="/assets/images/pycon/3.JPG">
+	<img src="/optimized/assets/images/pycon/1.webp">
+	<img src="/optimized/assets/images/pycon/2.webp">
+	<img src="/optimized/assets/images/pycon/3.webp">
 </figure>
 
 ### My talk at PyCon 2017

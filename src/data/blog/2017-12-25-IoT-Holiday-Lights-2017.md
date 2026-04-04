@@ -34,7 +34,7 @@ Server is hosted on a public domain, you can use AWS, DigitalOcean or any public
 
 Front End contains a page where you can see the color palette and live feed of the Christmas tree, on Click event triggers mqtt client which sends value to the topic and Esp8266 listening over the topic will listen to the value from the broker and changes the led color. Thanks to [Akshay Kumar](https://github.com/git-akshay) for creating this amazing frontend for this project
 
-![Fig: Screen grab of the user platform](https://iayanpahwa.github.io/assets/images/fe.jpg "Fig: Screen grab of the user platform")
+![Fig: Screen grab of the user platform](/optimized/assets/images/fe.webp "Fig: Screen grab of the user platform")
 
 ## The Backend:
 
@@ -60,7 +60,7 @@ Since the camera server running on Pi is only accessible on LAN, we need somethi
 ```bash
 Port 80 is choosen here, as pi server is running on port 80. Copy the forwarding link given by ngrok which looks like http://******.ngrok.io, through this link you can access your raspberry pi camera server from anywhere 
 
-![Fig: ngrok command output](https://iayanpahwa.github.io/assets/images/ng.jpg "Fig: ngrok command output")
+![Fig: ngrok command output](/optimized/assets/images/ng.webp "Fig: ngrok command output")
 
 
 After setting all this, ngrok link will point you to your raspberry pi camera live feed on URL which look something like this - http://xxxx.ngrok.io/html and you'll be good to go glueing together live feed and the front end gui color and animation controller.

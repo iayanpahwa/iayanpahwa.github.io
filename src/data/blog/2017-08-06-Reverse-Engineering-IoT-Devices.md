@@ -53,31 +53,31 @@ The fact that this bulb is not using TCP/IP based protocol for communication mak
 
 From some previous project on BLE I knew about an amazing application by Nordic Semiconductor which runs on Android and ios called [nrf connect](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) which can be used to explore GATT services and characteristics exposed by the device. I can use this app to connect to my light bulb, know it's Unique Address(sort of MAC address), find which GATT services are exposed by the light bulb and their corresponding characteristics, a good starting point isn't it? I quickly fire up the application on my android device, turn the bluetooth and light bulb on and scan for devices. The device was shown up swiftly with the name 'Cnligh' as shown in screenshot below.
 
-![BLE Scanner](https://iayanpahwa.github.io/assets/images/BLE/1.png "Nordic BLE Scanner")
+![BLE Scanner](/optimized/assets/images/BLE/1.webp "Nordic BLE Scanner")
 
 Connecting it reveals three available GATT services as shown below:
-![GATT Services](https://iayanpahwa.github.io/assets/images/BLE/2.png "GATT Services")
+![GATT Services](/optimized/assets/images/BLE/2.webp "GATT Services")
 
 The two out of three GATT Services exposed by the light bulb are generic to most of BLE Devices, the 0x1800 for Generic access to device and 0x1801 for Generic stuffs, you can check our [Bleutooth GATT website](https://www.bluetooth.com/specifications/gatt/services) to find more about this and other GATT services. These services defines device names, device type, and status as shown in screenshots below.
 
-![Generic Access: 0x1800](https://iayanpahwa.github.io/assets/images/BLE/3.png "Generic Access:0x1800")
+![Generic Access: 0x1800](/optimized/assets/images/BLE/3.webp "Generic Access:0x1800")
 
-![Generic Attribute: 0x1801](https://iayanpahwa.github.io/assets/images/BLE/4.png "Generic Access:0x1800")
+![Generic Attribute: 0x1801](/optimized/assets/images/BLE/4.webp "Generic Access:0x1800")
 
 Other than these two, there is one more service exposed by the light bulb which is user-defined, I can tell by seeing it's 128-bit UUID which are meant for vendor defined BLE GATT profiles:
 
-![Vendor Defined service](https://iayanpahwa.github.io/assets/images/BLE/5.png "Vendor defined service")
+![Vendor Defined service](/optimized/assets/images/BLE/5.webp "Vendor defined service")
 
 Now looking at the service I was very much sure that one of the characteristics under this is what is responsible for controlling the color of the light bulb, but I was truly disappointed, as all the services are labelled as unknown characteristics, either to keep it cryptic, a bad coding habit(not defining own service from scratch) or idk what! I was expecting a service named RGB color or something but nothing like that. Provided I've found the service name, UUID I'd be able to try sending some packets and see the results but it was not the case, hence the next step left was only to sniff the packets sent by the BLE app to the bulb. Though I knew from this search the device address, the GATT service and which characteristics is read, write or both enabled, this would be helpful later on.
 
 I heard about a device called [Ubertooth One By Great Scott gadgets](https://greatscottgadgets.com/ubertoothone/) which makes possible sniffing of Bluetooth packets but seeing at the price tag and local availability, I decided to look for an alternative, there were some other hardwares too from Nordic and Cypress Semiconductor but spending more bucks than price of a light bulb wont make sense isn't it.
-![ubertoothone](https://iayanpahwa.github.io/assets/images/BLE/ubertooth.png "UberToothOne")
+![ubertoothone](/optimized/assets/images/BLE/ubertooth.webp "UberToothOne")
 
 Further Googling, I found on StackOverflow, that with Android KitKat update it is possible to log bluetooth packets in a file, I explored that option, basically you need to enable the option in developer's mode, connect to bluetooth device and interact with it as you do, all the packets transaction will be logged to a file in your SD card with name 'btsnoop_hci'.
 
 If you've android phone with kitkat and above you can enable this feature by going to settings > Developer option > Enable Bluetooth HCI snoop log. This is basicaly a bluetooth debugging tool, after enabling it all the bluetooth transaction will be logged to the file 'btsnoop_hci'. I enabled the feature, and run the app controlling my light bulb changing different colors as I normally would, and focusing more on basic colors this time like pure red, blue and green which would help me filter data stream while analyzing packets, close the app and wolla! the file was actually generated, a merely 20Kb log file which could open the gates to the bulb without opening the hood :P .
 
-![Android Bluetooth Sniffer](https://iayanpahwa.github.io/assets/images/BLE/snoop.png "Android Bluetooth Sniffer")
+![Android Bluetooth Sniffer](/optimized/assets/images/BLE/snoop.webp "Android Bluetooth Sniffer")
 
 Next step was to bring the file on my workstation and try to visualize it using Wireshark which is a great tool for stuff like this, I've very basic understanding of using this tool but with some basic tutorial and hands-on, I was able to look around and find some interesting stuff.
 
@@ -85,7 +85,7 @@ The way the bulb could be working is by taking Red, Green, and Blue or so called
 
 If you look closely on the screenshot below, you'll see some interesting things, which caught my eyes immediately, the destination has two kind of tags/values, the localhost, which is ofcourse our android mobile device, and the other is 'Texas Instruments' with a specific Unique address, Googling it, I found it a BLE based chip by Texas Instruments the 'CC2540' which the bulb is probably using, and the UUIDs we collected from examining GATT services were also example code meant for same chip :D So now without opening the bulb we know what's actually inside it ;)
 
-![Wireshark](https://iayanpahwa.github.io/assets/images/BLE/wireshark.png "Analyzing snoop log file using Wireshark")
+![Wireshark](/optimized/assets/images/BLE/wireshark.webp "Analyzing snoop log file using Wireshark")
 
 Investigating further, there are few types of protocol involved in overall communication as can be seen in wireshark- HCI_E, HCI_C, ATT etc. The ATT seems interesting and applying filter for ATT will only show ATT related packets. To only show packets for ATT, I applied filter for Bluetooth Logical Link Control and Adaptation Protocol (btl2cap) and tried to analyze the packets sent from my local host to light bulb.
 
@@ -114,7 +114,7 @@ The first set is clearly an incrementing string, some sort of serial number for 
 ###### 49ff00  
 ###### 0025ff   and so on .........
 
-![Wireshark Packet Analysis](https://iayanpahwa.github.io/assets/images/BLE/ws.png "Wireshark Packet Analysis")
+![Wireshark Packet Analysis](/optimized/assets/images/BLE/ws.webp "Wireshark Packet Analysis")
 
 
 By this way if you want to produce Blue color you can use string 00ff00 concatenated between the uuid and eight zeroes like BLE Packet containing *"00140006000a030001010000ff0000000000"* and send it to bulb over BLE on that specific address of characteristic which is exposed by GATT, this is all good in theory. In actual practice it could be a reversed string also, like instead of RGB it could be BGR(another common way of color representation), or it can be (255-value) in case of common anode LEDs, where 0 means full brightness and 255 means off, still controllable, but worst it can be nothing, meaning it's not what responsible for controlling colors, can't really tell without controlling it ;) That't the most exciting thing in reverse engineering, you never know ;). The best way to tell this is by controlling it without using the native Syska bulb app.

@@ -44,15 +44,15 @@ Adding few photos and a 2 video from the meetup. Stay tuned for next one :) chee
 
 <figure class="third">
     <figcaption>KnifeEDGE-RC Takeoff experiences:</figcaption>
-    <img src="/assets/images/kn/1.JPG">
-    <img src="/assets/images/kn/2.JPG">
-    <img src="/assets/images/kn/3.JPG">
-    <img src="/assets/images/kn/4.JPG">
-    <img src="/assets/images/kn/5.JPG">
-    <img src="/assets/images/kn/6.JPG">
-    <img src="/assets/images/kn/7.JPG">
-    <img src="/assets/images/kn/8.JPG">
-    <img src="/assets/images/kn/9.JPG">
+    <img src="/optimized/assets/images/kn/1.webp">
+    <img src="/optimized/assets/images/kn/2.webp">
+    <img src="/optimized/assets/images/kn/3.webp">
+    <img src="/optimized/assets/images/kn/4.webp">
+    <img src="/optimized/assets/images/kn/5.webp">
+    <img src="/optimized/assets/images/kn/6.webp">
+    <img src="/optimized/assets/images/kn/7.webp">
+    <img src="/optimized/assets/images/kn/8.webp">
+    <img src="/optimized/assets/images/kn/9.webp">
 </figure>
 
 #### Club Intro

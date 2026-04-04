@@ -11,7 +11,7 @@ I recently came across a cool open source project [esp8266_deauther](https://git
 
 The attack is launched as a continuous instance, hence all the devices will keep disconnecting and connecting to that AP against which it is being used, jamming the clients to use AP a sort of Denial of service attack we can say? Maybe ;-). Other than this it can use to launch beacon probe attack which make multiple access points with similar SSID as the attack vector AP. I shall add a screenshot below where I used beacon flood against my home AP named "NEXTRA1918", it created multiple AP(s) with same SSID, making it impossible for someone to figure out which one to connect.
 
-![Beacon Flood](https://iayanpahwa.github.io/assets/images/beacon.png "Beacon Flood Attack")
+![Beacon Flood](/optimized/assets/images/beacon.webp "Beacon Flood Attack")
 
 I've previously used the release firmware binary from project's github page and flash it on a NodeMCU board to test it and it worked. The entire functionality can be controlled over a webpage hosted by esp8266 itself but I Later discovered a dedicated board for this with an OLED display selling on [Tindie](https://www.tindie.com/products/lspoplove/wifi-deauther-oled-v25-case-and-antenna/) and decided to purchase it, as it is directly suporting the developer of this cool project.
 
@@ -23,7 +23,7 @@ Few thoughts on the board:
 4. I used 18650 battery and don't know why but it smoked out as soon as I plugged in, burning the power supply circuitory, I am pretty sure it was not reverse polarity, even though I assume the board has reverse polarity protection and battery charging circuit.
 P.S I've not asked for replacement and refund...
 
-![DeAuth Board](https://iayanpahwa.github.io/assets/images/board.png "DeAuth Board")
+![DeAuth Board](/optimized/assets/images/board.webp "DeAuth Board")
 
 Overall the concept is nice with a dedicated OLED display but poor Quality control. I shall add the board pic down below, more pics and video are there on Tindie product page. I've removed battery holder and using it off a USB cable to power connector which I made using a Servo connector and powering it from provided pin header slots.
 

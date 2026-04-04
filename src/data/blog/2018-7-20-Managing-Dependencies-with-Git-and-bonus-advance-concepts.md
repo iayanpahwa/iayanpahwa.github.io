@@ -20,7 +20,7 @@ Let us assume your project name “HelloWorld” depends on an open source libra
 
 A naive way I’ve seen people doing is pushing the dependencies code along with their source code. They will clone the “print” library code and push it along with their “Hello World” code tree to GitHub or any version control server. 
 
-![Git Dependencies](https://iayanpahwa.github.io/assets/images/git/dependencies.png "Git Dependencies")
+![Git Dependencies](/optimized/assets/images/git/dependencies.webp "Git Dependencies")
 
 Though it is ok to do so and your project won’t misbehave with changes to the dependent library code but one biggest drawback of this approach is that if in future you need update to a new version of library either to manually patch a bug found in library or to have new features introduced in library by it’s maintainer it will become pain in the a** as their is no tracking to upstream project so you need to manually patch it yourself or re-fetch and push the code once again. So what is better way of doing it, one may ask. 
 
@@ -47,7 +47,7 @@ So I’ve created a project namely “submodule-demo” on my GitHub which has t
 src - where my main source code is stored
 lib - where all the libraries a.k.a dependencies are stored which my source code is using, these libraries are hosted on GitHub by their maintainers as independent projects.
 
-![Git submodules](https://iayanpahwa.github.io/assets/images/git/1.png "Git submodules")
+![Git submodules](/optimized/assets/images/git/1.webp "Git submodules")
 
 
 3. Now for the sake of this demo assume my project depends on two libraries: 
@@ -128,7 +128,7 @@ One more thing you’ll notice on GitHub project repo is under lib FastLED @ c1a
 
 @<HASH> denotes the last commit hash from where FastLED library has been fetched.
 
-![Commit Hash](https://iayanpahwa.github.io/assets/images/git/2.png "Commit Hash")
+![Commit Hash](/optimized/assets/images/git/2.webp "Commit Hash")
 
 This is a very powerful feature, by default submodule will be fetched from latest commit available upstream i.e HEAD of master branch but you can fetch from different branch as well. More details and options can be found here —> https://git-scm.com/docs/git-submodule
 
@@ -204,7 +204,7 @@ Clone the repo manifest-demo and create a file default.xml with following data
  ```
 
 
-![Manifest](https://iayanpahwa.github.io/assets/images/git/3.png "Manifest")
+![Manifest](/optimized/assets/images/git/3.webp "Manifest")
 
 This is an .xml file , note we mentioned remote as my GitHub profile and named it as EazyExit(say) which is our project name. And mentioned different repos we need to fetch along with their commit  ID’s as revision. Manifest allows lot many options such as project branch, different remotes - bitbucket, gitlab etc and reference can be found here: —-> [Reference](https://gerrit.googlesource.com/git-repo/+/master/docs/manifest-format.txt)
 
