@@ -9,6 +9,7 @@ draft: false
 
 ## Problem Statement
 
+![TurnTable overview](/optimized/assets/images/turntable/1.webp)
 I like to show my 3D prints on Instagram and Youtube and while a still photo is a great way to show often people have asked for a 360* video showcasing the thing in more immersive manner, and to achieve the same I decided to build a TurnTable.
 
 ## The Idea !!
@@ -31,6 +32,8 @@ The next thing is to create a sort of platform which can mount the DC motor, hou
 
 ## Parts & Assembly
 
+![Parts and components](/optimized/assets/images/turntable/2.webp)
+
 The brain of the project is Adafruit M4 Express feather board which is definitely very overkill for this project but I'd a few lying around and it's pretty compact so I decided to use it.
 
 To control the motor I'm using Adafruit DC Motor + Stepper FeatherWing which comes with a super simple CircuitPython Library to control motor RPM.
@@ -42,6 +45,8 @@ I've used 12v 3.5RPM high torque geared DC motor which I ordered from amazon.
 To control the RPM of motor or the speed of turntable I used a 10K potentiometer.
 
 The overall circuit is made compact using FeatherWing Doubler - Prototyping board.
+
+![Assembled circuit](/optimized/assets/images/turntable/3.webp)
 
 ## Code
 
