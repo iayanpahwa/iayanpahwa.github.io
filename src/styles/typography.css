@@ -1,6 +1,14 @@
 @plugin "@tailwindcss/typography";
 
 @layer base {
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--font-jetbrains-mono), "Fira Code", "Source Code Pro",
+      monospace;
+  }
+
   /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
     @apply prose;

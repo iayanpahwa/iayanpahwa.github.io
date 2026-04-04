@@ -23,7 +23,7 @@ export default defineConfig({
     remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
-      themes: { light: "min-light", dark: "night-owl" },
+      themes: { light: "min-light", dark: "ayu-dark" },
       defaultColor: false,
       wrap: false,
       transformers: [
@@ -66,6 +66,14 @@ export default defineConfig({
         provider: fontProviders.google(),
         fallbacks: ["monospace"],
         weights: [300, 400, 500, 600, 700],
+        styles: ["normal", "italic"],
+      },
+      {
+        name: "JetBrains Mono",
+        cssVariable: "--font-jetbrains-mono",
+        provider: fontProviders.google(),
+        fallbacks: ["monospace"],
+        weights: [400, 500, 700],
         styles: ["normal", "italic"],
       },
     ],
