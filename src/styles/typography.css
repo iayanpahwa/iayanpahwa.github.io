@@ -101,11 +101,29 @@
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code {
-    @apply flex border bg-(--shiki-light-bg) text-(--shiki-light) outline-border [&_span]:text-(--shiki-light);
+    display: flex;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    line-height: 1.7;
+    background-color: var(--shiki-light-bg);
+    color: var(--shiki-light);
+    font-family: var(--font-jetbrains-mono), "Fira Code", "Source Code Pro", monospace;
+    font-size: 0.875rem;
+  }
+
+  .astro-code span {
+    color: var(--shiki-light);
   }
 
   html[data-theme="dark"] .astro-code {
-    @apply bg-(--shiki-dark-bg) text-(--shiki-dark) [&_span]:text-(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+    color: var(--shiki-dark);
+  }
+
+  html[data-theme="dark"] .astro-code span {
+    color: var(--shiki-dark);
   }
 
   /* Styles for Shiki transformers */
