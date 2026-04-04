@@ -15,11 +15,16 @@ import { PUBLIC_WEB3FORMS_KEY } from "astro:env/client";
     <p class="mb-8 opacity-75">Got something interesting? Drop me a message.</p>
 
     <div id="form-wrap">
-      <form id="contact-form" class="flex flex-col gap-5 max-w-lg">
-        <input type="hidden" name="access_key" value={PUBLIC_WEB3FORMS_KEY} />
-        <input type="hidden" name="subject" value="New message from CodeNSolder contact form" />
-        <input type="checkbox" name="botcheck" style="display:none" />
-
+      <!--
+        method="POST" + no action = submits to current page as POST if JS fails.
+        No hidden fields — access_key lives only in the JS fetch body below.
+      -->
+      <form
+        id="contact-form"
+        method="POST"
+        data-key={PUBLIC_WEB3FORMS_KEY}
+        class="flex flex-col gap-5 max-w-lg"
+      >
         <div class="flex flex-col gap-1.5">
           <label for="name" class="text-sm font-medium opacity-80">Name</label>
           <input
@@ -86,13 +91,19 @@ import { PUBLIC_WEB3FORMS_KEY } from "astro:env/client";
     btn.disabled = true;
     btn.textContent = "Sending…";
 
-    const data = Object.fromEntries(new FormData(form));
+    const fd = new FormData(form);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          access_key: form.dataset.key,
+          subject: "New message from CodeNSolder contact form",
+          name: fd.get("name"),
+          email: fd.get("email"),
+          message: fd.get("message"),
+        }),
       });
       const json = await res.json();
 
