@@ -76,6 +76,20 @@ const isActive = (path: string) => {
             Posts
           </a>
         </li>
+        <li class="col-span-2">
+          <a
+            href="https://apx.tools"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Shop
+          </a>
+        </li>
+        <li class="col-span-2">
+          <a href="/contact" class:list={{ "active-nav": isActive("/contact") }}>
+            Contact
+          </a>
+        </li>
         {
           SITE.showArchives && (
             <li class="col-span-2">

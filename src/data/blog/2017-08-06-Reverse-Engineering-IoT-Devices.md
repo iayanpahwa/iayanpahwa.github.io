@@ -6,6 +6,7 @@ description: "==================================================================
 ogImage: "/optimized/assets/images/re.webp"
 tags: []
 draft: false
+featured: true
 ---
 
 ## CVE Registered : [CVE-2017-18642](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-18642)

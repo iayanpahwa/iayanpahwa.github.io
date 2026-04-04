@@ -1,0 +1,95 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+---
+
+<Layout title={`Contact | ${SITE.title}`}>
+  <Header />
+  <main id="main-content" class="app-layout pb-12">
+    <h1 class="mt-8 mb-2 text-2xl font-bold text-accent sm:text-3xl">
+      Contact
+    </h1>
+    <p class="mb-8 opacity-75">Got something interesting? Drop me a message.</p>
+
+    <div id="form-wrap">
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/iayanpahwa@gmail.com"
+        method="POST"
+        class="flex flex-col gap-5 max-w-lg"
+      >
+        <div class="flex flex-col gap-1.5">
+          <label for="name" class="text-sm font-medium opacity-80">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            required
+            placeholder="Your name"
+            class="rounded border border-border bg-muted/40 px-4 py-2.5 text-foreground placeholder:opacity-40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="email" class="text-sm font-medium opacity-80">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            placeholder="your@email.com"
+            class="rounded border border-border bg-muted/40 px-4 py-2.5 text-foreground placeholder:opacity-40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="query" class="text-sm font-medium opacity-80">Query</label>
+          <textarea
+            id="query"
+            name="message"
+            required
+            rows={5}
+            placeholder="What's on your mind?"
+            class="rounded border border-border bg-muted/40 px-4 py-2.5 text-foreground placeholder:opacity-40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent resize-y"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="self-start rounded border border-accent px-6 py-2.5 font-medium text-accent transition-colors hover:bg-accent hover:text-background focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
+
+    <div id="success-msg" class="hidden mt-8 rounded border border-border bg-muted/40 px-6 py-5 max-w-lg">
+      <p class="text-foreground">
+        Thanks for contacting me, I'll be in touch if I find your query relevant.
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const wrap = document.getElementById("form-wrap");
+  const success = document.getElementById("success-msg");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const res = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+    });
+    if (res.ok) {
+      wrap?.classList.add("hidden");
+      success?.classList.remove("hidden");
+    }
+  });
+</script>
