@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { SITE } from "@/config";
+import { PUBLIC_WEB3FORMS_KEY } from "astro:env/client";
 ---
 
 <Layout title={`Contact | ${SITE.title}`}>
@@ -13,71 +14,98 @@ import { SITE } from "@/config";
     </h1>
     <p class="mb-8 opacity-75">Got something interesting? Drop me a message.</p>
 
-    {
-      Astro.url.searchParams.get("sent") === "true" ? (
-        <div class="mt-4 rounded border border-border bg-muted/40 px-6 py-5 max-w-lg">
-          <p class="text-foreground">
-            Thanks for contacting me, I'll be in touch if I find your query relevant.
-          </p>
+    <div id="form-wrap">
+      <form id="contact-form" class="flex flex-col gap-5 max-w-lg">
+        <input type="hidden" name="access_key" value={PUBLIC_WEB3FORMS_KEY} />
+        <input type="hidden" name="subject" value="New message from CodeNSolder contact form" />
+        <input type="checkbox" name="botcheck" style="display:none" />
+
+        <div class="flex flex-col gap-1.5">
+          <label for="name" class="text-sm font-medium opacity-80">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            required
+            placeholder="Your name"
+            class="rounded border border-border bg-muted/40 px-4 py-2.5 text-foreground placeholder:opacity-40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+          />
         </div>
-      ) : (
-        <form
-          action="https://formsubmit.co/iayanpahwa@gmail.com"
-          method="POST"
-          class="flex flex-col gap-5 max-w-lg"
+
+        <div class="flex flex-col gap-1.5">
+          <label for="email" class="text-sm font-medium opacity-80">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            placeholder="your@email.com"
+            class="rounded border border-border bg-muted/40 px-4 py-2.5 text-foreground placeholder:opacity-40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="query" class="text-sm font-medium opacity-80">Query</label>
+          <textarea
+            id="query"
+            name="message"
+            required
+            rows={5}
+            placeholder="What's on your mind?"
+            class="rounded border border-border bg-muted/40 px-4 py-2.5 text-foreground placeholder:opacity-40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent resize-y"
+          ></textarea>
+        </div>
+
+        <button
+          id="submit-btn"
+          type="submit"
+          class="self-start rounded border border-accent px-6 py-2.5 font-medium text-accent transition-colors hover:bg-accent hover:text-background focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {/* Redirect back to /contact?sent=true after submission */}
-          <input type="hidden" name="_next" value="https://iayanpahwa.github.io/contact?sent=true" />
-          {/* Disable FormSubmit's own captcha page */}
-          <input type="hidden" name="_captcha" value="false" />
-          {/* Honeypot */}
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          Send Message
+        </button>
+      </form>
+    </div>
 
-          <div class="flex flex-col gap-1.5">
-            <label for="name" class="text-sm font-medium opacity-80">Name</label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              required
-              placeholder="Your name"
-              class="rounded border border-border bg-muted/40 px-4 py-2.5 text-foreground placeholder:opacity-40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
-            />
-          </div>
-
-          <div class="flex flex-col gap-1.5">
-            <label for="email" class="text-sm font-medium opacity-80">Email</label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              required
-              placeholder="your@email.com"
-              class="rounded border border-border bg-muted/40 px-4 py-2.5 text-foreground placeholder:opacity-40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
-            />
-          </div>
-
-          <div class="flex flex-col gap-1.5">
-            <label for="query" class="text-sm font-medium opacity-80">Query</label>
-            <textarea
-              id="query"
-              name="message"
-              required
-              rows={5}
-              placeholder="What's on your mind?"
-              class="rounded border border-border bg-muted/40 px-4 py-2.5 text-foreground placeholder:opacity-40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent resize-y"
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="self-start rounded border border-accent px-6 py-2.5 font-medium text-accent transition-colors hover:bg-accent hover:text-background focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-          >
-            Send Message
-          </button>
-        </form>
-      )
-    }
+    <div id="success-msg" class="hidden mt-4 rounded border border-border bg-muted/40 px-6 py-5 max-w-lg">
+      <p class="text-foreground">
+        Thanks for contacting me, I'll be in touch if I find your query relevant.
+      </p>
+    </div>
   </main>
   <Footer />
 </Layout>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const wrap = document.getElementById("form-wrap");
+  const success = document.getElementById("success-msg");
+  const btn = document.getElementById("submit-btn") as HTMLButtonElement;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    const data = Object.fromEntries(new FormData(form));
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        wrap?.classList.add("hidden");
+        success?.classList.remove("hidden");
+      } else {
+        btn.textContent = "Failed — try again";
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = "Failed — try again";
+      btn.disabled = false;
+    }
+  });
+</script>
