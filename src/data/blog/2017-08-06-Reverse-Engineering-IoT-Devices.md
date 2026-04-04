@@ -2,7 +2,7 @@
 title: "Reverse Engineering IoT Devices"
 author: "Ayan Pahwa"
 pubDatetime: 2017-08-06T00:00:00Z
-description: "======================================================================"
+description: "=============================="
 ogImage: "/optimized/assets/images/re.webp"
 tags: []
 draft: false
@@ -25,12 +25,12 @@ Video:
 
 
 
-======================================================================
+============
 
 
 Talk PPT presented at Indian Linux User Group - Delhi 
 
-======================================================================
+==========
 
 
 Presentation:
@@ -39,7 +39,7 @@ Presentation:
 
 
 
-======================================================================
+=============
 
 As an IoT enthusiast and night time security researcher, it always intrigues me, how easy our lives have become with IoT applications which we use on daily basis intuitively, and this scratches that part of my brain which always wanted to see what's going on deep down inside, from using a mobile application to monitoring and controlling devices, what all is making it possible.
 
