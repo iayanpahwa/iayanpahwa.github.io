@@ -14,6 +14,11 @@ import { SITE } from "./src/config";
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+  redirects: {
+    "/blog/rip-swd-programmer": "/posts/rip-swd-programmer/",
+    "/Reverse-Engineering-IoT-Devices/":
+      "/posts/2017-08-06-reverse-engineering-iot-devices/",
+  },
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
