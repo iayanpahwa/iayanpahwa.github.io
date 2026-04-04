@@ -56,6 +56,9 @@ import { SITE } from "@/config";
           ></textarea>
         </div>
 
+        <!-- Honeypot: bots fill this, humans don't — FormSubmit drops it silently -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
         <button
           id="submit-btn"
           type="submit"
