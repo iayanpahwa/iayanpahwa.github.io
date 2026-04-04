@@ -101,13 +101,13 @@
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code {
-    display: flex;
-    border: 1px solid var(--border);
+    /* Fixed bg distinct from Ayu Light page bg (#FAFAFA) */
+    background-color: #f0f3f6;
+    border: 1px solid #D6D9DE;
     border-radius: 0.5rem;
     padding: 1.25rem 1.5rem;
     overflow-x: auto;
     line-height: 1.7;
-    background-color: var(--shiki-light-bg);
     color: var(--shiki-light);
     font-family: var(--font-jetbrains-mono), "Fira Code", "Source Code Pro", monospace;
     font-size: 0.875rem;
@@ -118,7 +118,9 @@
   }
 
   html[data-theme="dark"] .astro-code {
-    background-color: var(--shiki-dark-bg);
+    /* Ayu Mirage surface — elevated from page bg (#1F2430) */
+    background-color: #232834;
+    border-color: #2A3040;
     color: var(--shiki-dark);
   }
 

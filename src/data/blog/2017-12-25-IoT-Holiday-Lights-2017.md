@@ -46,18 +46,18 @@ Include this script - <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-m
 
 Raspberry Pi with pi Cam is used to capture live feed, hosting it on localhost webpage using library (https://elinux.org/RPi-Cam-Web-Interface) 
 
-```
+```bash
 git clone https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
 cd RPi_Cam_Web_Interface
 ./install.sh
 ./start.sh
 
-```
+```bash
 
 Since the camera server running on Pi is only accessible on LAN, we need something to make it public, hence used [ngrok](https://ngrok.com/) to make raspberry pi server hosted online and accessible from the internet. wget ngrok Linux(ARM) binary zipped from their download page , extract ngrok using unzip and better to move it to /usr/bi dir. Run 
-```
+```bash
 ./ngrok http 80
-```  
+```bash
 Port 80 is choosen here, as pi server is running on port 80. Copy the forwarding link given by ngrok which looks like http://******.ngrok.io, through this link you can access your raspberry pi camera server from anywhere 
 
 ![Fig: ngrok command output](https://iayanpahwa.github.io/assets/images/ng.jpg "Fig: ngrok command output")

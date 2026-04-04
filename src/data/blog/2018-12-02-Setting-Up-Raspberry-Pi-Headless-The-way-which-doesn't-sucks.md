@@ -19,7 +19,7 @@ After the image is flashed, your SD card will show a 'boot' partition, with linu
 
 Now in this partition we need to create a file with exact name -> wpa_supplicant.conf. This will save our WiFi credentials which later will be parsed to connect to WiFi hotspots. The content of the file must exact be as follows:
 
-```
+```bash
 
 country=in
 ctrl_interface=/var/run/wpa_supplicant 
@@ -32,22 +32,22 @@ network={
     scan_ssid=1
 }
 
-```
+```bash
 
 Replace it with your router/hotspot name/SSID and password and save the file.
 
 The next step is to enable the ssh, it can be easily done by just creating a file name 'ssh' in boot partition.
 
-```
+```bash
 touch ssh
-```
+```bash
 
 and that will be all, now eject the SD card, plug it into the Pi and boot it in range of the hotspot. Once booted you'll be able to ping and ssh into the pi:
 
-```
+```bash
 ping raspberrypi.local
 ssh pi@raspberrypi.local
-```
+```bash
 
 ### Explanation
 
@@ -65,8 +65,8 @@ You can also use wpa_supplicant to manually connect to router using following co
 
 Note: This will only authenticate with router, but you'll still need to request an IP address from DHCP server running on router, You can do this with the help of command:
 
-```
+```bash
 dhclient -v wlan0
-```
+```bash
 
 Cheers! :D

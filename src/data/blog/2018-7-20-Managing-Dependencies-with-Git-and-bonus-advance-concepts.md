@@ -58,28 +58,28 @@ lib - where all the libraries a.k.a dependencies are stored which my source code
 
 5. To add submodules open the terminal, cd to your main project directory/<Directory where you want these dependencies to be stored after fetching>. In this case I want them in my lib directory so I’ll execute following commands:
 
-```
+```bash
 
 cd ~/projects/submodule-demo/lib
 
-```
+```bash
 
 ## Add submodule with following commands 
 ### git submodule add <Link to dependency project>
 
-```
+```bash
 
 git submodule add https://github.com/iayanpahwa/FastLED.git
 git submodule add https://github.com/iayanpahwa/pubsubclient.git 
 
-```
+```bash
 
 
 This will fetch the source code of these libraries and save them in your lib folder.
 
 You can now find a hidden file in root of your main project directory with name .gitmodules having following meta-data:
 
-```
+```bash
 
  [submodule "lib/FastLED"]
      path = lib/FastLED
@@ -88,7 +88,7 @@ You can now find a hidden file in root of your main project directory with name 
      path = lib/pubsubclient
      url = https://github.com/iayanpahwa/pubsubclient.git
 
-```
+```bash
 
 
 ### This tells git about :
@@ -99,30 +99,30 @@ You can now find a hidden file in root of your main project directory with name 
 
 Now every time someone clones the project they can separately clone the submodule using following commands:
 
-```
+```bash
 
 git clone < Your project URL >
 cd <Your project URL>
 git submodule init 
 git submodule update 
 
-```
+```bash
 
 This can also be done in one command as :
 
-```
+```bash
 
 git clone <Your Project URL> —recursive 
 
-```
+```bash
 
 example:
 
-```
+```bash
 
 git clone https://github.com/iayanpahwa/submodule-demo.git —recursive 
 
-```
+```bash
 
 One more thing you’ll notice on GitHub project repo is under lib FastLED @ c1ab8fa 
 
@@ -145,7 +145,7 @@ Unlike git submodules which is in-built git functionality REPO comes as an execu
 
 Linux: 
 
-```
+```bash
 
 mkdir ~/bin
 PATH=~/bin:$PATH
@@ -153,32 +153,32 @@ PATH=~/bin:$PATH
 Fetch repo  
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 
-```
+```bash
 
 Make it executable
 
-```
+```bash
 
 chmod a+x ~/bin/repo
 
-```
+```bash
 
 OSX: 
 
 Use home-brew to download repo tool
 
-```
+```bash
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
 
-```
+```bash
 Then install repo:
 
-```
+```bash
 
 brew install repo
 
-```
+```bash
 
 
 Now, repo tools needs a git hosted manifest xml file to read meta data of your dependencies. So will create a GitHub repo to hold the file. By default repo tools looks for default.xml files in your master branch but repo command line options allows you to use different manifest located at some different branch with some different name. 
@@ -189,7 +189,7 @@ But to keep the demo simpler will create a default.xml file and push it to maste
 
 Clone the repo manifest-demo and create a file default.xml with following data
 
-```
+```bash
 
  <?xml version="1.0" encoding="UTF-8"?>
  <manifest>
@@ -215,20 +215,20 @@ Create a project directory such as “EazyExit” in this case or any other name
 
 cd to project directory and execute:
 
-```
+```bash
 
 repo init -u <Repo URL where manifest .xml file is present> 
 
 repo init -u https://github.com/iayanpahwa/manifest-demo.git .
 
-```
+```bash
 
 This command will initialise PWD as our project directory 
 
 Next run :
-```
+```bash
 repo sync
-```
+```bash
 This will fetch all dependencies sources and store the code as mentioned in manifest. 
 
 
@@ -256,17 +256,17 @@ I’ll use an open source project named *Lottie by Airbnb* for this demo which i
 
 First we will clone my fork of the project 
 
-```
+```bash
 
 > git clone https://github.com/iayanpahwa/lottie-android.git
 
 > cd Lottie-android
 
-```
+```bash
 
 I’ve already done that , To view your current remotes :
 
-```
+```bash
 git remote -v 
 
 ➜  lottie-android git:(master) git remote -v
@@ -276,7 +276,7 @@ upstream    https://github.com/airbnb/lottie-android.git (fetch)
 upstream    https://github.com/airbnb/lottie-android.git (push)
 ➜  lottie-android git:(master)
 
-```
+```bash
 
 You can see I’ve my own fork and upstream project.
 
@@ -286,7 +286,7 @@ git remote add <Any_Name> <USER_REPO_URL>
 
 Example :
 
-```
+```bash
 
 ➜  lottie-android git:(master) git remote add sorotokin https://github.com/sorotokin/lottie-android.git
 
@@ -304,14 +304,14 @@ sorotokin   https://github.com/sorotokin/lottie-android.git (push)
 upstream    https://github.com/airbnb/lottie-android.git (fetch)
 upstream    https://github.com/airbnb/lottie-android.git (push)
 ➜  lottie-android git:(master)
-```
+```bash
 
 To fetch the code by sorotokin I can execute
-```
+```bash
 git fetch sorotokin
-```
+```bash
 Or I can simply do git fetch —all
-```
+```bash
 
 ➜  lottie-android git:(master) git fetch --all
 Fetching origin
@@ -339,7 +339,7 @@ From https://github.com/leleliu008/lottie-android
  * [new branch]      gpeal--min-max                 -> leleliu008/gpeal--min-max
  * [new branch]      gpeal--test-pr                 -> leleliu008/gpeal--test-pr
  * [new branch]      master                         -> leleliu008/master
-```
+```bash
 
 This will bring commits by these two developers to my local machine which I can checkout to their branches and maybe test their changes before reviewing their Pull requests 
 
@@ -361,35 +361,35 @@ You first need to add those developers as your remotes, same way as mentioned ab
 
 Then fetch their code using git fetch command. Once all their commits are available we can cheery-pick them and the best way to do so is first create a new branch:
 
-```
+```bash
 git checkout -b my new branch
-```
+```bash
 
 And pick their commits one by one:
 
-```
+```bash
 git cherry-pick < commit _ hash>
 git cherry-pick commid_id_1
 git cherry-pick commid_id_2
 git cherry-pick commid_id_3
-```
+```bash
 
 Using last repo example I see  commit ID *648c61f5275998c461347b5045dc900405306b31* by contributor *sorotokin* which I think can impact my current code so I need to see , I can do following:
 
 > First I’ll create a new branch from my existing codebase
-```
+```bash
 git checkout -b test_commit 
-```
+```bash
 
 Verify I am on new branch:
-```
+```bash
 git branch 
-```
+```bash
 
 Now cherry pick commit 648c61f5275998c461347b5045dc900405306b31  by sorotokin :
-```
+```bash
 git cherry-pick 648c61f5275998c461347b5045dc900405306b31
-```
+```bash
 
 This will bring changes done by serotonin on this commit to top of my current code so I can test and do whatever I want with it :)
 

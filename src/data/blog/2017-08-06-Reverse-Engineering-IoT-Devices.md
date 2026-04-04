@@ -122,53 +122,53 @@ I decided to use Bluez software stack which is available on Linux and I used my 
 
 In my linux VM, I opened the terminal and checked if the device has been detected by running:
 
-```
+```bash
 root@kali:~# hciconfig
 hci0:	Type: Primary  Bus: USB
 	BD Address: E0:AC:CB:81:CE:37  ACL MTU: 1021:8  SCO MTU: 64:1
 	UP RUNNING
 	RX bytes:1859 acl:2 sco:0 events:106 errors:0
 	TX bytes:3059 acl:3 sco:0 commands:94 errors:0
-```
+```bash
 Awesome! The device have been detected, now it's time to install required packages
 
 I've worked with bluez stack before, but just to be sure I've all the necessary packages, run:
 
-```
+```bash
 root@kali:~# apt-get install bluez bluez-hcidump, bluez-tools
-```
+```bash
 Now to scan the BLE devices by running:
-```
+```bash
 root@kali:~# hcitool lescan
 LE Scan ...
 88:C2:55:CA:F0:36 (unknown)
 88:C2:55:CA:F0:36 Cnligh
-```
+```bash
 Notice the device Cnligh which is our light bulb with same address as seen on nordic app, the other device is probably my smart fitness tracker band.
 
 #### *If you cannot find the device, make sure bulb is powered on and not connected to your phone as BLE only scan peer-to-peer communication.*
 
 Next we'll connect to this device using following command:
-```
+```bash
 root@kali:~# gatttool -I
 [                 ][LE]> connect 88:C2:55:CA:F0:36
 Attempting to connect to 88:C2:55:CA:F0:36
 Connection successful
 [88:C2:55:CA:F0:36][LE]>
-```
+```bash
 
 Here I've used gatttool Bleuz utilitiy to connect to the bulb using it's address:
 
 #### Note: If you see any error such as connection refused, add following lines to the file *'/etc/bluetooth/main.conf'* to enable GATT
-```
+```bash
 EnableLE = true           // Enable Low Energy support. Default is false.
 AttributeServer = true    // Enable the GATT attribute server. Default is false.
-```
+```bash
 and restart the service using :
 `root@kali:~# etc/init.d/bluetooth restart` and try reconnecting again
 
 Once you're connected with the light bulb you can explore it further:
-```
+```bash
 [88:C2:55:CA:F0:36][LE]> help
 help                                           Show this help
 exit                                           Exit interactive mode
@@ -210,27 +210,27 @@ handle: 0x0023, char properties: 0x0a, char value handle: 0x0024, uuid: 0000fff7
 handle: 0x0026, char properties: 0x0a, char value handle: 0x0027, uuid: 0000fff8-0000-1000-8000-00805f9b34fb
 handle: 0x0029, char properties: 0x10, char value handle: 0x002a, uuid: 0000fff9-0000-1000-8000-00805f9b34fb
 [88:C2:55:CA:F0:36][LE]>
-```
+```bash
 
 Now let's try to control the color of light bulb as we've speculated by sending command for red color:
 `[88:C2:55:CA:F0:36][LE]> char-write-cmd 0x0012 00140006000a0300010100ff000000000000`
 and it literally does changed it color to RED! Awesome :D
 
 Lets try Blue:
-```
+```bash
 [88:C2:55:CA:F0:36][LE]> char-write-cmd 0x0012 00140006000a030001010000ff0000000000`
-```
+```bash
 and Green
-```
+```bash
 [88:C2:55:CA:F0:36][LE]> char-write-cmd 0x0012 00140006000a03000101000000ff00000000`
-```
+```bash
 And everything works as expected even keeping the first string of serial number same(non-incrementing) :D
 
 'char-write-cmd' is basically sending a string message to address 0x0012 which we found by analyzing bluetooth traffic in Wireshark. So now we've a working API to control our very own Bluetooth LE Smart Light bulb.
 
 ### DEMO
 To demonstrate the working I've prepared a small bash script which cycles color of bulb to Red --> Green --> Blue --> White -- > Off
-```
+```bash
 #!/bin/bash
 
 echo "Controlling SYSKA Smart light bulb"
@@ -258,7 +258,7 @@ echo "OFF"
 gatttool -i hci0 -b 88:C2:55:CA:F0:36 --char-write-req -a 0x0012 -n 00100006000a030001010000000000000000 > /dev/null
 done
 exit 0
-```
+```bash
 Script also available on [Github](https://github.com/iayanpahwa/ReverseEngineeringIoTDevices)
 
 You can mimic any color using RGB values from a color picker like a [HTML color picker](https://www.w3schools.com/colors/colors_picker.asp).
