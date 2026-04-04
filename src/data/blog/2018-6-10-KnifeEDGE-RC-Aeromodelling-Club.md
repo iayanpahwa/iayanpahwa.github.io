@@ -3,7 +3,7 @@ title: "KnifeEDGE RC Aeromodelling club"
 author: "Ayan Pahwa"
 pubDatetime: 2018-06-10T00:00:00Z
 description: "I've been into Aeromodelling since almost 6+ years now, started early during my engineering undergrad days, but one thing I always missed is the lack "
-ogImage: "/assets/images/knife.jpg"
+ogImage: "/optimized/assets/images/knife.webp"
 tags: []
 draft: false
 ---

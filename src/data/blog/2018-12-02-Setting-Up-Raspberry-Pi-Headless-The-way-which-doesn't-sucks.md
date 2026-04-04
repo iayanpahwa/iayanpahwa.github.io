@@ -3,7 +3,7 @@ title: "Setting Up Raspberry Pi Headless - The way which doesn't sucks"
 author: "Ayan Pahwa"
 pubDatetime: 2018-12-02T00:00:00Z
 description: "Setting up a Raspberry Pi for the very first time is always in a pain in the a**, especially when you're at a hackathon and don't have access to a spa"
-ogImage: "/assets/images/rpi.jpg"
+ogImage: "/optimized/assets/images/rpi.webp"
 tags: []
 draft: false
 ---

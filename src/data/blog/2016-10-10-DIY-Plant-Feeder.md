@@ -3,7 +3,7 @@ title: "Solar Powered DIY Plant Water Feeder"
 author: "Ayan Pahwa"
 pubDatetime: 2016-10-10T00:00:00Z
 description: "> <cite><a href=\"https://www.brainyquote.com/quotes/quotes/l/libertyhyd198927.html?src=t_plants\">Liberty Hyde Bailey"
-ogImage: "/assets/images/plants.png"
+ogImage: "/optimized/assets/images/plants.webp"
 tags: []
 draft: false
 ---

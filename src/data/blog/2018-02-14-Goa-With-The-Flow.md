@@ -3,7 +3,7 @@ title: "GO(A) with the Flow"
 author: "Ayan Pahwa"
 pubDatetime: 2018-02-14T00:00:00Z
 description: "Flew drones at Vagator Beach, Goa"
-ogImage: "/assets/images/goa.png"
+ogImage: "/optimized/assets/images/goa.webp"
 tags: []
 draft: false
 ---

@@ -3,7 +3,7 @@ title: "Let's make some Airplanes"
 author: "Ayan Pahwa"
 pubDatetime: 2014-10-20T00:00:00Z
 description: "So I recently came across an amazing Youtube channel name FliteTest , these guys makes foam airplanes powered by brushless motors that can actually fl"
-ogImage: "/assets/images/RC.png"
+ogImage: "/optimized/assets/images/RC.webp"
 tags: []
 draft: false
 ---

@@ -3,7 +3,7 @@ title: "WiFi deAuther OLED v2.5 thoughts and review"
 author: "Ayan Pahwa"
 pubDatetime: 2017-10-17T00:00:00Z
 description: "I recently came across a cool open source project esp8266_deauther , which uses my favourite WiFi SoC the ESP8266 to inject DeAuth packets on a WiFi A"
-ogImage: "/assets/images/wifi.png"
+ogImage: "/optimized/assets/images/wifi.webp"
 tags: []
 draft: false
 ---

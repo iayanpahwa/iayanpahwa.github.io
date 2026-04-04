@@ -3,7 +3,7 @@ title: "Fly Together - Bullet Train"
 author: "Ayan Pahwa"
 pubDatetime: 2018-02-21T00:00:00Z
 description: "Flew drones with Askari at BML Munjal Univeristy"
-ogImage: "/assets/images/fly.png"
+ogImage: "/optimized/assets/images/fly.webp"
 tags: []
 draft: false
 ---

@@ -3,7 +3,7 @@ title: "Using Linux in Commercial Products + Yocto Project touchdown"
 author: "Ayan Pahwa"
 pubDatetime: 2018-07-01T00:00:00Z
 description: "I presented a talk at Indian Linux User Group - Delhi meetup on how to use Linux in commercial products. Along with the attendees we create a Linux po"
-ogImage: "/assets/images/L.png"
+ogImage: "/optimized/assets/images/L.webp"
 tags: []
 draft: false
 ---

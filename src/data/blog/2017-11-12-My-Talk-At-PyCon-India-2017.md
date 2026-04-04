@@ -3,7 +3,7 @@ title: "My Talk at PyCon India 2017"
 author: "Ayan Pahwa"
 pubDatetime: 2017-11-12T00:00:00Z
 description: "Last year I attended PyCon India and was overwhelmed with everything going on there, keynote talks, regular talks, community bonding, lightning talks "
-ogImage: "/assets/images/py.png"
+ogImage: "/optimized/assets/images/py.webp"
 tags: []
 draft: false
 ---

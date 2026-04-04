@@ -3,7 +3,7 @@ title: "FireWalkers - Shoes on Fire"
 author: "Ayan Pahwa"
 pubDatetime: 2018-02-28T00:00:00Z
 description: "Always wanted to fly quads with my fireWalkers on :D"
-ogImage: "/assets/images/fire.png"
+ogImage: "/optimized/assets/images/fire.webp"
 tags: []
 draft: false
 ---

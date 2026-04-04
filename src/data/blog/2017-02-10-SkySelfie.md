@@ -3,7 +3,7 @@ title: "SkySelfie"
 author: "Ayan Pahwa"
 pubDatetime: 2017-02-10T00:00:00Z
 description: "We conducted a workshop on Getting Started with First Person View Drone Racing at JRE group of Institutions, Greater Noida, The very same institute I "
-ogImage: "/assets/images/skyselfie.png"
+ogImage: "/optimized/assets/images/skyselfie.webp"
 tags: []
 draft: false
 ---

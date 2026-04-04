@@ -3,7 +3,7 @@ title: "Reverse Engineering IoT Devices"
 author: "Ayan Pahwa"
 pubDatetime: 2017-08-06T00:00:00Z
 description: "======================================================================"
-ogImage: "/assets/images/re.png"
+ogImage: "/optimized/assets/images/re.webp"
 tags: []
 draft: false
 ---

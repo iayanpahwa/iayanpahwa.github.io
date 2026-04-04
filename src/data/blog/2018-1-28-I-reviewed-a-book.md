@@ -3,7 +3,7 @@ title: "I Reviewed a book"
 author: "Ayan Pahwa"
 pubDatetime: 2018-01-28T00:00:00Z
 description: "Recently I was approached by PacktPub publishing house to review a book named Designing Purpose-Built Drones for Ardupilot Pixhawk 2.1. I was very hap"
-ogImage: "/assets/images/drone.png"
+ogImage: "/optimized/assets/images/drone.webp"
 tags: []
 draft: false
 ---

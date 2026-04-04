@@ -3,7 +3,7 @@ title: "IoT Holiday Lights"
 author: "Ayan Pahwa"
 pubDatetime: 2017-12-25T00:00:00Z
 description: "1. Controllable over Internet, webpage hosted over a public server."
-ogImage: "/assets/images/tree.jpg"
+ogImage: "/optimized/assets/images/tree.webp"
 tags: []
 draft: false
 ---

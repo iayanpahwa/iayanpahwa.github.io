@@ -3,7 +3,7 @@ title: "Drones on Firrrreee"
 author: "Ayan Pahwa"
 pubDatetime: 2017-11-25T00:00:00Z
 description: "Drone catches fire, R.I.P Armattan Chemeleon, thanks to dangerous Lithium Polymer batteries ;/"
-ogImage: "/assets/images/bml.png"
+ogImage: "/optimized/assets/images/bml.webp"
 tags: []
 draft: false
 ---

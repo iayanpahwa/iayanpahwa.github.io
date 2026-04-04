@@ -3,7 +3,7 @@ title: "MicroPython"
 author: "Ayan Pahwa"
 pubDatetime: 2017-03-30T00:00:00Z
 description: "Recently Python becomes my most favourite programming language and I've been loving Microcontrollers since eternity now, and now I've found the best o"
-ogImage: "/assets/images/micropython.png"
+ogImage: "/optimized/assets/images/micropython.webp"
 tags: []
 draft: false
 ---

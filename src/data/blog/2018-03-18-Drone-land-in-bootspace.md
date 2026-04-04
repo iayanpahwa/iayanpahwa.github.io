@@ -3,7 +3,7 @@ title: "Landing a drone in car's boot-space - RadiantBelief"
 author: "Ayan Pahwa"
 pubDatetime: 2018-03-18T00:00:00Z
 description: ""
-ogImage: "/assets/images/boot.png"
+ogImage: "/optimized/assets/images/boot.webp"
 tags: []
 draft: false
 ---

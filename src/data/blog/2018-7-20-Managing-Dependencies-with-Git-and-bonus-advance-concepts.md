@@ -3,7 +3,7 @@ title: "Managing Dependencies with Git and bonus advance concepts"
 author: "Ayan Pahwa"
 pubDatetime: 2018-07-20T00:00:00Z
 description: "So I am supposed to deliver a talk at LinuxChixIndia meet-up coming sunday on how to maintain open source projects which depends on other open source "
-ogImage: "/assets/images/git/git.jpg"
+ogImage: "/optimized/assets/images/git/git.webp"
 tags: []
 draft: false
 ---

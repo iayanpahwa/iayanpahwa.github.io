@@ -3,7 +3,7 @@ title: "Drones and Diwali"
 author: "Ayan Pahwa"
 pubDatetime: 2017-10-19T00:00:00Z
 description: "Today we're celebrating Diwali in India, which is festival of lights. SDIoT decided to add some cool tech touch in this year's celebrations and here w"
-ogImage: "/assets/images/diwali.png"
+ogImage: "/optimized/assets/images/diwali.webp"
 tags: []
 draft: false
 ---

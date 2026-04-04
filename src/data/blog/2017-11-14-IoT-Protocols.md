@@ -3,7 +3,7 @@ title: "IoT Protocols: A Few choices"
 author: "Ayan Pahwa"
 pubDatetime: 2017-11-14T00:00:00Z
 description: "My article on Internet of Things protocols - A Few choices has been published in October17 edition of Open Source For You Magazine where I discuss abo"
-ogImage: "/assets/images/IoT.png"
+ogImage: "/optimized/assets/images/IoT.webp"
 tags: []
 draft: false
 ---

@@ -3,7 +3,7 @@ title: "IoT and Security"
 author: "Ayan Pahwa"
 pubDatetime: 2017-04-30T00:00:00Z
 description: "Internet of Things and Security would have been discussed together various times in journals, blog posts or tech forums, but is it really go hand in h"
-ogImage: "/assets/images/security.png"
+ogImage: "/optimized/assets/images/security.webp"
 tags: []
 draft: false
 ---

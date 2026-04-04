@@ -3,7 +3,7 @@ title: "Element14 Enchanted Objects Design Challenge"
 author: "Ayan Pahwa"
 pubDatetime: 2015-08-01T00:00:00Z
 description: "Element14 is a great community for DIY enthusiasts like me, and I've been a part of it since few months now. Element14 regularly organizes Roadtests a"
-ogImage: "/assets/images/enchanted.png"
+ogImage: "/optimized/assets/images/enchanted.webp"
 tags: []
 draft: false
 ---

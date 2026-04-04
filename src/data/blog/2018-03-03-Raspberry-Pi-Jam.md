@@ -3,7 +3,7 @@ title: "ILUG-D Raspberry Pi Jam"
 author: "Ayan Pahwa"
 pubDatetime: 2018-03-03T00:00:00Z
 description: "Today we celebrated Raspberry Pi birthday with Rpi Jam organized by Indian Linux User Group, Delhi (ILUG-D) powered by SDIoT at InvestoPad, Gurugram."
-ogImage: "/assets/images/pi.png"
+ogImage: "/optimized/assets/images/pi.webp"
 tags: []
 draft: false
 ---
