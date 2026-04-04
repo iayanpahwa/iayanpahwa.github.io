@@ -19,6 +19,8 @@ In the case of Arduino Uno like boards which are essentially AVR architecture, c
 
 Some common programmers and debuggers protocols are JTAG, Lauterbach, ST-LINK, and one of the most common one which we going to need is SWD programmer/debugger.
 
+![AVR ISP programmer](/optimized/assets/images/swd/1.webp) 
+
 A good SWD programmer with lifetime of updates (uC profiles) can cost about 100$ such as Seggar J-Link, it also has a cheaper educational version as well.
 
 I have ordered mine but haven't received it yet because of the whole pandemic situation but I wanted one right now because recently particle announced that they're withdrawing support for their Xenon lines of boards and I've couple of xenon boards and since they run on Nordic NRF52840 SoC it can run CircuitPython.
@@ -97,6 +99,8 @@ You need to connect SWDIO pin of the xenon board to GPIO 24 and SWDCLK of xenon 
 
 SWD and SWC pins on xenon boards are not broken out but are available on the mini JTAG port so you need a cable to expose the pins out, since I didn't have the cable I soldered two cables directly on the pin headers, which I won't recommend unless you're good at soldering.
 
+![SWDIO to GPIO24, SWCLK to GPIO25 wiring](/optimized/assets/images/swd/2.webp) 
+
 ## Step 4 (IMPORTANT): Put Xenon board in DFU mode
 
 This is an important step, I spend 2 hours banging my head around until I did this, so in order to refresh the bootloader you need to first put the Xenon board to DFU mode and the way to do it is to press both MODE and RESET button at same time for about 2 seconds and then release the RESET button but continue holding the MODE button until the on-board RGB LED start flashing in green colour.
@@ -112,6 +116,8 @@ wget https://github.com/adafruit/Adafruit_nRF52_Bootloader/releases/download/0.3
 This will download the bootloader hex file for xenon. If you are using some other NRF based board download the relevant file and do check for updates before downloading — you should always download the latest release.
 
 ## Step 6: Start OpenOCD
+
+![OpenOCD setup on Raspberry Pi](/optimized/assets/images/swd/3.webp) 
 
 Now that we have done the setup and have everything we need, from the same directory run:
 
@@ -165,6 +171,10 @@ Plug the xenon board to your computer and it should appear as a drive named XENO
 The old drive will disappear and you'll see a new drive with name CIRCUITPY — and voilà!! You can run CircuitPython on your Xenon board.
 
 **Note:** Currently the on-board RGB LEDs are not user usable because of the way board is configured in CircuitPython, however I am gonna propose changes and might open a PR to CircuitPython to make it available to use for Xenon board. Rest everything is working fine with latest CircuitPython 5.x release including the Bluetooth Low Energy features.
+
+![Particle Xenon board](/optimized/assets/images/swd/4.webp)
+
+![CircuitPython on Xenon](/optimized/assets/images/swd/5.webp)  
 
 ---
 
