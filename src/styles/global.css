@@ -13,15 +13,15 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-  --background: #0A0E14;
-  --foreground: #B3B1AD;
-  --accent: #FFB454;
-  --muted: #0F1419;
-  --border: #1F2430;
+  --background: #1F2430;
+  --foreground: #CCCAC2;
+  --accent: #FFCC66;
+  --muted: #232834;
+  --border: #2A3040;
 }
 
 @theme inline {
-  --font-app: var(--font-google-sans-code);
+  --font-app: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
