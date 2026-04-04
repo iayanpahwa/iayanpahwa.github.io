@@ -29,8 +29,8 @@ public/pagefind
 # Jekyll source reference (migration only — not part of Astro repo)
 iayanpahwa.github.io/
 
-# Migration scripts (one-time use)
-scripts/
+# Migration scripts (one-time use, root-level only)
+/scripts/
 
 # Claude Code
 .claude/
