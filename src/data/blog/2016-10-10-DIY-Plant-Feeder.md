@@ -2,14 +2,15 @@
 title: "Solar Powered DIY Plant Water Feeder"
 author: "Ayan Pahwa"
 pubDatetime: 2016-10-10T00:00:00Z
-description: "> <cite><a href=\"https://www.brainyquote.com/quotes/quotes/l/libertyhyd198927.html?src=t_plants\">Liberty Hyde Bailey"
+description: "Automated Plan watering system based on Arduino"
 ogImage: "/optimized/assets/images/plants.webp"
 tags: []
 draft: false
 ---
 
-### A garden requires patient labor and attention. Plants do not grow merely to satisfy ambitions or to fulfill good intentions. They thrive because someone expended effort on them.
-> <cite><a href="https://www.brainyquote.com/quotes/quotes/l/libertyhyd198927.html?src=t_plants">Liberty Hyde Bailey
+> Agarden requires patient labor and attention. Plants do not grow merely to satisfy ambitions or to fulfill good intentions. They thrive because someone expended effort on them.
+
+-- Liberty Hyde Bailey
 
 
 I've documented a small project called "Solar Powered Automated Plant Feeder" for Electronics For You Magazine, Issue Feb,2016. Since now it is made available on their website I can share it here. EFY is a great magazine for Electronics and DIY enthusiasts.
