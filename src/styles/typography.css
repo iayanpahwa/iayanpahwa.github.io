@@ -55,6 +55,23 @@
       @apply mx-auto border border-border;
     }
 
+    iframe {
+      max-width: 100%;
+    }
+
+    iframe[src*="youtube.com"],
+    iframe[src*="youtube-nocookie.com"] {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+
+    iframe[src*="slideshare.net"] {
+      width: 100%;
+      aspect-ratio: 595 / 485;
+      height: auto;
+    }
+
     figcaption {
       @apply opacity-75;
     }
