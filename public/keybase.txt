@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/iayanpahwa
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://iayanpahwa.github.io
+  * I am iayanpahwa (https://keybase.io/iayanpahwa) on keybase.
+  * I have a public key ASCB3Iy4X5fAhkJi6Ak07QjDi8kATmX8wiMwdOwYToJdaQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012081dc8cb85f97c0864262e80934ed08c38bc9004e65fcc2233074ec184e825d690a",
+      "host": "keybase.io",
+      "kid": "012081dc8cb85f97c0864262e80934ed08c38bc9004e65fcc2233074ec184e825d690a",
+      "uid": "fd9480501a31d2bc58664c5b38727919",
+      "username": "iayanpahwa"
+    },
+    "merkle_root": {
+      "ctime": 1517251777,
+      "hash": "f1770b59460452a9d6be4e4f7318d9ee4448f8752df361d2f4597ba5997f6498e418c4c7148fcf2c2d7251d1046dbc216087059624ca7473a0a15e39622b453e",
+      "hash_meta": "76823fb1eaf7d3434c373cf35e80d4952d183093f7d82490dca45722774299fa",
+      "seqno": 2000975
+    },
+    "service": {
+      "hostname": "iayanpahwa.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.39"
+  },
+  "ctime": 1517251795,
+  "expire_in": 504576000,
+  "prev": "18f187475087d7a409fbd82b13405a5a6fe364aa315b84401a3efc959c922081",
+  "seqno": 22,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEggdyMuF+XwIZCYugJNO0Iw4vJAE5l/MIjMHTsGE6CXWkKp3BheWxvYWTFA097ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwODFkYzhjYjg1Zjk3YzA4NjQyNjJlODA5MzRlZDA4YzM4YmM5MDA0ZTY1ZmNjMjIzMzA3NGVjMTg0ZTgyNWQ2OTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwODFkYzhjYjg1Zjk3YzA4NjQyNjJlODA5MzRlZDA4YzM4YmM5MDA0ZTY1ZmNjMjIzMzA3NGVjMTg0ZTgyNWQ2OTBhIiwidWlkIjoiZmQ5NDgwNTAxYTMxZDJiYzU4NjY0YzViMzg3Mjc5MTkiLCJ1c2VybmFtZSI6ImlheWFucGFod2EifSwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE1MTcyNTE3NzcsImhhc2giOiJmMTc3MGI1OTQ2MDQ1MmE5ZDZiZTRlNGY3MzE4ZDllZTQ0NDhmODc1MmRmMzYxZDJmNDU5N2JhNTk5N2Y2NDk4ZTQxOGM0YzcxNDhmY2YyYzJkNzI1MWQxMDQ2ZGJjMjE2MDg3MDU5NjI0Y2E3NDczYTBhMTVlMzk2MjJiNDUzZSIsImhhc2hfbWV0YSI6Ijc2ODIzZmIxZWFmN2QzNDM0YzM3M2NmMzVlODBkNDk1MmQxODMwOTNmN2Q4MjQ5MGRjYTQ1NzIyNzc0Mjk5ZmEiLCJzZXFubyI6MjAwMDk3NX0sInNlcnZpY2UiOnsiaG9zdG5hbWUiOiJpYXlhbnBhaHdhLmdpdGh1Yi5pbyIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjM5In0sImN0aW1lIjoxNTE3MjUxNzk1LCJleHBpcmVfaW4iOjUwNDU3NjAwMCwicHJldiI6IjE4ZjE4NzQ3NTA4N2Q3YTQwOWZiZDgyYjEzNDA1YTVhNmZlMzY0YWEzMTViODQ0MDFhM2VmYzk1OWM5MjIwODEiLCJzZXFubyI6MjIsInRhZyI6InNpZ25hdHVyZSJ9o3NpZ8RAeUDjXMKPUE+b8ukVcyYyaBPU7wI7pJKz6NM+84D1k0Z7o2AszI5/nlkbmvP3Xda+3rfw6vNw3qJTecfYF+ziDKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEINOSn66Qj7QVr5i1ZPolfqTac8jrzEyZQUFKq+6UWgwMo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/iayanpahwa
+
+==================================================================

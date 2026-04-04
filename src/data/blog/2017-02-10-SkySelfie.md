@@ -1,0 +1,18 @@
+---
+title: "SkySelfie"
+author: "Ayan Pahwa"
+pubDatetime: 2017-02-10T00:00:00Z
+description: "We conducted a workshop on Getting Started with First Person View Drone Racing at JRE group of Institutions, Greater Noida, The very same institute I "
+ogImage: "/assets/images/skyselfie.png"
+tags: []
+draft: false
+---
+
+We conducted a workshop on Getting Started with First Person View Drone Racing at JRE group of Institutions, Greater Noida, The very same institute I completed my undergrad from. It was highly demanded by most of my juniors who have seen me flying after my college hours. The workshop was in conducted in collaboration with [Indian Drone Racing League](https://droneracingindia.com)
+
+Workshop survey can be found on [Github Page](https://github.com/Team-SDIoT/SDIoT_Events/tree/master/Workshops/FPV-Drone-Racing-101/JRE)
+
+It was attended mostly by students, entrepreneur. At the end of workshop we had an Airshow named SkySelfie where each participant stood in a circle and I captured their "SkySelfie" from my Drone orbiting around them #SWAG ;)
+
+Video:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xx-MSRvAeJE" frameborder="0" allowfullscreen></iframe>  
