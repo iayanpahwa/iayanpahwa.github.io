@@ -396,6 +396,5 @@ This will bring changes done by serotonin on this commit to top of my current co
 Once you’ve all the commits you want to test together you can move ahead building the project and testing it :)
 
 
-#### Hope you liked this blog post, If you do please comment down below, give me a follow on Github and if you have any questions feel free to reach out to me. Toodles!….
 
 

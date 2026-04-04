@@ -47,4 +47,3 @@ The code is available on my GitHub. You can download and use it using the button
 
 So that was all for this project, enjoy your new cute tea light and will see you again soon with a new project.
 
-For any questions and to keep in touch follow me on Instagram where I post daily, cheers xD
