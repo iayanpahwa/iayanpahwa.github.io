@@ -15,9 +15,9 @@ featured: true
 #### [O'reilly](https://www.oreilly.com/ideas/four-short-links-16-august-2017)
 #### [Apple iBeacons](http://appleibeacons.com/reverse-engineering-a-ble-service-to-control-a-light-bulb-hackaday/)
 #### [HckrNews](https://news.ycombinator.com/item?id=15022631)
-#### [Appmarsh](https://www.appmarsh.com/reverse-engineering-a-ble-service-to-control-a-light-bulb/), Go Checkout!!
+#### [Appmarsh](https://www.appmarsh.com/reverse-engineering-a-ble-service-to-control-a-light-bulb/), 
 
-======================================================================
+========
 
 
 Video:
