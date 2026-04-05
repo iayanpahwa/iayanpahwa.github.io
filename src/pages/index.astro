@@ -23,25 +23,39 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
     <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
-      <div class="my-4 flex items-center gap-3 sm:my-8">
-        <h1 class="inline-block text-3xl font-bold sm:text-5xl">
-          Tech Flâneur
-        </h1>
-        <a
-          target="_blank"
-          href="/rss.xml"
-          class="inline-block"
-          aria-label="rss feed"
-          title="RSS Feed"
-        >
-          <IconRss
-            width={20}
-            height={20}
-            class="scale-125 stroke-accent stroke-3"
-          />
-          <span class="sr-only">RSS Feed</span>
-        </a>
+      <div class="my-4 flex items-center gap-4 sm:my-8">
+        <img
+          src="/optimized/assets/images/avatar.webp"
+          alt="Ayan Pahwa"
+          width="72"
+          height="72"
+          class="size-14 rounded-full object-cover ring-2 ring-border sm:size-[72px]"
+        />
+        <div class="flex items-center gap-3">
+          <h1 class="inline-block text-3xl font-bold sm:text-5xl">
+            Ayan Pahwa
+          </h1>
+          <a
+            target="_blank"
+            href="/rss.xml"
+            class="inline-block"
+            aria-label="rss feed"
+            title="RSS Feed"
+          >
+            <IconRss
+              width={20}
+              height={20}
+              class="scale-125 stroke-accent stroke-3"
+            />
+            <span class="sr-only">RSS Feed</span>
+          </a>
+        </div>
       </div>
+      <p class="mb-4 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
+        A tech flâneur exploring self-hosted systems, privacy-first tools, and
+        everyday carry. Dad of two, coffee brewer, and constant tinkerer—building
+        a life driven by curiosity and many parallel interests.
+      </p>
       {
         SOCIALS.length > 0 && (
           <div class="mt-4">
