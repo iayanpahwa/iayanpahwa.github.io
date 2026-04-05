@@ -18,9 +18,11 @@ import { SITE } from "@/config";
 type Props = {
   post: CollectionEntry<"blog">;
   posts: CollectionEntry<"blog">[];
+  readingTime: number;
+  relatedPosts: CollectionEntry<"blog">[];
 };
 
-const { post, posts } = Astro.props;
+const { post, posts, readingTime, relatedPosts } = Astro.props;
 
 const {
   title,
@@ -35,7 +37,9 @@ const {
   hideEditPost,
 } = post.data;
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+const showToc = tocHeadings.length >= 3;
 
 let ogImageUrl: string | undefined;
 
@@ -83,6 +87,34 @@ const nextPost =
 <Layout {...layoutProps}>
   <Header />
   <BackButton />
+
+  <!-- Sticky Table of Contents sidebar (xl screens only) -->
+  {
+    showToc && (
+      <aside
+        class="toc-sidebar hidden xl:flex fixed top-1/2 -translate-y-1/2 flex-col gap-2"
+        style="left: calc(50% + 24rem + 0.5rem)"
+        data-pagefind-ignore
+      >
+        <div class="relative flex flex-col gap-2 border-l border-border pl-3">
+          <span class="text-xs font-semibold uppercase tracking-wider text-foreground/40 mb-1">On this page</span>
+          {tocHeadings.map(h => (
+            <a
+              href={`#${h.slug}`}
+              class:list={[
+                "toc-link text-sm text-foreground/60 transition-all duration-200 hover:text-accent leading-snug",
+                { "pl-3": h.depth === 3 },
+              ]}
+              data-heading={h.slug}
+            >
+              {h.text}
+            </a>
+          ))}
+        </div>
+      </aside>
+    )
+  }
+
   <main
     id="main-content"
     class:list={["app-layout pb-12", { "mt-8": !SITE.showBackButton }]}
@@ -96,6 +128,8 @@ const nextPost =
     </h1>
     <div class="my-2 flex items-center gap-2">
       <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
+      <span aria-hidden="true" class="text-foreground/40">·</span>
+      <span class="text-sm text-foreground/60">{readingTime} min read</span>
       <span
         aria-hidden="true"
         class:list={[
@@ -157,6 +191,30 @@ const nextPost =
         )
       }
     </div>
+
+    <!-- Related Posts -->
+    {
+      relatedPosts.length > 0 && (
+        <div data-pagefind-ignore class="mt-8">
+          <hr class="mb-6 border-dashed" />
+          <h2 class="text-lg font-semibold text-foreground/80 mb-4">Related</h2>
+          <ul>
+            {relatedPosts.map(p => (
+              <li class="my-4">
+                <a
+                  href={getPath(p.id, p.filePath)}
+                  class="inline-block text-base font-medium text-accent decoration-dashed underline-offset-4 hover:underline"
+                >
+                  {p.data.title}
+                </a>
+                <Datetime pubDatetime={p.data.pubDatetime} modDatetime={p.data.modDatetime} timezone={p.data.timezone} />
+                {p.data.description && <p class="text-sm text-foreground/70">{p.data.description}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
   </main>
   <Footer />
 </Layout>
@@ -280,4 +338,40 @@ const nextPost =
   document.addEventListener("astro:after-swap", () =>
     window.scrollTo({ left: 0, top: 0, behavior: "instant" })
   );
+
+  /** Table of Contents active heading tracking */
+  function initToc() {
+    const tocLinks = document.querySelectorAll(".toc-link");
+    if (!tocLinks.length) return;
+
+    const setActiveHeading = slug => {
+      tocLinks.forEach(link => {
+        const isActive = link.dataset.heading === slug;
+        link.classList.toggle("text-accent", isActive);
+        link.classList.toggle("font-medium", isActive);
+        link.classList.toggle("text-foreground/60", !isActive);
+      });
+    };
+
+    const articleHeadings = Array.from(
+      document.querySelectorAll("article h2[id], article h3[id]")
+    );
+
+    if (!articleHeadings.length) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveHeading(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-10% 0px -80% 0px" }
+    );
+
+    articleHeadings.forEach(h => observer.observe(h));
+  }
+
+  document.addEventListener("astro:page-load", initToc);
 </script>

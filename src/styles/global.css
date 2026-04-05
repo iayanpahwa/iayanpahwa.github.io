@@ -21,7 +21,7 @@ html[data-theme="dark"] {
 }
 
 @theme inline {
-  --font-app: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-app: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);

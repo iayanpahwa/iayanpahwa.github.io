@@ -2,6 +2,7 @@
 title: "Reverse Engineering IoT Devices"
 author: "Ayan Pahwa"
 pubDatetime: 2017-08-06T00:00:00Z
+modDatetime: 2026-04-05T10:00:00.000Z
 description: "Reverse engineering a Syska smart LED bulb by sniffing unencrypted BLE packets with Wireshark and Android HCI logs, then replicating the RGB control protocol using Linux Bluez tools (CVE-2017-18642)."
 ogImage: "/optimized/assets/images/re.webp"
 tags: ["reverse-engineering", "ble", "iot", "security"]

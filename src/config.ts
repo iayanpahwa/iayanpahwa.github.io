@@ -1,5 +1,5 @@
 export const SITE = {
-  website: "https://iayanpahwa.github.io/",
+  website: "https://codensolder.com/",
   author: "Ayan Pahwa",
   profile: "https://iayanpahwa.github.io/about/",
   desc: "Tech Flâneur",

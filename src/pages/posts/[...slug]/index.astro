@@ -22,6 +22,18 @@ const { post } = Astro.props;
 
 const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
+
+// Reading time
+const wordCount = post.body ? post.body.split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.round(wordCount / 200));
+
+// Related posts: share at least one tag, exclude current, exclude drafts, max 3
+const relatedPosts = sortedPosts
+  .filter(p => {
+    if (p.id === post.id || p.data.draft) return false;
+    return p.data.tags.some(tag => post.data.tags.includes(tag));
+  })
+  .slice(0, 3);
 ---
 
-<PostDetails post={post} posts={sortedPosts} />
+<PostDetails post={post} posts={sortedPosts} {readingTime} {relatedPosts} />

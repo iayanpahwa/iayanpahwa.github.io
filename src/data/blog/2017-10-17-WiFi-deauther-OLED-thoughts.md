@@ -2,6 +2,7 @@
 title: "WiFi deAuther OLED v2.5 thoughts and review"
 author: "Ayan Pahwa"
 pubDatetime: 2017-10-17T00:00:00Z
+modDatetime: 2026-04-05T10:00:00.000Z
 description: "Hands-on review of the ESP8266-based WiFi deauthentication device with OLED display — covering beacon flood attacks, deauth range, and build quality issues found on the Tindie unit."
 ogImage: "/optimized/assets/images/wifi.webp"
 tags: ["security", "wifi", "esp8266", "networking", "review"]
