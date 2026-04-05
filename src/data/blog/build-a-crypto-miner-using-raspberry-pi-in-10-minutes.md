@@ -3,7 +3,7 @@ title: Build a crypto miner using Raspberry Pi in 10 minutes
 author: "Ayan Pahwa"
 pubDatetime: 2022-06-18T16:42:21.000Z
 description: "A step-by-step guide to building a crypto miner using Raspberry Pi in under 10 minutes."
-tags: []
+tags: ["raspberry-pi", "crypto", "tutorial"]
 draft: false
 ---
 

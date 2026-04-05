@@ -2,9 +2,9 @@
 title: "I Reviewed a book"
 author: "Ayan Pahwa"
 pubDatetime: 2018-01-28T00:00:00Z
-description: "Recently I was approached by PacktPub publishing house to review a book named Designing Purpose-Built Drones for Ardupilot Pixhawk 2.1. I was very hap"
+description: "A review of 'Designing Purpose-Built Drones for Ardupilot Pixhawk 2.1' by Ty Audronis — covering application-specific drone design for follow-me carts and autonomous RC vehicles."
 ogImage: "/optimized/assets/images/drone.webp"
-tags: []
+tags: ["drones", "review", "ardupilot"]
 draft: false
 ---
 Recently I was approached by [PacktPub](https://www.packtpub.com) publishing house to review a book named [Designing Purpose-Built Drones for Ardupilot Pixhawk 2.1](https://www.packtpub.com/mapt/book/hardware_and_creative/9781786469168). I was very happy to contribute since I've worked on couple of different projects involving [ArduinoPilot PixHawk](https://discuss.ardupilot.org/t/pixhawk-2-1-documentation/13393) open sourced smart flight controller and being building drones for quite sometime now.

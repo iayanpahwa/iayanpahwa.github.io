@@ -2,9 +2,9 @@
 title: "Solar Powered DIY Plant Water Feeder"
 author: "Ayan Pahwa"
 pubDatetime: 2016-10-10T00:00:00Z
-description: "Automated Plan watering system based on Arduino"
+description: "An automated solar-powered plant watering system using soil moisture sensors, Arduino, and a servo motor — as published in Electronics For You Magazine, February 2016."
 ogImage: "/optimized/assets/images/plants.webp"
-tags: []
+tags: ["arduino", "iot", "diy", "automation"]
 draft: false
 ---
 

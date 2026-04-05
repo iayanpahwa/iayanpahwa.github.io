@@ -2,9 +2,9 @@
 title: "Element14 Enchanted Objects Design Challenge"
 author: "Ayan Pahwa"
 pubDatetime: 2015-08-01T00:00:00Z
-description: "Element14 is a great community for DIY enthusiasts like me, and I've been a part of it since few months now. Element14 regularly organizes Roadtests a"
+description: "Selected as a top-15 participant in Element14's Enchanted Objects Design Challenge with a smart wardrobe concept that suggests weather-appropriate clothing using IoT and text-to-speech APIs."
 ogImage: "/optimized/assets/images/enchanted.webp"
-tags: []
+tags: ["iot", "design-challenge", "smart-home"]
 draft: false
 ---
 Element14 is a great community for DIY enthusiasts like me, and I've been a part of it since few months now. Element14 regularly organizes Roadtests and design challenge where it challenge community members to submit a related proposal solving problem with a specific kit provided, and so one challenge going on recently is [Enchanted Objects](https://www.element14.com/community/community/design-challenges/enchanted-objects) which is an IoT based challenge and I'd submitted proposal named Enchanted Wardrobe for it, which is basically a smart wardrobe which talks to user as he/she open's it and suggest clothes based on current local weathers, I am planning to add some witty interactions as well all using Text to speech APIs.

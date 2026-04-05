@@ -2,9 +2,9 @@
 title: "IoT Protocols: A Few choices"
 author: "Ayan Pahwa"
 pubDatetime: 2017-11-14T00:00:00Z
-description: "My article on Internet of Things protocols - A Few choices has been published in October17 edition of Open Source For You Magazine where I discuss abo"
+description: "Comparing MQTT, CoAP, and Bluetooth Low Energy for IoT communication — a guide to choosing the right protocol for constrained devices, from Open Source For You Magazine."
 ogImage: "/optimized/assets/images/IoT.webp"
-tags: []
+tags: ["iot", "mqtt", "ble", "networking", "embedded-systems"]
 draft: false
 ---
 My article on Internet of Things protocols - A Few choices has been published in October17 edition of Open Source For You Magazine where I discuss about choices a developer has while designing an IoT based smart device, more specific the communication protocols - MQTT, CoAP and BLE.

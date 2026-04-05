@@ -2,9 +2,9 @@
 title: "Let's make some Airplanes"
 author: "Ayan Pahwa"
 pubDatetime: 2014-10-20T00:00:00Z
-description: "So I recently came across an amazing Youtube channel name FliteTest , these guys makes foam airplanes powered by brushless motors that can actually fl"
+description: "Building RC foam airplanes inspired by FliteTest using locally-sourced Bio Foam, with a custom Arduino NRF24L01 remote controller designed from scratch when commercial options didn't fit."
 ogImage: "/optimized/assets/images/RC.webp"
-tags: []
+tags: ["rc", "arduino", "diy", "aeromodelling"]
 draft: false
 ---
 So I recently came across an amazing Youtube channel name [FliteTest](https://www.youtube.com/user/flitetest) , these guys makes foam airplanes powered by brushless motors that can actually fly, they have an awesome begineer video series explaining everything about flight dynamics, control surfaces, selecting components and the best part about this is they have made their designs available for free to use and Build your own planes which caught my eyes ;).

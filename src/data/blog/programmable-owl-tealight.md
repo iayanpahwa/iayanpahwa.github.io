@@ -3,7 +3,7 @@ title: 3D Printed Owl TeaLight — Weekend Project
 author: "Ayan Pahwa"
 pubDatetime: 2020-07-18T16:50:54.000Z
 description: "A weekend project: 3D printing an owl tea light with programmable NeoPixel LEDs, controlled by Adafruit Gemma M0 and CircuitPython with capacitive touch input for color cycling."
-tags: []
+tags: ["3d-printing", "circuitpython", "adafruit", "diy", "neopixel"]
 draft: false
 ---
 

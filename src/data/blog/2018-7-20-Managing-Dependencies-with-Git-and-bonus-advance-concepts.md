@@ -2,9 +2,9 @@
 title: "Managing Dependencies with Git and bonus advance concepts"
 author: "Ayan Pahwa"
 pubDatetime: 2018-07-20T00:00:00Z
-description: "So I am supposed to deliver a talk at LinuxChixIndia meet-up coming sunday on how to maintain open source projects which depends on other open source "
+description: "A practical guide to managing project dependencies with Git submodules and Google's Repo tool, plus bonus advanced concepts — git remotes and cherry-picking for multi-developer open source workflows."
 ogImage: "/optimized/assets/images/git/git.webp"
-tags: []
+tags: ["git", "open-source", "tutorial"]
 draft: false
 ---
 

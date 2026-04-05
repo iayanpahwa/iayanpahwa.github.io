@@ -2,9 +2,9 @@
 title: "IoT Holiday Lights"
 author: "Ayan Pahwa"
 pubDatetime: 2017-12-25T00:00:00Z
-description: "1. Controllable over Internet, webpage hosted over a public server."
+description: "Smart Christmas lights with Neopixel addressable LEDs, MQTT control, Alexa voice commands, and a live Raspberry Pi camera feed — all built on ESP8266 and open-sourced under MIT."
 ogImage: "/optimized/assets/images/tree.webp"
-tags: []
+tags: ["iot", "neopixel", "mqtt", "raspberry-pi", "esp8266", "diy"]
 draft: false
 ---
 

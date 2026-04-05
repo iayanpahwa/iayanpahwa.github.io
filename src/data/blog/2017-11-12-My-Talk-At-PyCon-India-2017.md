@@ -2,9 +2,9 @@
 title: "My Talk at PyCon India 2017"
 author: "Ayan Pahwa"
 pubDatetime: 2017-11-12T00:00:00Z
-description: "Last year I attended PyCon India and was overwhelmed with everything going on there, keynote talks, regular talks, community bonding, lightning talks "
+description: "Recapping my PyCon India 2017 talk on getting started with embedded Python using MicroPython and CircuitPython, including a live Arc Reactor demo that got the room going."
 ogImage: "/optimized/assets/images/py.webp"
-tags: []
+tags: ["micropython", "circuitpython", "python", "talk"]
 draft: false
 ---
 

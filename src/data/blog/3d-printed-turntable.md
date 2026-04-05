@@ -3,7 +3,7 @@ title: DiY motorised 3D Printed TurnTable
 author: "Ayan Pahwa"
 pubDatetime: 2021-07-08T09:47:19.000Z
 description: "Building a motorised 3D printed turntable using Adafruit M4 Feather and DC motor FeatherWing to create smooth 360° showcase videos of 3D prints."
-tags: []
+tags: ["3d-printing", "adafruit", "circuitpython", "diy"]
 draft: false
 ---
 
@@ -64,4 +64,3 @@ Few things I tweaked to get better results:
 2. Mount the base of turntable on a vibration dampening surface like clay or TPU stands
 3. Sand and Oil the inside of gear assembly to get smooth rotations.
 
-Finally you can check the result on my Instagram reel below — a post shared by DiY Technology W/ Ayan Pahwa (@iayanpahwa).

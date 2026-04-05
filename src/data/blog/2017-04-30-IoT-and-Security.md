@@ -2,9 +2,9 @@
 title: "IoT and Security"
 author: "Ayan Pahwa"
 pubDatetime: 2017-04-30T00:00:00Z
-description: "Internet of Things and Security would have been discussed together various times in journals, blog posts or tech forums, but is it really go hand in h"
+description: "IoT security best practices for developers and startups — covering the do's and don'ts of securing connected devices, originally published as a guest blog on Mentor Graphics."
 ogImage: "/optimized/assets/images/security.webp"
-tags: []
+tags: ["iot", "security", "embedded-systems"]
 draft: false
 ---
 

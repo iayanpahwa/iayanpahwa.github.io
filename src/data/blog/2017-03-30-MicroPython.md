@@ -2,9 +2,9 @@
 title: "MicroPython"
 author: "Ayan Pahwa"
 pubDatetime: 2017-03-30T00:00:00Z
-description: "Recently Python becomes my most favourite programming language and I've been loving Microcontrollers since eternity now, and now I've found the best o"
+description: "Getting started with MicroPython on ESP8266 NodeMCU: running Python in a serial REPL on a microcontroller, as written for Open Source For You Magazine."
 ogImage: "/optimized/assets/images/micropython.webp"
-tags: []
+tags: ["micropython", "esp8266", "python", "embedded-systems"]
 draft: false
 ---
 

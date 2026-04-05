@@ -2,9 +2,9 @@
 title: "WiFi deAuther OLED v2.5 thoughts and review"
 author: "Ayan Pahwa"
 pubDatetime: 2017-10-17T00:00:00Z
-description: "I recently came across a cool open source project esp8266_deauther , which uses my favourite WiFi SoC the ESP8266 to inject DeAuth packets on a WiFi A"
+description: "Hands-on review of the ESP8266-based WiFi deauthentication device with OLED display — covering beacon flood attacks, deauth range, and build quality issues found on the Tindie unit."
 ogImage: "/optimized/assets/images/wifi.webp"
-tags: []
+tags: ["security", "wifi", "esp8266", "networking", "review"]
 draft: false
 ---
 I recently came across a cool open source project [esp8266_deauther](https://github.com/spacehuhn/esp8266_deauther) , which uses my favourite WiFi SoC the ESP8266 to inject DeAuth packets on a WiFi Access point. DeAuth packet is generally used by WiFi 802.11 protocol to safely disconnect the devices from an Access Point, since it's unencrypted and only require AP's MAC Address it is easy to spoof and this attack can thus be performed even using those devices which are not connected to that Access Point such as our ESP8266 in this case.  

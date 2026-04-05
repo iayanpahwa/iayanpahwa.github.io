@@ -2,9 +2,9 @@
 title: "KnifeEDGE RC Aeromodelling club"
 author: "Ayan Pahwa"
 pubDatetime: 2018-06-10T00:00:00Z
-description: "I've been into Aeromodelling since almost 6+ years now, started early during my engineering undergrad days, but one thing I always missed is the lack "
+description: "Founding KnifeEDGE, a community RC aeromodelling club in Delhi-NCR: how the inaugural meetup at Gautam Buddha University brought 20 pilots together to build, fly, and crash model aircraft."
 ogImage: "/optimized/assets/images/knife.webp"
-tags: []
+tags: ["rc", "aeromodelling", "community"]
 draft: false
 ---
 
@@ -32,13 +32,6 @@ For every community it is very important to build memories, since a community is
 
 
 At last, thanks to [IDRL- Indian Drone Racing League](https://droneracingindia.com/), [Satya, Quadkopters](Quadkopters), [AMAI- Aeromodellers association of India](http://www.amai.in/) and Nilesh from [GetTBS](http://gettbs.in) for their support to the club. The meetup was amazing, definitely missed few pilots but got to learn so much more from experienced pilots and had an honour to meet them in person and talk about the hobby I love. It was an amazing experience.
-
-Please follow the club updates on following links:
-
-1. Website: [http://knifedgerc.club/](http://knifedgerc.club/)
-2. Facebook Page : [https://www.facebook.com/knifeedgerc/](https://www.facebook.com/knifeedgerc/)
-3. Twitter Page : [https://twitter.com/RcKnife](https://twitter.com/RcKnife)
-4. Whatsapp Group: [https://chat.whatsapp.com/I0OmlIxKFcK7k1t3iAgR1t](https://chat.whatsapp.com/I0OmlIxKFcK7k1t3iAgR1t)
 
 Adding few photos and a 2 video from the meetup. Stay tuned for next one :) cheers!
 
