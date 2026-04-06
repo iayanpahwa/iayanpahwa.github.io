@@ -122,6 +122,24 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
   <Footer />
 </Layout>
 
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE.author,
+    url: `${SITE.website}about/`,
+    image: `${SITE.website}optimized/assets/images/avatar.webp`,
+    description: SITE.desc,
+    sameAs: [
+      "https://github.com/iAyanPahwa",
+      "https://x.com/iayanpahwa",
+      "https://linkedin.com/in/iAyanPahwa",
+    ],
+  })}
+/>
+
 <script>
   const MONTHS = [
     "Jan","Feb","Mar","Apr","May","Jun",

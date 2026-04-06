@@ -9,6 +9,10 @@ I support open source and FOSS by contributing to different projects and communi
 
 The purpose of this blog is to document my past and future projects which usually fade over time, along with some reviews of DIY and commercial tech and gadgets.
 
+## Featured In
+
+Work featured on [Hackaday](https://hackaday.com), [O'Reilly](https://www.oreilly.com), and [HackerNews](https://news.ycombinator.com). Published in [Electronics For You (EFY)](https://www.electronicsforu.com), [Open Source For You (OSFY)](https://www.opensourceforu.com), and the [Mentor Graphics (Siemens) blog](https://blogs.sw.siemens.com). Speaker at [PyCon India 2017](https://in.pycon.org/2017/).
+
 ## Technical Skills
 
 ### Programming Languages
