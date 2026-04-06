@@ -2,13 +2,13 @@
 title: "KnifeEDGE RC Aeromodelling club"
 author: "Ayan Pahwa"
 pubDatetime: 2018-06-10T00:00:00Z
-description: "Founding KnifeEDGE, a community RC aeromodelling club in Delhi-NCR: how the inaugural meetup at Gautam Buddha University brought 20 pilots together to build, fly, and crash model aircraft."
+description: "Founding KnifeEDGE, a community RC aeromodelling club: how the inaugural meetup at Gautam Buddha University brought 20 pilots together to build, fly, and crash model aircraft."
 ogImage: "/optimized/assets/images/knife.webp"
 tags: ["rc", "aeromodelling", "community"]
 draft: false
 ---
 
-I've been into Aeromodelling since almost 6+ years now, started early during my engineering undergrad days, but one thing I always missed is the lack of community participation in this amazing hobby. There are aeromodellers who meet and fly every weekend but the idea of having an ever growing community around was missing especially in Delhi-NCR. I knew about few flying spots around the city but never really get a chance to go there or meet other pilots in person. The idea of having a free and open community based model around RC hobby was always somewhere in my mind which has finally been turned to reality with kicking off the first Meetup of KnifeEDGE-RC Aeromodelling club on 6th May 2018 and next one coming very soon. 
+I've been into Aeromodelling since almost 6+ years now, started early during my engineering undergrad days, but one thing I always missed is the lack of community participation in this amazing hobby. There are aeromodellers who meet and fly every weekend but the idea of having an ever growing community around was missing. I knew about few flying spots around the city but never really get a chance to go there or meet other pilots in person. The idea of having a free and open community based model around RC hobby was always somewhere in my mind which has finally been turned to reality with kicking off the first Meetup of KnifeEDGE-RC Aeromodelling club on 6th May 2018 and next one coming very soon. 
 
 ### Challenges in building this community
 

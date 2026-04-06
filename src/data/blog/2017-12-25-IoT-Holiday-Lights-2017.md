@@ -67,7 +67,7 @@ After setting all this, ngrok link will point you to your raspberry pi camera li
 
 There's also a neopixel star created as a tree top bling made with Arduino and neopixel LED running stunning animations. The project is docuemnted on [Instructables](https://www.instructables.com/id/Christmas-Tree-Stop-Star-Bling/) by team member [Abhishek Maurya](https://github.com/iabhi16)
 
-The entire project using AlexaSkill files are opensourced under MIT Lincense and is available at SDIoT [github repo](https://github.com/Team-SDIoT/IoT-Holiday-Lights) . You can control the project sandbox instance running at Greater Noida, India using this [link]() --> http://sdiot.in/sdiot-holiday-light.html
+The entire project using AlexaSkill files are opensourced under MIT Lincense and is available at SDIoT [github repo](https://github.com/Team-SDIoT/IoT-Holiday-Lights) . You can control the project sandbox instance using this [link]() --> http://sdiot.in/sdiot-holiday-light.html
 
 The demo video is available on youtube linked down below:
 
