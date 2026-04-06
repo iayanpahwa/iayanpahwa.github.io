@@ -6,7 +6,9 @@ import Footer from "@/components/Footer.astro";
 import Socials from "@/components/Socials.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
+import SortToggle from "@/components/SortToggle.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
+import { getPath } from "@/utils/getPath";
 import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
@@ -14,14 +16,23 @@ import { SOCIALS } from "@/constants";
 
 const posts = await getCollection("blog");
 
-const sortedPosts = getSortedPosts(posts);
+const sortedPosts = getSortedPosts(posts, "published");
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+
+// Metadata for all non-featured posts (used by client-side sort toggle)
+const allNonFeaturedMeta = recentPosts.map(p => ({
+  title: p.data.title,
+  url: getPath(p.id, p.filePath),
+  description: p.data.description,
+  pubDatetime: p.data.pubDatetime.toISOString(),
+  modDatetime: p.data.modDatetime?.toISOString() ?? null,
+}));
 ---
 
 <Layout pageType="home">
   <Header />
-  <main id="main-content" data-layout="index" class="app-layout">
+  <main id="main-content" data-layout="index" data-post-per-index={SITE.postPerIndex} class="app-layout">
     <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
       <div class="my-4 flex items-center gap-4 sm:my-8">
         <img
@@ -85,8 +96,11 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
-          <ul>
+          <div class="flex items-center justify-between mb-1">
+            <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
+            <SortToggle />
+          </div>
+          <ul id="recent-posts-list">
             {recentPosts.map(
               (data, index) =>
                 index < SITE.postPerIndex && <Card variant="h3" {...data} />
@@ -95,6 +109,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         </section>
       )
     }
+
+    <div id="non-featured-meta" data-posts={JSON.stringify(allNonFeaturedMeta)} hidden></div>
 
     <div class="my-8 text-center">
       <LinkButton href="/posts/">
@@ -107,11 +123,82 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 </Layout>
 
 <script>
+  const MONTHS = [
+    "Jan","Feb","Mar","Apr","May","Jun",
+    "Jul","Aug","Sep","Oct","Nov","Dec",
+  ];
+
+  function formatDate(iso: string) {
+    const d = new Date(iso);
+    return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}, ${d.getUTCFullYear()}`;
+  }
+
+  function renderCard(p: {
+    title: string;
+    url: string;
+    description: string;
+    pubDatetime: string;
+    modDatetime: string | null;
+  }, sortBy: string) {
+    const isModified =
+      sortBy === "modified" &&
+      p.modDatetime != null &&
+      p.modDatetime > p.pubDatetime;
+    const displayDate = formatDate(isModified ? p.modDatetime! : p.pubDatetime);
+    return `<li class="my-6">
+      <a href="${p.url}" class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 hover:underline">
+        <h3>${p.title}</h3>
+      </a>
+      <div class="flex items-center gap-x-2 opacity-80">
+        ${isModified ? '<span class="text-sm">Updated:</span>' : ""}
+        <time class="text-sm">${displayDate}</time>
+      </div>
+      <p>${p.description}</p>
+    </li>`;
+  }
+
   document.addEventListener("astro:page-load", () => {
     const indexLayout = (document.querySelector("#main-content") as HTMLElement)
       ?.dataset?.layout;
     if (indexLayout) {
       sessionStorage.setItem("backUrl", "/");
     }
+
+    const metaEl = document.getElementById("non-featured-meta") as HTMLElement | null;
+    if (!metaEl) return;
+
+    const allPosts: {
+      title: string;
+      url: string;
+      description: string;
+      pubDatetime: string;
+      modDatetime: string | null;
+    }[] = JSON.parse(metaEl.dataset.posts ?? "[]");
+
+    const mainEl = document.querySelector("#main-content") as HTMLElement;
+    const postPerIndex = parseInt(mainEl?.dataset?.postPerIndex ?? "5");
+
+    document.addEventListener("sort-change", (e: Event) => {
+      const sortBy = (e as CustomEvent<string>).detail;
+      const list = document.getElementById("recent-posts-list");
+      if (!list) return;
+
+      const sorted = [...allPosts].sort((a, b) => {
+        const da =
+          sortBy === "modified"
+            ? new Date(a.modDatetime ?? a.pubDatetime).getTime()
+            : new Date(a.pubDatetime).getTime();
+        const db =
+          sortBy === "modified"
+            ? new Date(b.modDatetime ?? b.pubDatetime).getTime()
+            : new Date(b.pubDatetime).getTime();
+        return db - da;
+      });
+
+      list.innerHTML = sorted
+        .slice(0, postPerIndex || 5)
+        .map(p => renderCard(p, sortBy))
+        .join("");
+    });
   });
 </script>

@@ -1,0 +1,39 @@
+---
+// Purely presentational — dispatches "sort-change" custom event with detail: "published" | "modified"
+---
+
+<div class="flex items-center gap-2 text-sm">
+  <span class="text-foreground/50 text-xs">Sort:</span>
+  <button
+    id="sort-pub"
+    data-sort="published"
+    class="sort-btn font-medium text-accent"
+    aria-pressed="true"
+  >Date Published</button>
+  <span class="text-foreground/30 select-none" aria-hidden="true">|</span>
+  <button
+    id="sort-mod"
+    data-sort="modified"
+    class="sort-btn text-foreground/50 hover:text-foreground transition-colors"
+    aria-pressed="false"
+  >Last Updated</button>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLButtonElement>(".sort-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll<HTMLButtonElement>(".sort-btn").forEach(b => {
+          const active = b === btn;
+          b.classList.toggle("text-accent", active);
+          b.classList.toggle("font-medium", active);
+          b.classList.toggle("text-foreground/50", !active);
+          b.setAttribute("aria-pressed", String(active));
+        });
+        document.dispatchEvent(
+          new CustomEvent("sort-change", { detail: btn.dataset.sort })
+        );
+      });
+    });
+  });
+</script>

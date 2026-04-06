@@ -7,26 +7,121 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
 import Pagination from "@/components/Pagination.astro";
+import SortToggle from "@/components/SortToggle.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
+import { getPath } from "@/utils/getPath";
 import { SITE } from "@/config";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
-  return paginate(getSortedPosts(posts), { pageSize: SITE.postPerPage });
+  const sortedByPub = getSortedPosts(posts, "published");
+  const allPostMeta = sortedByPub.map(p => ({
+    title: p.data.title,
+    url: getPath(p.id, p.filePath),
+    description: p.data.description,
+    pubDatetime: p.data.pubDatetime.toISOString(),
+    modDatetime: p.data.modDatetime?.toISOString() ?? null,
+  }));
+  return paginate(sortedByPub, { pageSize: SITE.postPerPage, props: { allPostMeta } });
 }) satisfies GetStaticPaths;
 
-const { page } = Astro.props;
+const { page, allPostMeta } = Astro.props;
 ---
 
 <Layout title={`Posts | ${SITE.title}`}>
   <Header />
   <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
-    <ul>
-      {page.data.map(data => <Card {...data} />)}
-    </ul>
+    <div class="flex items-center justify-between mb-4">
+      <SortToggle />
+    </div>
+    <div id="posts-static">
+      <ul>
+        {page.data.map(data => <Card {...data} />)}
+      </ul>
+    </div>
+    <ul id="posts-dynamic" hidden></ul>
+    <p id="posts-dynamic-note" hidden class="mt-4 text-sm text-foreground/50 text-center"></p>
   </Main>
 
   <Pagination {page} />
 
   <Footer noMarginTop={page.lastPage > 1} />
 </Layout>
+
+<div id="all-post-meta" data-posts={JSON.stringify(allPostMeta)} hidden></div>
+
+<script>
+  const MONTHS = [
+    "Jan","Feb","Mar","Apr","May","Jun",
+    "Jul","Aug","Sep","Oct","Nov","Dec",
+  ];
+
+  function formatDate(iso: string) {
+    const d = new Date(iso);
+    return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}, ${d.getUTCFullYear()}`;
+  }
+
+  function renderCard(p: {
+    title: string;
+    url: string;
+    description: string;
+    pubDatetime: string;
+    modDatetime: string | null;
+  }) {
+    const isModified = p.modDatetime != null && p.modDatetime > p.pubDatetime;
+    const displayDate = formatDate(isModified ? p.modDatetime! : p.pubDatetime);
+    return `<li class="my-6">
+      <a href="${p.url}" class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 hover:underline">
+        <h2>${p.title}</h2>
+      </a>
+      <div class="flex items-center gap-x-2 opacity-80">
+        ${isModified ? '<span class="text-sm">Updated:</span>' : ""}
+        <time class="text-sm">${displayDate}</time>
+      </div>
+      <p>${p.description}</p>
+    </li>`;
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    const metaEl = document.getElementById("all-post-meta") as HTMLElement | null;
+    if (!metaEl) return;
+
+    const allPosts: {
+      title: string;
+      url: string;
+      description: string;
+      pubDatetime: string;
+      modDatetime: string | null;
+    }[] = JSON.parse(metaEl.dataset.posts ?? "[]");
+
+    const staticEl = document.getElementById("posts-static");
+    const dynamicEl = document.getElementById("posts-dynamic");
+    const dynamicNote = document.getElementById("posts-dynamic-note");
+    const paginationEl = document.getElementById("pagination-nav");
+
+    document.addEventListener("sort-change", (e: Event) => {
+      const sortBy = (e as CustomEvent<string>).detail;
+
+      if (sortBy === "modified") {
+        const sorted = [...allPosts].sort((a, b) => {
+          const da = new Date(a.modDatetime ?? a.pubDatetime).getTime();
+          const db = new Date(b.modDatetime ?? b.pubDatetime).getTime();
+          return db - da;
+        });
+
+        if (dynamicEl) dynamicEl.innerHTML = sorted.map(p => renderCard(p)).join("");
+        if (dynamicNote) dynamicNote.textContent = `Showing all ${sorted.length} posts sorted by last updated`;
+
+        staticEl?.setAttribute("hidden", "");
+        dynamicEl?.removeAttribute("hidden");
+        dynamicNote?.removeAttribute("hidden");
+        paginationEl?.setAttribute("hidden", "");
+      } else {
+        staticEl?.removeAttribute("hidden");
+        dynamicEl?.setAttribute("hidden", "");
+        dynamicNote?.setAttribute("hidden", "");
+        paginationEl?.removeAttribute("hidden");
+      }
+    });
+  });
+</script>
