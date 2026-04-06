@@ -28,7 +28,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page, allPostMeta } = Astro.props;
 ---
 
-<Layout title={`Posts | ${SITE.title}`}>
+<Layout title={`Posts | ${SITE.title}`} pageType="collection">
   <Header />
   <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
     <div class="flex items-center justify-between mb-4">

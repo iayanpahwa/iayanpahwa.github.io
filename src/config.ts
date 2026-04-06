@@ -1,8 +1,8 @@
 export const SITE = {
   website: "https://codensolder.com/",
   author: "Ayan Pahwa",
-  profile: "https://iayanpahwa.github.io/about/",
-  desc: "Tech Flâneur",
+  profile: "https://codensolder.com/about/",
+  desc: "Maker projects and hardware hacking: IoT, embedded Linux, CircuitPython, and DIY electronics by Ayan Pahwa.",
   title: "CodeNSolder",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,

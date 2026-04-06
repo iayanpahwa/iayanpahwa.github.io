@@ -34,3 +34,9 @@ iayanpahwa.github.io/
 
 # Claude Code
 .claude/
+
+# Local SEO & audit reports (not for version control)
+SEO-ACTION-PLAN.md
+FULL-AUDIT-REPORT.md
+ACTION-PLAN.md
+*-AUDIT-REPORT.md

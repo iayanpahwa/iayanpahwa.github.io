@@ -18,10 +18,13 @@ export default defineConfig({
     "/blog/rip-swd-programmer": "/posts/rip-swd-programmer/",
     "/Reverse-Engineering-IoT-Devices/":
       "/posts/2017-08-06-reverse-engineering-iot-devices/",
+    "/sitemap.xml": "/sitemap-index.xml",
   },
   integrations: [
     sitemap({
-      filter: page => SITE.showArchives || !page.endsWith("/archives"),
+      filter: page =>
+        (SITE.showArchives || !page.endsWith("/archives")) &&
+        !/\/posts\/\d+\/$/.test(page),
     }),
   ],
   markdown: {
