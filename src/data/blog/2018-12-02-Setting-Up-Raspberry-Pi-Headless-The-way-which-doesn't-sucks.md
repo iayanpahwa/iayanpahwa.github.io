@@ -1,5 +1,5 @@
 ---
-title: "Setting Up Raspberry Pi Headless - The way which doesn't sucks"
+title: "Raspberry Pi Headless Setup: SSH and WiFi Before First Boot"
 author: "Ayan Pahwa"
 pubDatetime: 2018-12-02T00:00:00Z
 description: "The clean way to set up a Raspberry Pi headless — drop a wpa_supplicant.conf and an empty ssh file on the boot partition to enable WiFi and SSH before the first boot, no monitor needed."

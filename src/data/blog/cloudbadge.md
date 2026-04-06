@@ -1,9 +1,10 @@
 ---
-title: IoT with CircuitPython | Internet connected conference badge
+title: "CircuitPython Conference Badge with MQTT and Adafruit IO"
 author: "Ayan Pahwa"
 pubDatetime: 2020-02-03T07:18:21.000Z
 modDatetime: 2026-04-05T10:00:00.000Z
 description: "Using CircuitPython with an ESP32 co-processor to build an internet-connected conference badge (PyBadge) with MQTT-controlled name display and NeoPixel RGB color picker via Adafruit IO."
+ogImage: "/optimized/assets/images/kn/1.webp"
 tags: ["circuitpython", "esp32", "iot", "mqtt", "adafruit"]
 draft: false
 ---

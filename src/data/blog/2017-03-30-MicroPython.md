@@ -1,5 +1,5 @@
 ---
-title: "MicroPython"
+title: "MicroPython on ESP8266: Getting Started with Serial REPL"
 author: "Ayan Pahwa"
 pubDatetime: 2017-03-30T00:00:00Z
 description: "Getting started with MicroPython on ESP8266 NodeMCU: running Python in a serial REPL on a microcontroller, as written for Open Source For You Magazine."

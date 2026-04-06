@@ -1,5 +1,5 @@
 ---
-title: Using Raspberry pi as SWD programmer to flash CircuitPython on Particle Xenon Board
+title: "Raspberry Pi as SWD Programmer: Flash CircuitPython on Particle Xenon"
 author: "Ayan Pahwa"
 pubDatetime: 2020-04-22T17:20:51.000Z
 modDatetime: 2026-04-05T10:00:00.000Z

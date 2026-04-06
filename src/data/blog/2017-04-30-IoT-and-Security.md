@@ -1,5 +1,5 @@
 ---
-title: "IoT and Security"
+title: "IoT Security for Developers: Common Pitfalls and Best Practices"
 author: "Ayan Pahwa"
 pubDatetime: 2017-04-30T00:00:00Z
 description: "IoT security best practices for developers and startups — covering the do's and don'ts of securing connected devices, originally published as a guest blog on Mentor Graphics."
