@@ -32,6 +32,8 @@ jobs:
         run: npm run build
         env:
           PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
+          PUBLIC_UMAMI_SCRIPT_URL: ${{ secrets.PUBLIC_UMAMI_SCRIPT_URL }}
+          PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.PUBLIC_UMAMI_WEBSITE_ID }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
