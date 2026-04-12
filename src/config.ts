@@ -21,3 +21,18 @@ export const SITE = {
   lang: "en",
   timezone: "UTC",
 } as const;
+
+export const GISCUS = {
+  repo: "iayanpahwa/iayanpahwa.github.io" as const,
+  repoId: "R_kgDOR5dMwQ",
+  category: "Announcements",
+  categoryId: "DIC_kwDOR5dMwc4C6qWJ",
+  mapping: "pathname" as const,
+  strict: false,
+  reactionsEnabled: true,
+  emitMetadata: false,
+  inputPosition: "bottom" as const,
+  lightTheme: "noborder_light",
+  darkTheme: "noborder_dark",
+  lang: "en",
+} as const;

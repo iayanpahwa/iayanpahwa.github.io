@@ -1,0 +1,45 @@
+---
+import { GISCUS } from "@/config";
+---
+
+<div class="giscus mt-8"></div>
+
+<script define:vars={{ cfg: GISCUS }}>
+  function getTheme() {
+    return document.documentElement.getAttribute("data-theme") === "dark"
+      ? cfg.darkTheme
+      : cfg.lightTheme;
+  }
+
+  function sendTheme(theme) {
+    const iframe = document.querySelector("iframe.giscus-frame");
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        "https://giscus.app"
+      );
+    }
+  }
+
+  const script = document.createElement("script");
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute("data-repo", cfg.repo);
+  script.setAttribute("data-repo-id", cfg.repoId);
+  script.setAttribute("data-category", cfg.category);
+  script.setAttribute("data-category-id", cfg.categoryId);
+  script.setAttribute("data-mapping", cfg.mapping);
+  script.setAttribute("data-strict", cfg.strict ? "1" : "0");
+  script.setAttribute("data-reactions-enabled", cfg.reactionsEnabled ? "1" : "0");
+  script.setAttribute("data-emit-metadata", cfg.emitMetadata ? "1" : "0");
+  script.setAttribute("data-input-position", cfg.inputPosition);
+  script.setAttribute("data-theme", getTheme());
+  script.setAttribute("data-lang", cfg.lang);
+  script.setAttribute("crossorigin", "anonymous");
+  script.async = true;
+  document.querySelector(".giscus").appendChild(script);
+
+  new MutationObserver(() => sendTheme(getTheme())).observe(
+    document.documentElement,
+    { attributes: true, attributeFilter: ["data-theme"] }
+  );
+</script>
