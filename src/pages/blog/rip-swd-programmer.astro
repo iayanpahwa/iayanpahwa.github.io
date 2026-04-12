@@ -1,0 +1,11 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Redirecting…" description="">
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+      window.location.replace("/posts/rip-swd-programmer/");
+    });
+  </script>
+</Layout>

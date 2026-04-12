@@ -15,7 +15,6 @@ import { SITE } from "./src/config";
 export default defineConfig({
   site: SITE.website,
   redirects: {
-    "/blog/rip-swd-programmer": "/posts/rip-swd-programmer/",
     "/Reverse-Engineering-IoT-Devices/":
       "/posts/2017-08-06-reverse-engineering-iot-devices/",
     "/sitemap.xml": "/sitemap-index.xml",
