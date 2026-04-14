@@ -1,8 +1,6 @@
 import { defineConfig, envField, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -17,7 +15,6 @@ export default defineConfig({
   redirects: {
     "/Reverse-Engineering-IoT-Devices/":
       "/posts/2017-08-06-reverse-engineering-iot-devices/",
-    "/sitemap.xml": "/sitemap-index.xml",
   },
   integrations: [
     sitemap({
@@ -27,7 +24,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    remarkPlugins: [],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "ayu-light", dark: "ayu-mirage" },

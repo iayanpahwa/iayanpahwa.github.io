@@ -101,6 +101,10 @@ const structuredData =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Preconnect to third-party origins -->
+    <link rel="preconnect" href="https://giscus.app" />
+    <link rel="dns-prefetch" href="https://giscus.app" />
     <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonicalURL} />
@@ -157,6 +161,8 @@ const structuredData =
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:creator" content="@iayanpahwa" />
+    <meta name="twitter:site" content="@iayanpahwa" />
 
     <!-- Google JSON-LD Structured data -->
     <script
