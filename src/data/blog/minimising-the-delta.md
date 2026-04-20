@@ -5,7 +5,7 @@ pubDatetime: 2026-04-12T10:00:00.000Z
 description: "On closing the gap between intent and output when working with AI agents — and what it means for how we hire, build, and encode our values into the tools we use."
 tags: ["ai", "productivity", "engineering", "hiring", "agents"]
 ogImage: "/optimized/assets/images/minimising-the-delta/cover.webp"
-featured: true
+featured: false
 draft: false
 ---
 
