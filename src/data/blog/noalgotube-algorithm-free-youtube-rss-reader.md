@@ -1,7 +1,7 @@
 ---
 title: "noalgotube: I Built My Own YouTube Feed Because the Algorithm Stopped Working for Me"
 author: "Ayan Pahwa"
-pubDatetime: 2026-04-20T10:00:00.000Z
+pubDatetime: 2026-04-20T03:00:00.000Z
 description: "A personal content aggregator for YouTube and RSS feeds with no recommendations, no tracking, no algorithm. Just the channels you follow."
 tags: ["open-source", "self-hosting", "youtube", "rss", "homelab", "fastapi"]
 ogImage: "/optimized/assets/images/noalgotube-algorithm-free-youtube-rss-reader/cover.webp"
