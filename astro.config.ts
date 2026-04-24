@@ -13,6 +13,9 @@ import { SITE } from "./src/config";
 export default defineConfig({
   site: SITE.website,
   redirects: {
+    "/gravatar": "https://gravatar.com/iayanpahwa",
+    "/gravatar-dp":
+      "https://www.gravatar.com/avatar/332e5554a95a0f2f768b84aa426cfb8ed3c188db10c27d25dc315f9205e0301f?s=2048",
     "/Reverse-Engineering-IoT-Devices/":
       "/posts/2017-08-06-reverse-engineering-iot-devices/",
   },
