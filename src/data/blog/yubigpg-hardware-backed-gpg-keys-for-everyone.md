@@ -5,7 +5,7 @@ pubDatetime: 2026-04-17T00:00:00.000Z
 description: "GPG has protected sensitive communication for decades. YubiGPG is an open-source toolkit that makes hardware-backed key setup reliable enough for everyone to do it right."
 tags: ["gpg", "yubikey", "security", "privacy", "open-source"]
 draft: false
-featured: true
+featured: false
 ogImage: "/optimized/assets/images/yubigpg-hardware-backed-gpg-keys-for-everyone/main.webp"
 ---
 

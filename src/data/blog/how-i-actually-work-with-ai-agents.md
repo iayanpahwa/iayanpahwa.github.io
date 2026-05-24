@@ -4,7 +4,7 @@ author: "Ayan Pahwa"
 pubDatetime: 2026-05-17T09:00:00.000Z
 description: "The rules I actually follow when working with AI agents — where things stand today, and why some of this will change."
 tags: ["ai", "agentic-coding", "productivity", "workflow"]
-featured: true
+featured: false
 draft: false
 ---
 
