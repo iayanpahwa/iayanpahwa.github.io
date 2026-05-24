@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ayan Pahwa — Developer Relations Engineer with 10+ years in embedded systems, AI tooling, and developer advocacy.">
+  <title>Ayan Pahwa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root {
+      --bg:       #0d1117;
+      --bg1:      #161b22;
+      --bg2:      #21262d;
+      --border:   #30363d;
+      --borderm:  #21262d;
+      --text:     #e6edf3;
+      --muted:    #8b949e;
+      --dim:      #484f58;
+      --accent:   #58a6ff;
+      --accentH:  #79c0ff;
+      --accentBg: rgba(56,139,253,.1);
+      --accentBd: rgba(56,139,253,.25);
+      --green:    #3fb950;
+      --font:     'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      --mono:     'JetBrains Mono','Fira Code',monospace;
+      --r:        6px;
+      --rl:       12px;
+      --navH:     56px;
+      --maxW:     960px;
+      --t:        200ms ease;
+    }
+    [data-theme="light"] {
+      --bg:#ffffff; --bg1:#f6f8fa; --bg2:#eef1f4;
+      --border:#d0d7de; --borderm:#e4e8ec;
+      --text:#1f2328; --muted:#656d76; --dim:#afb8c1;
+      --accent:#0969da; --accentH:#0550ae;
+      --accentBg:rgba(9,105,218,.08); --accentBd:rgba(9,105,218,.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      font-size: 15px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accentH); }
+    ::selection { background: var(--accentBg); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top:0; left:0; right:0;
+      height: var(--navH);
+      background: rgba(13,17,23,.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      z-index: 100;
+      transition: border-color var(--t);
+    }
+    [data-theme="light"] nav { background: rgba(255,255,255,.88); }
+    nav.scrolled { border-bottom-color: var(--border); }
+
+    .nav-inner {
+      max-width: var(--maxW); margin: 0 auto;
+      height: 100%; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 24px;
+    }
+    .nav-logo { font-weight:800; font-size:15px; color:var(--text); }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display:flex; align-items:center; gap:2px; list-style:none; }
+    .nav-links a {
+      color: var(--muted); font-size:13px; font-weight:500;
+      padding: 6px 10px; border-radius: var(--r);
+      transition: color var(--t), background var(--t);
+    }
+    .nav-links a:hover { color:var(--text); background:var(--bg2); }
+    .nav-links a.active { color:var(--accent); background:var(--accentBg); }
+
+    .nav-right { display:flex; align-items:center; gap:8px; }
+
+    .theme-btn {
+      width:32px; height:32px; border-radius:var(--r);
+      border:1px solid var(--border); background:var(--bg1);
+      color:var(--muted); cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      font-size:14px; transition:all var(--t);
+    }
+    .theme-btn:hover { color:var(--text); border-color:var(--accentBd); }
+
+    .btn-pill {
+      font-size:12px; font-weight:600; padding:6px 14px;
+      border-radius:20px; border:1px solid var(--accentBd);
+      background:var(--accentBg); color:var(--accent);
+      cursor:pointer; transition:all var(--t);
+      display:inline-flex; align-items:center; gap:5px;
+      font-family:var(--font); text-decoration:none;
+    }
+    .btn-pill:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+    .hamburger {
+      display:none; flex-direction:column; gap:5px;
+      cursor:pointer; padding:4px; border:none; background:none;
+    }
+    .hamburger span {
+      display:block; width:18px; height:2px;
+      background:var(--muted); border-radius:2px; transition:all var(--t);
+    }
+
+    .mobile-menu {
+      display:none; position:fixed; top:var(--navH); left:0; right:0;
+      background:var(--bg1); border-bottom:1px solid var(--border);
+      padding:8px 24px 16px; z-index:99;
+    }
+    .mobile-menu.open { display:block; }
+    .mobile-menu a {
+      display:block; color:var(--muted); font-size:14px;
+      font-weight:500; padding:10px 0;
+      border-bottom:1px solid var(--borderm);
+    }
+    .mobile-menu a:last-child { border-bottom:none; }
+
+    /* ── SECTIONS ── */
+    .section-wrap {
+      max-width: var(--maxW); margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-label {
+      font-size:11px; font-weight:700; text-transform:uppercase;
+      letter-spacing:2px; color:var(--accent); margin-bottom:6px;
+    }
+    .section-title {
+      font-size:clamp(22px,4vw,28px); font-weight:800;
+      color:var(--text); letter-spacing:-0.5px;
+      margin-bottom:36px; line-height:1.2;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height:100vh; display:flex; align-items:center;
+      padding-top:var(--navH); position:relative; overflow:hidden;
+    }
+    #hero::before {
+      content:''; position:absolute; inset:0;
+      background-image: radial-gradient(var(--border) 1px, transparent 1px);
+      background-size:28px 28px; opacity:.45; pointer-events:none;
+    }
+    #hero::after {
+      content:''; position:absolute; top:30%; left:50%;
+      transform:translate(-50%,-50%);
+      width:700px; height:500px;
+      background:radial-gradient(ellipse, rgba(88,166,255,.07) 0%, transparent 65%);
+      pointer-events:none;
+    }
+    .hero-inner {
+      max-width:var(--maxW); margin:0 auto;
+      padding:60px 24px 80px; position:relative; z-index:1;
+      width:100%;
+    }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:12px; font-weight:600; color:var(--accent);
+      background:var(--accentBg); border:1px solid var(--accentBd);
+      padding:5px 12px; border-radius:20px; margin-bottom:24px;
+    }
+    .badge-dot {
+      width:7px; height:7px; border-radius:50%; background:var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:.5;transform:scale(.75)}
+    }
+
+    .hero-name {
+      font-size:clamp(40px,8vw,80px); font-weight:900;
+      letter-spacing:-3px; color:var(--text); line-height:1;
+      margin-bottom:16px;
+    }
+    .hero-role {
+      font-size:clamp(16px,2.5vw,22px); color:var(--muted);
+      margin-bottom:20px; min-height:34px; font-weight:400;
+    }
+    #typed { color:var(--accent); font-weight:600; }
+    .cursor {
+      display:inline-block; width:2px; height:.9em;
+      background:var(--accent); margin-left:2px;
+      vertical-align:text-bottom;
+      animation:blink 1s step-end infinite;
+    }
+    @keyframes blink { 50%{opacity:0} }
+
+    .hero-bio {
+      font-size:15px; color:var(--muted); max-width:560px;
+      line-height:1.7; margin-bottom:36px;
+    }
+
+    .hero-stats {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:10px; max-width:500px; margin-bottom:36px;
+    }
+    .stat-card {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--rl); padding:16px 10px; text-align:center;
+      transition:border-color var(--t), transform var(--t);
+    }
+    .stat-card:hover { border-color:var(--accentBd); transform:translateY(-2px); }
+    .stat-num {
+      display:block; font-size:22px; font-weight:800;
+      color:var(--text); letter-spacing:-0.5px;
+    }
+    .stat-lbl {
+      font-size:9.5px; color:var(--muted); text-transform:uppercase;
+      letter-spacing:.8px; margin-top:2px;
+    }
+
+    .hero-actions { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+
+    .btn-primary {
+      font-size:13px; font-weight:700; padding:9px 20px;
+      border-radius:var(--rl); background:var(--accent); color:#fff;
+      border:none; cursor:pointer; transition:all var(--t);
+      display:inline-flex; align-items:center; gap:6px;
+      font-family:var(--font); text-decoration:none;
+    }
+    .btn-primary:hover { background:var(--accentH); color:#fff; transform:translateY(-1px); }
+
+    .btn-outline {
+      font-size:13px; font-weight:600; padding:8px 18px;
+      border-radius:var(--rl); border:1px solid var(--border);
+      color:var(--muted); background:transparent;
+      transition:all var(--t); display:inline-flex; align-items:center; gap:6px;
+    }
+    .btn-outline:hover { color:var(--text); border-color:var(--accentBd); background:var(--accentBg); }
+
+    .socials { display:flex; align-items:center; gap:6px; }
+    .soc {
+      width:36px; height:36px; border-radius:var(--r);
+      border:1px solid var(--border); background:var(--bg1);
+      color:var(--muted); display:inline-flex; align-items:center;
+      justify-content:center; font-size:15px;
+      transition:all var(--t); flex-shrink:0;
+    }
+    .soc:hover { color:var(--accent); border-color:var(--accentBd); transform:translateY(-2px); }
+    .soc-sep { width:1px; height:18px; background:var(--border); margin:0 4px; }
+    .soc-text { font-size:12px; color:var(--muted); }
+    .soc-text a { color:var(--muted); font-weight:500; }
+    .soc-text a:hover { color:var(--accent); }
+
+    /* hero stagger */
+    .hero-inner > * { opacity:0; animation:fadeUp .6s ease forwards; }
+    .hero-inner > *:nth-child(1){animation-delay:.05s}
+    .hero-inner > *:nth-child(2){animation-delay:.15s}
+    .hero-inner > *:nth-child(3){animation-delay:.25s}
+    .hero-inner > *:nth-child(4){animation-delay:.35s}
+    .hero-inner > *:nth-child(5){animation-delay:.45s}
+    .hero-inner > *:nth-child(6){animation-delay:.55s}
+    .hero-inner > *:nth-child(7){animation-delay:.65s}
+    @keyframes fadeUp {
+      from{opacity:0;transform:translateY(18px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { position:relative; padding-left:26px; }
+    .timeline::before {
+      content:''; position:absolute; left:6px; top:12px; width:2px; bottom:0;
+      background:linear-gradient(to bottom, var(--accent), var(--border) 70%, transparent);
+    }
+    .tl-item {
+      position:relative; margin-bottom:28px;
+      opacity:0; transform:translateX(-14px);
+      transition:opacity .5s ease, transform .5s ease;
+    }
+    .tl-item.in { opacity:1; transform:translateX(0); }
+    .tl-item:nth-child(1){transition-delay:.05s}
+    .tl-item:nth-child(2){transition-delay:.15s}
+    .tl-item:nth-child(3){transition-delay:.25s}
+    .tl-item:nth-child(4){transition-delay:.35s}
+
+    .tl-dot {
+      position:absolute; left:-25px; top:10px;
+      width:12px; height:12px; border-radius:50%;
+      border:2px solid var(--accent); background:var(--bg); z-index:1;
+    }
+    .tl-item:first-child .tl-dot {
+      background:var(--accent);
+      box-shadow:0 0 0 4px var(--accentBg), 0 0 18px var(--accentBg);
+    }
+
+    .job-card {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--rl); padding:22px 26px;
+      transition:border-color var(--t), transform var(--t), box-shadow var(--t);
+    }
+    .job-card:hover {
+      border-color:var(--accentBd);
+      transform:translateY(-2px);
+      box-shadow:0 8px 28px rgba(0,0,0,.18);
+    }
+    .jc-top {
+      display:flex; justify-content:space-between;
+      align-items:flex-start; flex-wrap:wrap; gap:8px;
+    }
+    .jc-co { font-size:17px; font-weight:800; color:var(--text); letter-spacing:-.3px; }
+    .jc-role { font-size:13px; font-weight:600; color:var(--accent); margin-top:1px; }
+    .badge-current {
+      font-size:10px; font-weight:700; text-transform:uppercase;
+      letter-spacing:1px; padding:3px 9px; border-radius:20px;
+      background:rgba(63,185,80,.12); color:var(--green);
+      border:1px solid rgba(63,185,80,.25);
+    }
+    .jc-meta {
+      display:flex; align-items:center; gap:7px;
+      font-size:12px; color:var(--muted); margin:8px 0 14px;
+    }
+    .jc-meta .dot { color:var(--dim); }
+    .jc-bullets { list-style:none; display:flex; flex-direction:column; gap:7px; }
+    .jc-bullets li {
+      font-size:13.5px; color:var(--muted); padding-left:16px;
+      position:relative; line-height:1.55;
+    }
+    .jc-bullets li::before {
+      content:''; position:absolute; left:3px; top:8px;
+      width:5px; height:5px; border-radius:50%;
+      background:var(--accent); opacity:.4;
+    }
+    .jc-bullets a { font-weight:500; }
+
+    /* ── SKILLS ── */
+    .filter-bar { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:24px; }
+    .fbtn {
+      font-size:12px; font-weight:600; padding:5px 14px;
+      border-radius:20px; border:1px solid var(--border);
+      background:transparent; color:var(--muted);
+      cursor:pointer; transition:all var(--t); font-family:var(--font);
+    }
+    .fbtn:hover { border-color:var(--accentBd); color:var(--accent); }
+    .fbtn.active { background:var(--accentBg); border-color:var(--accentBd); color:var(--accent); }
+
+    .sg-card {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--rl); padding:20px 24px;
+      margin-bottom:12px;
+      opacity:0; transform:translateY(14px);
+      transition:opacity .45s ease, transform .45s ease, border-color var(--t);
+    }
+    .sg-card.in { opacity:1; transform:translateY(0); }
+    .sg-card:nth-child(1){transition-delay:.05s}
+    .sg-card:nth-child(2){transition-delay:.12s}
+    .sg-card:nth-child(3){transition-delay:.19s}
+    .sg-card:nth-child(4){transition-delay:.26s}
+    .sg-card:hover { border-color:var(--accentBd); }
+
+    .sg-hd { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+    .sg-icon {
+      width:32px; height:32px; border-radius:8px;
+      background:var(--accentBg); border:1px solid var(--accentBd);
+      display:flex; align-items:center; justify-content:center; font-size:15px;
+    }
+    .sg-name { font-size:14px; font-weight:700; color:var(--text); }
+    .stags { display:flex; flex-wrap:wrap; gap:6px; }
+    .stag {
+      font-size:12px; font-weight:600; padding:4px 10px;
+      border-radius:5px; background:var(--bg2);
+      color:var(--muted); border:1px solid var(--borderm);
+      transition:all var(--t); cursor:default;
+    }
+    .stag:hover { background:var(--accentBg); color:var(--accent); border-color:var(--accentBd); }
+
+    /* ── HOMELAB ── */
+    .hl-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .hl-prose {
+      grid-column:1/-1;
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--rl); padding:20px 24px;
+      font-size:14px; color:var(--muted); line-height:1.7;
+    }
+    .hl-tree {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--rl); padding:20px 24px;
+      font-family:var(--mono); font-size:12px; color:var(--muted); line-height:1.9;
+    }
+    .hl-tree .tr { color:var(--text); font-weight:600; }
+    .hl-tree .tn { color:var(--accent); }
+    .hl-tree .tb { color:var(--dim); }
+    .hl-chips {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--rl); padding:20px 24px;
+    }
+    .hl-chips h3 { font-size:13px; font-weight:700; color:var(--text); margin-bottom:12px; }
+    .chips { display:flex; flex-wrap:wrap; gap:6px; }
+    .chip {
+      font-size:11.5px; font-weight:600; padding:4px 10px;
+      border-radius:5px; background:var(--bg2);
+      color:var(--muted); border:1px solid var(--borderm);
+      transition:all var(--t);
+    }
+    .chip:hover { color:var(--accent); border-color:var(--accentBd); }
+
+    /* fade-up generic */
+    .fu {
+      opacity:0; transform:translateY(14px);
+      transition:opacity .5s ease, transform .5s ease;
+    }
+    .fu.in { opacity:1; transform:translateY(0); }
+
+    /* ── TALKS ── */
+    .talks-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:10px; margin-bottom:28px;
+    }
+    .talk-item {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--rl); padding:14px 16px;
+      display:flex; align-items:center; gap:10px;
+      font-size:13px; font-weight:500; color:var(--muted);
+      transition:all var(--t);
+    }
+    .talk-item:hover { border-color:var(--accentBd); color:var(--text); }
+
+    /* ── MEDIA CARDS ── */
+    .media-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+      gap:12px;
+    }
+    .mc {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--rl); padding:18px 20px;
+      display:flex; align-items:flex-start; gap:14px;
+      opacity:0; transform:translateY(12px);
+      transition:opacity .45s ease, transform .45s ease, border-color var(--t), box-shadow var(--t);
+      text-decoration:none;
+    }
+    .mc.in { opacity:1; transform:translateY(0); }
+    .mc:hover {
+      border-color:var(--accentBd);
+      box-shadow:0 6px 20px rgba(0,0,0,.15);
+      transform:translateY(-3px) !important;
+    }
+    .mc:nth-child(1){transition-delay:.04s}
+    .mc:nth-child(2){transition-delay:.09s}
+    .mc:nth-child(3){transition-delay:.14s}
+    .mc:nth-child(4){transition-delay:.19s}
+    .mc:nth-child(5){transition-delay:.24s}
+    .mc:nth-child(6){transition-delay:.29s}
+    .mc:nth-child(7){transition-delay:.34s}
+    .mc:nth-child(8){transition-delay:.39s}
+
+    .mc-icon {
+      width:40px; height:40px; border-radius:10px;
+      background:var(--accentBg); border:1px solid var(--accentBd);
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px; flex-shrink:0;
+    }
+    .mc-info { flex:1; min-width:0; }
+    .mc-title { font-size:13px; font-weight:700; color:var(--text); margin-bottom:3px; line-height:1.3; }
+    .mc-desc { font-size:11.5px; color:var(--muted); line-height:1.4; }
+    .mc-arr { color:var(--dim); font-size:14px; flex-shrink:0; align-self:center; transition:transform var(--t), color var(--t); }
+    .mc:hover .mc-arr { transform:translateX(3px); color:var(--accent); }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--rl); padding:28px 32px;
+      display:flex; align-items:flex-start; gap:20px;
+      max-width:560px; transition:border-color var(--t);
+    }
+    .edu-card:hover { border-color:var(--accentBd); }
+    .edu-icon {
+      width:52px; height:52px; border-radius:12px;
+      background:var(--accentBg); border:1px solid var(--accentBd);
+      display:flex; align-items:center; justify-content:center;
+      font-size:24px; flex-shrink:0;
+    }
+    .edu-school { font-size:16px; font-weight:800; color:var(--text); letter-spacing:-.3px; margin-bottom:3px; }
+    .edu-deg { font-size:13px; color:var(--accent); font-weight:500; margin-bottom:4px; }
+    .edu-yr { font-size:12px; color:var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top:1px solid var(--border);
+      padding:28px 24px; text-align:center;
+      font-size:12px; color:var(--dim);
+    }
+    footer a { color:var(--muted); }
+    footer a:hover { color:var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      .nav-links,.nav-right .btn-pill{display:none}
+      .hamburger{display:flex}
+      .hero-stats{grid-template-columns:repeat(2,1fr); max-width:100%}
+      .hl-grid{grid-template-columns:1fr}
+      .hl-prose{grid-column:auto}
+      .talks-grid{grid-template-columns:1fr 1fr}
+      .section-wrap{padding:60px 20px}
+    }
+    @media(max-width:480px){
+      .talks-grid{grid-template-columns:1fr}
+      .media-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Ayan<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#homelab">Homelab</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+      <a href="Ayan_Pahwa_Resume.pdf" class="btn-pill" download>↓ Resume PDF</a>
+      <button class="hamburger" id="ham" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mob">
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#homelab">Homelab</a>
+  <a href="#media">Media</a>
+  <a href="#projects">Projects</a>
+  <a href="#education">Education</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Open to Developer Relations opportunities
+    </div>
+    <h1 class="hero-name">Ayan Pahwa</h1>
+    <p class="hero-role"><span id="typed"></span><span class="cursor"></span></p>
+    <p class="hero-bio">
+      10+ years spanning embedded systems, edge computing, web scraping, and developer tooling. Creating technical content across blogs, video, and live streams — with deep hands-on experience in Agentic AI workflows, Tailscale networking, and self-managed Proxmox infrastructure.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-num" data-target="10" data-suffix="+">0</span>
+        <span class="stat-lbl">Years Exp.</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-target="100" data-suffix="K+">0</span>
+        <span class="stat-lbl">Community</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-target="8" data-suffix="">0</span>
+        <span class="stat-lbl">Articles / 5mo</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-target="4" data-suffix="">0</span>
+        <span class="stat-lbl">Companies</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="mailto:me@codensolder.com" class="btn-primary">✉ Get in touch</a>
+      <a href="Ayan_Pahwa_Resume.pdf" class="btn-outline" download>↓ Download PDF</a>
+    </div>
+    <div class="socials">
+      <a href="https://linkedin.com/in/iAyanPahwa" class="soc" target="_blank" rel="noopener" title="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://github.com/iAyanPahwa" class="soc" target="_blank" rel="noopener" title="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://codensolder.com" class="soc" target="_blank" rel="noopener" title="Blog">✍</a>
+      <a href="https://github.com/apscrapes" class="soc" target="_blank" rel="noopener" title="apscrapes on GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <div class="soc-sep"></div>
+      <span class="soc-text"><a href="mailto:me@codensolder.com">me@codensolder.com</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="section-wrap">
+  <div class="section-label">Where I've Worked</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="job-card">
+        <div class="jc-top">
+          <div><div class="jc-co">Zyte</div><div class="jc-role">Developer Advocate</div></div>
+          <span class="badge-current">Current</span>
+        </div>
+        <div class="jc-meta"><span>Dec 2025 – Present</span><span class="dot">·</span><span>Remote</span></div>
+        <ul class="jc-bullets">
+          <li>Recent work covering Agentic AI, Claude Code, multi-agent orchestration, MCP servers, and RAG pipelines: eight articles published in five months at <a href="https://www.zyte.com/author/ayan-pahwa/" target="_blank" rel="noopener">zyte.com/author/ayan-pahwa</a></li>
+          <li>Built and open-sourced an MCP server connecting LLMs to real-time web data via Zyte API — <a href="https://github.com/apscrapes" target="_blank" rel="noopener">github.com/apscrapes</a></li>
+          <li>Created tutorials on Scrapy, Playwright, and Spidermon for production-grade web scraping and data quality monitoring (<a href="https://youtu.be/FeIGdeR2P94?si=hpTtoeERUGoIO8zj" target="_blank" rel="noopener">video walkthrough</a>)</li>
+          <li>Contributed to <a href="https://github.com/zytelabs/claude-webscraping-skills" target="_blank" rel="noopener">zytelabs/claude-webscraping-skills</a>, a collection of Claude AI skills for browser-based scraping automation</li>
+          <li>Produce developer education content across YouTube, LinkedIn Live, podcast, and Twitter Spaces</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="job-card">
+        <div class="jc-top">
+          <div><div class="jc-co">SlashData</div><div class="jc-role">Developer Advocate &amp; Head of Community</div></div>
+        </div>
+        <div class="jc-meta"><span>Aug 2022 – Dec 2025</span><span class="dot">·</span><span>Remote</span></div>
+        <ul class="jc-bullets">
+          <li>Founded the Developer Nation community from zero, growing it to over 100,000 developers worldwide through content strategy, partnerships, and events</li>
+          <li>Managed strategic partnerships with Keychron, APIWiz, Postman, Google, and other developer-focused brands, coordinating co-marketing campaigns and developer programs</li>
+          <li>Produced and hosted <a href="https://open.spotify.com/show/2SZVHjpmgF7TQwAqjlW9Qt" target="_blank" rel="noopener">Developer Nation Broadcast</a>, a monthly podcast series, alongside all webinar and live stream production</li>
+          <li>Authored developer survey reports reaching 50,000+ developers globally, including the Technical Pulse Report and Developer Wellness Report (<a href="https://www.developernation.net/blog/author/ayan-pahwa/" target="_blank" rel="noopener">developernation.net</a>)</li>
+          <li>Built and maintained community tooling: newsletter archive library, link generator, and forum infrastructure</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="job-card">
+        <div class="jc-top">
+          <div><div class="jc-co">Balena</div><div class="jc-role">Developer Advocate</div></div>
+        </div>
+        <div class="jc-meta"><span>Sept 2021 – Aug 2022</span><span class="dot">·</span><span>Remote</span></div>
+        <ul class="jc-bullets">
+          <li>Built getting-started guides, SDK tutorials, and interactive demos for the balena edge-computing ecosystem (<a href="https://blog.balena.io/author/ayan_pahwa/" target="_blank" rel="noopener">blog.balena.io/author/ayan_pahwa</a>)</li>
+          <li>Created video, podcast, and livestream content growing a global community of embedded Linux developers</li>
+          <li>Delivered talks at international conferences and meetups, and organized hackathons and workshops</li>
+          <li>Ran structured product feedback loops between community and engineering, directly informing the roadmap</li>
+          <li>Maintained open-source sample projects and community contribution guidelines</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="job-card">
+        <div class="jc-top">
+          <div><div class="jc-co">Siemens / Mentor Graphics</div><div class="jc-role">Sr. Member of Technical Staff</div></div>
+        </div>
+        <div class="jc-meta"><span>Apr 2016 – Sept 2021</span><span class="dot">·</span><span>Noida, India</span></div>
+        <ul class="jc-bullets">
+          <li>Developed software and architecture for automotive ADAS and self-driving systems</li>
+          <li>Led the automotive noise cancellation audio team from design through delivery</li>
+          <li>Presented products and research at industry conferences, and managed customer technical requirements</li>
+          <li>Maintained the open-source software stack across multiple automotive product lines</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="section-wrap">
+  <div class="section-label">What I Work With</div>
+  <h2 class="section-title">Skills</h2>
+  <div class="filter-bar">
+    <button class="fbtn active" data-f="all">All</button>
+    <button class="fbtn" data-f="infra">Infrastructure</button>
+    <button class="fbtn" data-f="ai">AI &amp; LLM</button>
+    <button class="fbtn" data-f="scraping">Web Scraping</button>
+    <button class="fbtn" data-f="core">Core</button>
+  </div>
+  <div id="sgWrap">
+    <div class="sg-card" data-g="infra">
+      <div class="sg-hd"><div class="sg-icon">🏠</div><div class="sg-name">Infrastructure &amp; Homelab</div></div>
+      <div class="stags">
+        <span class="stag">Tailscale</span><span class="stag">WireGuard</span><span class="stag">Proxmox</span>
+        <span class="stag">Home Assistant</span><span class="stag">OpnSense</span>
+        <span class="stag">Reverse Proxy</span><span class="stag">Docker</span>
+      </div>
+    </div>
+    <div class="sg-card" data-g="ai">
+      <div class="sg-hd"><div class="sg-icon">🤖</div><div class="sg-name">AI &amp; LLM Tooling</div></div>
+      <div class="stags">
+        <span class="stag">Claude Code</span><span class="stag">Agentic AI</span><span class="stag">MCP Servers</span>
+        <span class="stag">Ollama</span><span class="stag">LMStudio</span><span class="stag">Open Router</span>
+        <span class="stag">RAG Pipelines</span><span class="stag">Qwen</span>
+        <span class="stag">Gemini</span><span class="stag">Opus / Sonnet</span>
+        <span class="stag">LangChain</span><span class="stag">VectorDB</span>
+        <span class="stag">OpenCode</span><span class="stag">Conductor</span>
+      </div>
+    </div>
+    <div class="sg-card" data-g="scraping">
+      <div class="sg-hd"><div class="sg-icon">🕷</div><div class="sg-name">Web Scraping &amp; Data</div></div>
+      <div class="stags">
+        <span class="stag">Scrapy</span><span class="stag">Playwright</span><span class="stag">Zyte API</span>
+        <span class="stag">Spidermon</span><span class="stag">PostgreSQL</span>
+      </div>
+    </div>
+    <div class="sg-card" data-g="core">
+      <div class="sg-hd"><div class="sg-icon">⚙️</div><div class="sg-name">Core</div></div>
+      <div class="stags">
+        <span class="stag">Python</span><span class="stag">C</span><span class="stag">Bash</span>
+        <span class="stag">Git</span><span class="stag">Technical Writing</span>
+        <span class="stag">Public Speaking</span><span class="stag">Community Building</span>
+        <span class="stag">Developer Education</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOMELAB -->
+<div id="homelab" class="section-wrap">
+  <div class="section-label">Infrastructure</div>
+  <h2 class="section-title">Homelab Setup</h2>
+  <div class="hl-grid">
+    <div class="hl-prose fu">
+      Self-managed multi-node homelab on Proxmox with a Tailscale mesh across VMs and containers, WireGuard exit node, OpnSense firewall, reverse proxy for self-hosted services, and Home Assistant automation. Remote access, subnet routing, and exit node configured across separate physical networks.
+    </div>
+    <div class="hl-tree fu">
+      <div class="tr">Proxmox Hypervisor</div>
+      <div>├── <span class="tn">OpnSense</span> <span style="color:var(--dim)">(Firewall &amp; Router)</span></div>
+      <div>├── <span class="tn">Home Assistant</span> <span style="color:var(--dim)">(Automation)</span></div>
+      <div>├── <span class="tn">Reverse Proxy</span> <span style="color:var(--dim)">(Nginx)</span></div>
+      <div>└── <span class="tn">Tailscale Mesh</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span style="color:var(--muted)">Remote SSH Access</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span style="color:var(--muted)">WireGuard Exit Node</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;└── <span style="color:var(--muted)">Subnet Router</span></div>
+    </div>
+    <div class="hl-chips fu">
+      <h3>Stack</h3>
+      <div class="chips">
+        <span class="chip">Tailscale</span><span class="chip">WireGuard</span>
+        <span class="chip">Proxmox VE</span><span class="chip">OpnSense</span>
+        <span class="chip">Home Assistant</span><span class="chip">Docker</span>
+        <span class="chip">Nginx Reverse Proxy</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEDIA & TALKS -->
+<div id="media" class="section-wrap">
+  <div class="section-label">Content &amp; Appearances</div>
+  <h2 class="section-title">Media &amp; Portfolio</h2>
+
+  <div class="talks-grid">
+    <div class="talk-item">🎤 FOSSASIA Summit, Singapore 2019</div>
+    <div class="talk-item">🐍 PyCon India 2016 &amp; 2019</div>
+    <div class="talk-item">🐍 PyCon US 2021</div>
+    <div class="talk-item">📱 GDG Dev Fest 2022</div>
+    <div class="talk-item">🐧 Organizer, India Linux User Group, Delhi</div>
+    <div class="talk-item">🔧 Organizer, Hardware Hackers Club, Delhi</div>
+  </div>
+
+  <div class="media-grid">
+    <a href="https://www.zyte.com/author/ayan-pahwa/" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">📝</div>
+      <div class="mc-info"><div class="mc-title">Zyte Blog</div><div class="mc-desc">8 articles on Agentic AI, MCP servers, and web scraping</div></div>
+      <div class="mc-arr">→</div>
+    </a>
+    <a href="https://open.spotify.com/show/2SZVHjpmgF7TQwAqjlW9Qt" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">🎙</div>
+      <div class="mc-info"><div class="mc-title">Developer Nation Broadcast</div><div class="mc-desc">Monthly podcast — host and producer</div></div>
+      <div class="mc-arr">→</div>
+    </a>
+    <a href="https://youtu.be/1B2gyBSuvlE?si=KgJycKiCbQQh7KuX" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">▶️</div>
+      <div class="mc-info"><div class="mc-title">YouTube: Live Coding Session</div><div class="mc-desc">Developer education video</div></div>
+      <div class="mc-arr">→</div>
+    </a>
+    <a href="https://hackaday.com/2020/02/18/mqtt-and-the-internet-of-conference-badges/" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">🔌</div>
+      <div class="mc-info"><div class="mc-title">MQTT &amp; Conference Badges</div><div class="mc-desc">IoT project write-up on Hackaday</div></div>
+      <div class="mc-arr">→</div>
+    </a>
+    <a href="https://hackaday.io/course/174180-introduction-to-fpv-drones" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">🚁</div>
+      <div class="mc-info"><div class="mc-title">FPV Drones Course</div><div class="mc-desc">Authored course on Hackaday.io</div></div>
+      <div class="mc-arr">→</div>
+    </a>
+    <a href="https://www.hackster.io/iayanpahwa/projects" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">⚡</div>
+      <div class="mc-info"><div class="mc-title">Hackster.io Projects</div><div class="mc-desc">Hardware and embedded systems projects</div></div>
+      <div class="mc-arr">→</div>
+    </a>
+    <a href="https://blog.balena.io/author/ayan_pahwa/" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">🐳</div>
+      <div class="mc-info"><div class="mc-title">Balena Blog</div><div class="mc-desc">Edge computing tutorials and developer guides</div></div>
+      <div class="mc-arr">→</div>
+    </a>
+    <a href="https://www.slideshare.net/AyanPahwa1/presentations" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">📊</div>
+      <div class="mc-info"><div class="mc-title">Talk Slides</div><div class="mc-desc">Conference presentations on SlideShare</div></div>
+      <div class="mc-arr">→</div>
+    </a>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div id="projects" class="section-wrap">
+  <div class="section-label">Side Projects</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="media-grid">
+    <a href="https://github.com/iAyanPahwa/noalgotube" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">📺</div>
+      <div class="mc-info">
+        <div class="mc-title">noalgotube</div>
+        <div class="mc-desc">Algorithm-free YouTube and RSS aggregator. No recommendations — only sources you choose. FastAPI, SQLite, PWA, single Docker deploy.</div>
+      </div>
+      <div class="mc-arr">→</div>
+    </a>
+    <a href="https://github.com/iAyanPahwa/YubiGPG" class="mc" target="_blank" rel="noopener">
+      <div class="mc-icon">🔐</div>
+      <div class="mc-info">
+        <div class="mc-title">YubiGPG</div>
+        <div class="mc-desc">GPG key generation on air-gapped Tails OS with multi-YubiKey loading, LUKS2 encrypted backups, and Ed25519 touch-policy enforcement.</div>
+      </div>
+      <div class="mc-arr">→</div>
+    </a>
+  </div>
+</div>
+
+<div id="education" class="section-wrap">
+  <div class="section-label">Academic Background</div>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-card fu">
+    <div class="edu-icon">🎓</div>
+    <div>
+      <div class="edu-school">Dr. APJ Abdul Kalam Technical University</div>
+      <div class="edu-deg">B.Tech, Applied Electronics &amp; Instrumentation</div>
+      <div class="edu-yr">2012 – 2016 · India</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    <a href="https://codensolder.com" target="_blank">Ayan Pahwa</a> &nbsp;·&nbsp;
+    <a href="mailto:me@codensolder.com">me@codensolder.com</a> &nbsp;·&nbsp;
+    <a href="https://linkedin.com/in/iAyanPahwa" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+    <a href="https://github.com/iAyanPahwa" target="_blank">GitHub</a>
+  </p>
+</footer>
+
+<script>
+  // Theme
+  const html = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  const stored = localStorage.getItem('theme') || 'dark';
+  html.dataset.theme = stored;
+  themeBtn.textContent = stored === 'dark' ? '🌙' : '☀️';
+  themeBtn.addEventListener('click', () => {
+    const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    html.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    themeBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+  });
+
+  // Mobile menu
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mob');
+  ham.addEventListener('click', () => mob.classList.toggle('open'));
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mob.classList.remove('open')));
+
+  // Nav scroll
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
+
+  // Active nav link on scroll
+  const secs = document.querySelectorAll('[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  const secObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${e.target.id}`));
+      }
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  secs.forEach(s => secObs.observe(s));
+
+  // Scroll-driven animations
+  const animObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        animObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.tl-item, .sg-card, .mc, .fu').forEach(el => animObs.observe(el));
+
+  // Counter animation
+  const cntObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animCount(e.target); cntObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => cntObs.observe(el));
+
+  function animCount(el) {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    const dur = 1600;
+    const t0 = performance.now();
+    (function tick(now) {
+      const p = Math.min((now - t0) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 4);
+      el.textContent = Math.round(ease * target) + (p >= 1 ? suffix : '');
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  // Typing animation
+  const phrases = [
+    'Developer Relations Engineer',
+    'Technical Content Creator',
+    'Agentic AI Enthusiast',
+    'Homelab & Networking Nerd',
+    'Community Builder'
+  ];
+  let pi = 0, ci = 0, del = false;
+  const typedEl = document.getElementById('typed');
+  function type() {
+    const ph = phrases[pi];
+    typedEl.textContent = del ? ph.slice(0, ci - 1) : ph.slice(0, ci + 1);
+    del ? ci-- : ci++;
+    let d = del ? 38 : 75;
+    if (!del && ci === ph.length) { d = 2400; del = true; }
+    else if (del && ci === 0) { del = false; pi = (pi + 1) % phrases.length; d = 280; }
+    setTimeout(type, d);
+  }
+  setTimeout(type, 900);
+
+  // Skill filter
+  document.querySelectorAll('.fbtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.f;
+      document.querySelectorAll('.sg-card').forEach(c => {
+        const show = f === 'all' || c.dataset.g === f;
+        c.style.display = show ? '' : 'none';
+        if (show) c.classList.add('in');
+      });
+    });
+  });
+</script>
+</body>
+</html>
