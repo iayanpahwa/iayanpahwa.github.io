@@ -15,15 +15,17 @@ import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
 import Giscus from "@/components/Giscus.astro";
+import SeriesNav from "@/components/SeriesNav.astro";
 
 type Props = {
   post: CollectionEntry<"blog">;
   posts: CollectionEntry<"blog">[];
   readingTime: number;
   relatedPosts: CollectionEntry<"blog">[];
+  seriesPosts: CollectionEntry<"blog">[];
 };
 
-const { post, posts, readingTime, relatedPosts } = Astro.props;
+const { post, posts, readingTime, relatedPosts, seriesPosts } = Astro.props;
 
 const {
   title,
@@ -36,6 +38,7 @@ const {
   timezone,
   tags,
   hideEditPost,
+  series,
 } = post.data;
 
 const { Content, headings } = await render(post);
@@ -140,6 +143,12 @@ const nextPost =
       >
       <EditPost {hideEditPost} {post} class="max-sm:hidden" />
     </div>
+    {
+      series && seriesPosts.length > 1 && (
+        <SeriesNav {series} currentId={post.id} parts={seriesPosts} />
+      )
+    }
+
     <article
       id="article"
       class="app-prose mt-8 w-full max-w-app"

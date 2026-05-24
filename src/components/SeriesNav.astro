@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getPath } from "@/utils/getPath";
+
+type Props = {
+  series: string;
+  currentId: string;
+  parts: CollectionEntry<"blog">[];
+};
+
+const { series, currentId, parts } = Astro.props;
+---
+
+<div
+  class="my-6 rounded-lg border border-border bg-muted/40 px-4 py-3 not-prose"
+  data-pagefind-ignore
+>
+  <p class="text-xs font-semibold uppercase tracking-wider text-foreground/50 mb-2">Series</p>
+  <p class="text-base font-bold text-foreground mb-3">{series}</p>
+  <ol class="m-0 list-none space-y-1.5 p-0">
+    {
+      parts.map((p, i) => {
+        const isCurrent = p.id === currentId;
+        return (
+          <li
+            class:list={[
+              "flex items-baseline gap-2 text-sm",
+              { "font-semibold": isCurrent },
+            ]}
+          >
+            <span class="shrink-0 tabular-nums text-foreground/40">{i + 1}.</span>
+            {isCurrent ? (
+              <span class="text-accent">{p.data.title}</span>
+            ) : (
+              <a
+                href={getPath(p.id, p.filePath)}
+                class="text-foreground/80 decoration-dashed underline-offset-4 hover:text-accent hover:underline"
+              >
+                {p.data.title}
+              </a>
+            )}
+            {isCurrent && (
+              <span class="shrink-0 text-xs italic text-foreground/40">← you are here</span>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</div>

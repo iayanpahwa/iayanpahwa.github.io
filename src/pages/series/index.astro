@@ -1,0 +1,78 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Datetime from "@/components/Datetime.astro";
+import { SITE } from "@/config";
+import { getPath } from "@/utils/getPath";
+
+const posts = await getCollection(
+  "blog",
+  p => !p.data.draft && !!p.data.series
+);
+
+const seriesMap = new Map<string, CollectionEntry<"blog">[]>();
+for (const post of posts) {
+  const s = post.data.series!;
+  if (!seriesMap.has(s)) seriesMap.set(s, []);
+  seriesMap.get(s)!.push(post);
+}
+for (const [, parts] of seriesMap) {
+  parts.sort((a, b) => (a.data.seriesPart ?? 0) - (b.data.seriesPart ?? 0));
+}
+const seriesList = [...seriesMap.entries()].sort((a, b) =>
+  a[0].localeCompare(b[0])
+);
+---
+
+<Layout
+  title={`Series | ${SITE.title}`}
+  description="Multi-part guides and deep dives."
+>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <h1 class="text-2xl font-bold text-accent mb-2">Series</h1>
+    <p class="mb-8 text-foreground/60">Multi-part guides and deep dives.</p>
+    {
+      seriesList.length === 0 && (
+        <p class="italic text-foreground/50">No series yet.</p>
+      )
+    }
+    <ul class="space-y-10">
+      {
+        seriesList.map(([name, parts]) => (
+          <li class="border-l-2 border-accent pl-4">
+            <h2 class="text-lg font-bold text-foreground mb-1">{name}</h2>
+            <p class="mb-3 text-xs text-foreground/50">
+              {parts.length} {parts.length === 1 ? "part" : "parts"}
+            </p>
+            <ol class="space-y-3">
+              {parts.map((p, i) => (
+                <li class="flex flex-col">
+                  <a
+                    href={getPath(p.id, p.filePath)}
+                    class="text-base font-medium text-accent decoration-dashed underline-offset-4 hover:underline"
+                  >
+                    {i + 1}. {p.data.title}
+                  </a>
+                  <Datetime
+                    pubDatetime={p.data.pubDatetime}
+                    modDatetime={p.data.modDatetime}
+                    timezone={p.data.timezone}
+                  />
+                  {p.data.description && (
+                    <p class="mt-0.5 text-sm text-foreground/60">
+                      {p.data.description}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+  <Footer />
+</Layout>

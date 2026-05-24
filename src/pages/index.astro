@@ -83,7 +83,11 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
             { "border-b border-border": recentPosts.length > 0 },
           ]}
         >
-          <h2 class="text-2xl font-semibold tracking-wide">📌 Pinned Blogs</h2>
+          <div class="flex items-baseline gap-3">
+            <h2 class="text-2xl font-semibold tracking-wide">📌 Pinned Blogs</h2>
+            <span class="text-foreground/30">|</span>
+            <a href="/series" class="text-sm font-medium text-accent decoration-dashed underline-offset-4 hover:underline">Blog Series</a>
+          </div>
           <ul>
             {featuredPosts.slice(0, 4).map(data => (
               <Card variant="h3" {...data} />

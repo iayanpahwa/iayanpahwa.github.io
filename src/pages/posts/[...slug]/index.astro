@@ -34,6 +34,13 @@ const relatedPosts = sortedPosts
     return p.data.tags.some(tag => post.data.tags.includes(tag));
   })
   .slice(0, 3);
+
+// Series posts: all non-draft posts in the same series, sorted by part number
+const seriesPosts = post.data.series
+  ? sortedPosts
+      .filter(p => p.data.series === post.data.series && !p.data.draft)
+      .sort((a, b) => (a.data.seriesPart ?? 0) - (b.data.seriesPart ?? 0))
+  : [];
 ---
 
-<PostDetails post={post} posts={sortedPosts} {readingTime} {relatedPosts} />
+<PostDetails post={post} posts={sortedPosts} {readingTime} {relatedPosts} {seriesPosts} />
