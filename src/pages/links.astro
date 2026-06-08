@@ -1,0 +1,83 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+
+import IconRss from "@/assets/icons/IconRss.svg";
+import IconYoutube from "@/assets/icons/IconYoutube.svg";
+import IconGitHub from "@/assets/icons/IconGitHub.svg";
+import IconLinkedin from "@/assets/icons/IconLinkedin.svg";
+import IconBrandInstagram from "@/assets/icons/IconBrandInstagram.svg";
+import IconCalendar from "@/assets/icons/IconCalendar.svg";
+import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
+
+const links = [
+  {
+    label: "Blog",
+    href: "/posts",
+    icon: IconRss,
+    newTab: true,
+  },
+  {
+    label: "YouTube",
+    href: "https://youtube.com/iAyanPahwa",
+    icon: IconYoutube,
+    newTab: true,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/iAyanPahwa",
+    icon: IconGitHub,
+    newTab: true,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/iAyanPahwa",
+    icon: IconLinkedin,
+    newTab: true,
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/iayanpahwa",
+    icon: IconBrandInstagram,
+    newTab: true,
+  },
+  {
+    label: "Book a 1:1 call",
+    href: "https://topmate.io/iayanpahwa",
+    icon: IconCalendar,
+    newTab: true,
+  },
+];
+---
+
+<Layout title={`Links | ${SITE.title}`}>
+  <Header />
+  <main id="main-content" class="app-layout pb-16">
+    <section class="flex flex-col items-center pt-10 sm:pt-14">
+      <h1 class="text-2xl font-bold tracking-wide sm:text-3xl">
+        {SITE.author}
+      </h1>
+      <p class="mt-1 text-sm opacity-60">Tech Flâneur · Builder · Writer</p>
+
+      <div class="mt-8 flex w-full max-w-sm flex-col gap-3">
+        {
+          links.map(({ label, href, icon: Icon, newTab }) => (
+            <a
+              href={href}
+              target={newTab ? "_blank" : undefined}
+              rel={newTab ? "noopener noreferrer" : undefined}
+              class="group flex items-center gap-3 rounded-lg border border-border bg-muted/40 px-4 py-3.5 text-foreground transition-colors hover:border-accent hover:bg-muted"
+            >
+              <Icon class="size-5 shrink-0 fill-transparent stroke-current stroke-2" />
+              <span class="flex-1 font-medium">{label}</span>
+              <IconArrowRight class="size-4 shrink-0 fill-transparent stroke-current stroke-2 opacity-40 transition-opacity group-hover:opacity-80" />
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
