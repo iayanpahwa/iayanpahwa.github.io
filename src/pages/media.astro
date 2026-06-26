@@ -1,0 +1,1013 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+
+type Link = { label: string; href: string };
+type Entry = { title: string; venue: string; date: string; links: Link[] };
+type YearGroup = { year: string; entries: Entry[] };
+
+const talks: Entry[] = [
+  {
+    title: "Introduction to FPV Drones (4-class course)",
+    venue: "HackadayU",
+    date: "Aug 2020",
+    links: [
+      {
+        label: "Course",
+        href: "https://hackaday.io/course/174180-introduction-to-fpv-drones",
+      },
+    ],
+  },
+  {
+    title: "Getting Up And Running With KiCad",
+    venue: "ILUG-D & Delhi HHC Virtual Meetup #5",
+    date: "Apr 2020",
+    links: [
+      { label: "Video", href: "https://www.youtube.com/watch?v=hkDlTxaxgKE" },
+      { label: "Slides", href: "https://www.slideshare.net/AyanPahwa1" },
+    ],
+  },
+  {
+    title:
+      "Embedded Programming for Everyone Using MicroPython and CircuitPython",
+    venue: "FOSSASIA Summit 2019",
+    date: "Mar 2019, Singapore",
+    links: [
+      { label: "Video", href: "https://www.youtube.com/watch?v=LRvh1UDTbU0" },
+    ],
+  },
+  {
+    title: "Basics of Embedded Systems / Hardware Architectures",
+    venue: "ILUG-D Workshop (RPi Bootcamp)",
+    date: "Jan 2019, Delhi, India",
+    links: [
+      {
+        label: "Slides",
+        href: "https://www.slideshare.net/AyanPahwa1/basics-of-embedded-systems-hardware-architectures",
+      },
+    ],
+  },
+  {
+    title: "Using Linux in Commercial Products + Yocto Project Touchdown",
+    venue: "ILUG-D Meetup",
+    date: "Jul 2018, Delhi, India",
+    links: [
+      {
+        label: "Slides",
+        href: "https://www.slideshare.net/AyanPahwa1/using-linux-in-commercial-products-yocto-project-touchdown",
+      },
+    ],
+  },
+  {
+    title: "IoT with MQTT using Raspberry Pi",
+    venue: "ILUG-D Raspberry Pi Jam (SDIoT)",
+    date: "Mar 2018, Gurugram, India",
+    links: [{ label: "Slides", href: "https://www.slideshare.net/AyanPahwa1" }],
+  },
+  {
+    title: "Reverse Engineering IoT Devices Using FOSS",
+    venue: "ILUG-D Meetup",
+    date: "Jan 2018, Delhi, India",
+    links: [
+      {
+        label: "Video",
+        href: "https://youtu.be/tbqPOHwuPiw?si=y7IiT8L_9GTUaH5v",
+      },
+      {
+        label: "Slides",
+        href: "https://www.slideshare.net/AyanPahwa1/reverse-engineering-iot-devices-86475004",
+      },
+    ],
+  },
+  {
+    title:
+      "Getting Started with Embedded Python: MicroPython and CircuitPython",
+    venue: "PyCon India 2017",
+    date: "Nov 2017, New Delhi, India",
+    links: [
+      {
+        label: "Video",
+        href: "https://youtu.be/BuJ3j3wohrw?si=kQeR-um3bMNjobY6",
+      },
+      {
+        label: "Slides",
+        href: "https://www.slideshare.net/slideshow/getting-started-with-embedded-python-micropython-and-circuitpython/81906757",
+      },
+    ],
+  },
+];
+
+const podcasts: Entry[] = [
+  {
+    title: "Hermes Agents and an unusual analogue hobby",
+    venue: "ZytePod Ep06",
+    date: "2026",
+    links: [
+      {
+        label: "Video",
+        href: "https://youtu.be/2ligbwT23xA?si=abbx2RlBydXkiNEN",
+      },
+    ],
+  },
+  {
+    title: "From Backend Dev in India to Solutions Architect in Amsterdam",
+    venue: "Developer Nation Broadcast S2E07",
+    date: "2024",
+    links: [
+      {
+        label: "Podcast",
+        href: "https://podcasts.apple.com/us/podcast/developer-nation-broadcast/id1672606810",
+      },
+    ],
+  },
+  {
+    title: "Understanding Practical Engineering Management with Mirek Stanek",
+    venue: "Developer Nation Broadcast",
+    date: "Mar 2024",
+    links: [
+      {
+        label: "Podcast",
+        href: "https://podcasts.apple.com/us/podcast/developer-nation-broadcast/id1672606810",
+      },
+    ],
+  },
+  {
+    title:
+      "Cross-Platform Apps, Solopreneurship, and Course Creation with Simon Grimm",
+    venue: "Developer Nation Broadcast",
+    date: "Mar 2024",
+    links: [
+      {
+        label: "Podcast",
+        href: "https://podcasts.apple.com/us/podcast/developer-nation-broadcast/id1672606810",
+      },
+    ],
+  },
+  {
+    title:
+      "Designing APIs: Adding Value to the Digital Chain with Darshan (APIWiz)",
+    venue: "Developer Nation Broadcast S1E04",
+    date: "Dec 2023",
+    links: [
+      {
+        label: "Podcast",
+        href: "https://podcasts.apple.com/us/podcast/developer-nation-broadcast/id1672606810",
+      },
+    ],
+  },
+  {
+    title:
+      "The state of Data Science and future of Generative AI with Anand Mishra",
+    venue: "Developer Nation Broadcast S1E05",
+    date: "Nov 2023",
+    links: [
+      {
+        label: "Podcast",
+        href: "https://podcasts.apple.com/us/podcast/developer-nation-broadcast/id1672606810",
+      },
+    ],
+  },
+  {
+    title: "The Developer Advocacy Universe with Adrienne Tacke (Cisco)",
+    venue: "Developer Nation Broadcast S1E03",
+    date: "Oct 2023",
+    links: [
+      {
+        label: "Podcast",
+        href: "https://podcasts.apple.com/us/podcast/developer-nation-broadcast/id1672606810",
+      },
+    ],
+  },
+  {
+    title:
+      "State of Enterprise IoT Development and MQTT with Kudzai Manditereza",
+    venue: "Developer Nation Broadcast S1E06",
+    date: "2023",
+    links: [
+      {
+        label: "Podcast",
+        href: "https://podcasts.apple.com/us/podcast/developer-nation-broadcast/id1672606810",
+      },
+    ],
+  },
+  {
+    title:
+      "Open Source, Navigating Engineering Career, Android with Lars Bergstrom (Google)",
+    venue: "Developer Nation Broadcast S1E02",
+    date: "2023",
+    links: [
+      {
+        label: "Podcast",
+        href: "https://podcasts.apple.com/us/podcast/developer-nation-broadcast/id1672606810",
+      },
+    ],
+  },
+  {
+    title: "Developer Nation Broadcast – Pilot Episode",
+    venue: "Developer Nation Broadcast S1E01",
+    date: "Feb 2023",
+    links: [
+      {
+        label: "Podcast",
+        href: "https://podcasts.apple.com/us/podcast/developer-nation-broadcast/id1672606810",
+      },
+    ],
+  },
+  {
+    title: "HACK into any IoT Devices easily w/ Ayan Pahwa",
+    venue: "BelkIoT Podcast Ep30",
+    date: "Jun 2021",
+    links: [
+      {
+        label: "Spotify",
+        href: "https://podcasters.spotify.com/pod/show/belkiot/episodes/Ep-30--HACK-into-any-IoT-Devices-easily-w-Ayan-Pahwa-e12licm",
+      },
+    ],
+  },
+  {
+    title:
+      "Embedded Journey w/ Ayan Pahwa — Roadmap, Career Guidance, Future Tech & Hardware Security",
+    venue: "Saurabh Lanje (YouTube)",
+    date: "—",
+    links: [
+      {
+        label: "Video",
+        href: "https://youtu.be/zJpGlUOrZ5s?si=90-8MWocwP0rKIkm",
+      },
+    ],
+  },
+];
+
+const press: Entry[] = [
+  {
+    title: "Share Your Clipboard Across Machines Using MQTT (AnywhereDoor)",
+    venue: "Hackaday",
+    date: "Aug 2020",
+    links: [
+      {
+        label: "Article",
+        href: "https://hackaday.com/2020/08/18/share-your-clipboard-across-machines-using-mqtt/",
+      },
+    ],
+  },
+  {
+    title: "How To Make A Living With Embedded Systems",
+    venue: "Hackaday",
+    date: "Oct 2019",
+    links: [
+      {
+        label: "Article",
+        href: "https://hackaday.com/2019/10/12/how-to-make-a-living-with-embedded-systems/",
+      },
+    ],
+  },
+  {
+    title:
+      "Embedded Programming for Everyone Using MicroPython and CircuitPython (FOSSASIA 2019 coverage)",
+    venue: "Adafruit Blog",
+    date: "Mar 2019",
+    links: [
+      {
+        label: "Article",
+        href: "https://blog.adafruit.com/2019/03/24/embedded-programming-for-everyone-using-micropython-and-circuitpython-by-ayan-pahwa-fa_voc-iayanpahwa-fossasia/",
+      },
+    ],
+  },
+];
+
+const writingByYear: YearGroup[] = [
+  {
+    year: "2026",
+    entries: [
+      {
+        title: "Why I'm adding GLM-5.2 to my agentic coding arsenal",
+        venue: "Zyte Blog",
+        date: "Jun 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/why-im-adding-glm-5-2-to-my-agentic-coding-arsenal/",
+          },
+        ],
+      },
+      {
+        title: "How to build your first Scrapy extension",
+        venue: "Zyte Blog",
+        date: "Jun 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/how-to-build-your-first-scrapy-extension/",
+          },
+        ],
+      },
+      {
+        title:
+          "Now what exactly is loop engineering? And where do Anthropic's Fable 5 model and web scraping fit in?",
+        venue: "Zyte Blog",
+        date: "Jun 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/now-what-exactly-is-loop-engineering-and-where-do-anthropics-fable-5-model-and-web-scraping-fit-in/",
+          },
+        ],
+      },
+      {
+        title: "Web scraping on an iPhone? Yes, really!",
+        venue: "Zyte Blog",
+        date: "Jun 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/web-scraping-on-an-iphone/",
+          },
+        ],
+      },
+      {
+        title: "How to run any model inside Claude Code",
+        venue: "Zyte Blog",
+        date: "Jun 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/how-to-run-any-model-inside-claude-code/",
+          },
+        ],
+      },
+      {
+        title:
+          "Automate deployment of your web scraper on VPS with Ubuntu 24.04 cloud-init",
+        venue: "Zyte Blog",
+        date: "May 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/automate-deployment-of-your-web-scraper-on-vps-with-ubuntu-24-04-cloud-init/",
+          },
+        ],
+      },
+      {
+        title:
+          "Web scraping on 22 KB of RAM: Fitting the world on an ESP8266 microcontroller",
+        venue: "Zyte Blog",
+        date: "May 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/web-scraping-on-22-kb-of-ram-fitting-the-world-on-an-esp-8266-microcontroller/",
+          },
+        ],
+      },
+      {
+        title:
+          "Flatcar Linux for web scrapers: deploy immutable containers with just one config file",
+        venue: "Zyte Blog",
+        date: "May 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/flatcar-linux-for-web-scrapers-deploying-containers/",
+          },
+        ],
+      },
+      {
+        title:
+          "My agentic coding setup: Claude Code, multi-agent orchestration, and how I actually work",
+        venue: "Zyte Blog · Dev.to",
+        date: "May 2026",
+        links: [
+          {
+            label: "Zyte",
+            href: "https://www.zyte.com/blog/my-agentic-coding-setup-claude-code-multi-agent-orchestration-and-how-i-actually-work/",
+          },
+          {
+            label: "Dev.to",
+            href: "https://dev.to/extractdata/my-agentic-coding-setup-claude-code-multi-agent-orchestration-and-how-i-actually-work-398i",
+          },
+        ],
+      },
+      {
+        title:
+          "OpenClaw and Claude helped me buy the perfect sneakers using Zyte API",
+        venue: "Zyte Blog",
+        date: "Apr 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/ai-product-comparison-zyte-api-claude-openclaw/",
+          },
+        ],
+      },
+      {
+        title:
+          "Giving spidey-senses to your web scraping spiders using Spidermon",
+        venue: "Zyte Blog",
+        date: "Apr 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/giving-spidey-senses-to-your-web-scraping-spiders-using-spidermon/",
+          },
+        ],
+      },
+      {
+        title:
+          "Small models, big ideas: what Google Gemma and MoE mean for developers",
+        venue: "Dev.to",
+        date: "Apr 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://dev.to/extractdata/small-models-big-ideas-what-google-gemma-and-moe-mean-for-developers-3038",
+          },
+        ],
+      },
+      {
+        title:
+          "Build Scrapy spiders in 23.54 seconds with this free Claude skill",
+        venue: "Dev.to",
+        date: "Mar 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://dev.to/extractdata/build-scrapy-spiders-in-2354-seconds-with-this-free-claude-skill-50em",
+          },
+        ],
+      },
+      {
+        title:
+          "Code is cheap, show me the talk: How copilots are re-engineering developers",
+        venue: "Zyte Blog",
+        date: "Mar 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/code-is-cheap-ai-copilots-developer-shift/",
+          },
+        ],
+      },
+      {
+        title: "I built a self-healing web scraper to auto-solve 403s",
+        venue: "Dev.to",
+        date: "Mar 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://dev.to/extractdata/i-built-a-self-healing-web-scraper-to-auto-solve-403s-1jg1",
+          },
+        ],
+      },
+      {
+        title: "Build your own MCP server: LLMs meets web data with Zyte API",
+        venue: "Zyte Blog",
+        date: "Mar 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/build-your-own-mcp-server/",
+          },
+        ],
+      },
+      {
+        title: "How I get Claude to build HTML parsing code the way I want it",
+        venue: "Dev.to",
+        date: "Mar 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://dev.to/extractdata/html-parsing-with-claude-skills-extracting-structured-data-from-raw-html-1ai0",
+          },
+        ],
+      },
+      {
+        title: "I gave Claude access to a web scraping API (The fetcher skill)",
+        venue: "Dev.to",
+        date: "Mar 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://dev.to/extractdata/the-fetcher-skill-reliable-html-scraping-with-automatic-fallback-5f02",
+          },
+        ],
+      },
+      {
+        title:
+          "I built a Claude Code skill that screenshots any website (handles anti-bot sites too)",
+        venue: "Dev.to",
+        date: "Mar 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://dev.to/extractdata/i-built-a-claude-code-skill-that-screenshots-any-website-and-it-handles-anti-bot-sites-too-2m4b",
+          },
+        ],
+      },
+      {
+        title:
+          "Brewing a bot: RAG and web data fuel the perfect coffee recommendation",
+        venue: "Zyte Blog",
+        date: "Mar 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/build-a-rag-chatbot-with-web-scraping/",
+          },
+        ],
+      },
+      {
+        title:
+          "Scraping Swiss Army Knife: My personal fix for web setup fatigue using Docker, Scrapy and Zyte",
+        venue: "Zyte Blog",
+        date: "Feb 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/fixing-web-scraping-setup-fatigue/",
+          },
+        ],
+      },
+      {
+        title:
+          "How I trade gold using e-ink, live data and an old Raspberry Pi",
+        venue: "Zyte Blog · Dev.to · Hackster.io",
+        date: "Feb 2026",
+        links: [
+          {
+            label: "Zyte",
+            href: "https://www.zyte.com/blog/how-i-trade-gold-using-eink/",
+          },
+          {
+            label: "Dev.to",
+            href: "https://dev.to/extractdata/how-i-trade-gold-using-e-ink-live-data-and-an-old-raspberry-pi-42ag",
+          },
+          {
+            label: "Hackster.io",
+            href: "https://www.hackster.io/iayanpahwa/trading-precious-metals-with-raspberry-pi-e-ink-display-83ee8c",
+          },
+        ],
+      },
+      {
+        title:
+          "Stop using Python requests for web scraping: better & modern libraries instead",
+        venue: "Dev.to",
+        date: "2026",
+        links: [{ label: "Article", href: "https://dev.to/extractdata/" }],
+      },
+      {
+        title: "From screenshot to shopping list in 90 seconds",
+        venue: "Zyte Learn",
+        date: "2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/learn/from-screenshot-to-shopping-list-in-90-seconds/",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    year: "2025",
+    entries: [
+      {
+        title:
+          "Holiday Gift Guide 2025: For Developers, Web Scrapers & Everyone In Between",
+        venue: "Dev.to",
+        date: "Dec 2025",
+        links: [
+          {
+            label: "Article",
+            href: "https://dev.to/extractdata/holiday-gift-guide-2025-for-developers-web-scrapers-everyone-in-between-2hbp",
+          },
+        ],
+      },
+      {
+        title:
+          "Build Your Own Holiday Deal Tracker with Python, Zyte API & IFTTT",
+        venue: "Dev.to",
+        date: "Dec 2025",
+        links: [
+          {
+            label: "Article",
+            href: "https://dev.to/extractdata/build-your-own-holiday-deal-tracker-with-python-zyte-api-ifttt-3p78",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    year: "2024",
+    entries: [
+      {
+        title: "Advanced git: Demystifying git Remotes and git cherry-pick",
+        venue: "Developer Nation Blog",
+        date: "Jun 2024",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+      {
+        title: "Managing Complex Dependencies with Google's repo tool",
+        venue: "Developer Nation Blog",
+        date: "Jun 2024",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+      {
+        title: "How Git Submodules Can Save You Time (and Headaches)",
+        venue: "Developer Nation Blog",
+        date: "Jun 2024",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+      {
+        title: "Understanding Practical Engineering Management (recap)",
+        venue: "Developer Nation Blog",
+        date: "Mar 2024",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+      {
+        title:
+          "Cross-Platform Apps, Solopreneurship, and Course Creation (recap)",
+        venue: "Developer Nation Blog",
+        date: "Mar 2024",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+      {
+        title: "The state of Data Science and future of Generative AI (recap)",
+        venue: "Developer Nation Blog",
+        date: "Mar 2024",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+      {
+        title:
+          "Exploring the Landscape of Enterprise Development: A Regional and Technological Perspective",
+        venue: "Developer Nation Blog",
+        date: "Jan 2024",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    year: "2023",
+    entries: [
+      {
+        title: "Passwords are DEAD – Let's meet Passkeys",
+        venue: "Developer Nation Blog",
+        date: "Oct 2023",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+      {
+        title: "Headless Raspberry Pi Setup – WiFi and SSH",
+        venue: "Developer Nation Blog",
+        date: "Aug 2023",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+      {
+        title: "Introducing Developer Nation forums",
+        venue: "Developer Nation Blog",
+        date: "Jul 2023",
+        links: [
+          {
+            label: "Article",
+            href: "https://community-development.developernation.net/blog/author/ayan-pahwa/",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    year: "2022",
+    entries: [
+      {
+        title: "Build a crypto miner using Raspberry Pi in 10 minutes",
+        venue: "Dev.to · Hackster.io",
+        date: "Jun 2022",
+        links: [
+          {
+            label: "Dev.to",
+            href: "https://dev.to/iayanpahwa/build-a-crypto-miner-using-raspberry-pi-in-10-minutes-3a8g",
+          },
+          {
+            label: "Hackster.io",
+            href: "https://www.hackster.io/iayanpahwa/diy-crypto-miner-using-raspberry-pi-in-under-10-minutes-20cdd2",
+          },
+        ],
+      },
+      {
+        title:
+          "Create a fleet of centrally-managed BLE beacons with ble-lighthouse and balena",
+        venue: "balena Blog · Hackster.io",
+        date: "Jun 2022",
+        links: [
+          {
+            label: "balena",
+            href: "https://blog.balena.io/author/ayan_pahwa/",
+          },
+          {
+            label: "Hackster.io",
+            href: "https://www.hackster.io/iayanpahwa/create-a-fleet-of-centrally-managed-ble-beacons-ff87fa",
+          },
+        ],
+      },
+      {
+        title: "IoT Holiday Lights with balena and adafruitIO",
+        venue: "balena Blog · Hackster.io",
+        date: "Jun 2022",
+        links: [
+          {
+            label: "balena",
+            href: "https://blog.balena.io/author/ayan_pahwa/",
+          },
+          {
+            label: "Hackster.io",
+            href: "https://www.hackster.io/iayanpahwa/iot-holiday-lights-with-balena-and-adafruitio-030ad0",
+          },
+        ],
+      },
+      {
+        title: "How to log sensor values to Notion using balena",
+        venue: "balena Blog · Hackster.io",
+        date: "Jun 2022",
+        links: [
+          {
+            label: "balena",
+            href: "https://blog.balena.io/author/ayan_pahwa/",
+          },
+          {
+            label: "Hackster.io",
+            href: "https://www.hackster.io/iayanpahwa/send-sensor-data-to-notion-e4ec5d",
+          },
+        ],
+      },
+      {
+        title: "Balena: Helping to Manage IoT Fleets",
+        venue: "Open Source For You Magazine",
+        date: "Feb 2022",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.opensourceforu.com/2022/02/balena-helping-to-manage-iot-fleets/",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    year: "2017",
+    entries: [
+      {
+        title: "IoT Holiday Lights 2017",
+        venue: "Personal Blog",
+        date: "Dec 2017",
+        links: [
+          {
+            label: "Article",
+            href: "https://iayanpahwa.github.io/IoT-Holiday-Lights-2017/",
+          },
+        ],
+      },
+      {
+        title: "IoT Protocols: A Few choices",
+        venue: "Personal Blog",
+        date: "Nov 2017",
+        links: [
+          {
+            label: "Article",
+            href: "https://iayanpahwa.github.io/IoT-Protocols/",
+          },
+        ],
+      },
+      {
+        title:
+          "Communication Protocols for the Internet of Things: A Few Choices",
+        venue: "Open Source For You Magazine",
+        date: "Oct 2017",
+        links: [
+          {
+            label: "Article",
+            href: "https://opensourceforu.com/2017/10/communication-protocols-internet-things-choices/",
+          },
+        ],
+      },
+      {
+        title: "Reverse Engineering IoT Devices (CVE-2017-18642)",
+        venue: "Personal Blog",
+        date: "Aug 2017",
+        links: [
+          {
+            label: "Article",
+            href: "https://iayanpahwa.github.io/Reverse-Engineering-IoT-Devices/",
+          },
+        ],
+      },
+    ],
+  },
+];
+---
+
+<Layout title={`Media | ${SITE.title}`}>
+  <Header />
+  <main id="main-content" class="app-layout pb-16">
+    <section class="pt-10 sm:pt-14">
+      <h1 class="text-2xl font-bold sm:text-3xl">Media</h1>
+      <p class="mt-1 text-sm opacity-60">
+        Talks, podcasts, press, and writing — 2016–present.
+      </p>
+
+      <!-- Talks -->
+      <div class="mt-10 border-t border-border pt-8">
+        <h2
+          id="talks"
+          class="text-xl font-[var(--font-jetbrains-mono)] font-bold text-accent"
+        >
+          Talks
+        </h2>
+        <ul class="mt-4 space-y-5">
+          {
+            talks.map(entry => (
+              <li>
+                <p class="font-medium">{entry.title}</p>
+                <p class="mt-0.5 text-sm opacity-60">
+                  {entry.venue} &middot; {entry.date}
+                </p>
+                <div class="mt-1.5 flex flex-wrap gap-2">
+                  {entry.links.map(link => (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="rounded border border-border px-2 py-0.5 text-xs transition-colors hover:border-accent hover:text-accent"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Podcasts -->
+      <div class="mt-10 border-t border-border pt-8">
+        <h2
+          id="podcasts"
+          class="text-xl font-[var(--font-jetbrains-mono)] font-bold text-accent"
+        >
+          Podcasts
+        </h2>
+        <ul class="mt-4 space-y-5">
+          {
+            podcasts.map(entry => (
+              <li>
+                <p class="font-medium">{entry.title}</p>
+                <p class="mt-0.5 text-sm opacity-60">
+                  {entry.venue} &middot; {entry.date}
+                </p>
+                <div class="mt-1.5 flex flex-wrap gap-2">
+                  {entry.links.map(link => (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="rounded border border-border px-2 py-0.5 text-xs transition-colors hover:border-accent hover:text-accent"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Press -->
+      <div class="mt-10 border-t border-border pt-8">
+        <h2
+          id="press"
+          class="text-xl font-[var(--font-jetbrains-mono)] font-bold text-accent"
+        >
+          Press
+        </h2>
+        <ul class="mt-4 space-y-5">
+          {
+            press.map(entry => (
+              <li>
+                <p class="font-medium">{entry.title}</p>
+                <p class="mt-0.5 text-sm opacity-60">
+                  {entry.venue} &middot; {entry.date}
+                </p>
+                <div class="mt-1.5 flex flex-wrap gap-2">
+                  {entry.links.map(link => (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="rounded border border-border px-2 py-0.5 text-xs transition-colors hover:border-accent hover:text-accent"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Writing -->
+      <div class="mt-10 border-t border-border pt-8">
+        <h2
+          id="writing"
+          class="text-xl font-[var(--font-jetbrains-mono)] font-bold text-accent"
+        >
+          Writing
+        </h2>
+        {
+          writingByYear.map((group, index) => (
+            <div
+              class:list={[
+                "pt-6",
+                { "mt-6 border-t border-border": index > 0 },
+              ]}
+            >
+              <span class="text-lg font-[var(--font-jetbrains-mono)] font-bold text-accent">
+                {group.year}
+              </span>
+              <sup class="text-xs opacity-60">{group.entries.length}</sup>
+              <ul class="mt-3 space-y-5">
+                {group.entries.map(entry => (
+                  <li>
+                    <p class="font-medium">{entry.title}</p>
+                    <p class="mt-0.5 text-sm opacity-60">
+                      {entry.venue} &middot; {entry.date}
+                    </p>
+                    <div class="mt-1.5 flex flex-wrap gap-2">
+                      {entry.links.map(link => (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="rounded border border-border px-2 py-0.5 text-xs transition-colors hover:border-accent hover:text-accent"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

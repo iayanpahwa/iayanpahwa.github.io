@@ -44,9 +44,15 @@ const isActive = (path: string) => {
   >
     <a
       href="/"
-      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none flex items-center gap-2"
+      class="absolute flex items-center gap-2 py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
     >
-      <img src="/logo.webp" alt={SITE.title} width="32" height="32" class="size-8 rounded-full" />
+      <img
+        src="/logo.webp"
+        alt={SITE.title}
+        width="32"
+        height="32"
+        class="size-8 rounded-full"
+      />
       {SITE.title}
     </a>
     <nav
@@ -78,16 +84,20 @@ const isActive = (path: string) => {
           </a>
         </li>
         <li class="col-span-2">
-          <a
-            href="https://apx.tools"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="/media" class:list={{ "active-nav": isActive("/media") }}>
+            Media
+          </a>
+        </li>
+        <li class="col-span-2">
+          <a href="https://apx.tools" target="_blank" rel="noopener noreferrer">
             Shop
           </a>
         </li>
         <li class="col-span-2">
-          <a href="/contact" class:list={{ "active-nav": isActive("/contact") }}>
+          <a
+            href="/contact"
+            class:list={{ "active-nav": isActive("/contact") }}
+          >
             Contact
           </a>
         </li>
