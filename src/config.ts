@@ -2,7 +2,7 @@ export const SITE = {
   website: "https://codensolder.com/",
   author: "Ayan Pahwa",
   profile: "https://codensolder.com/about/",
-  desc: "Maker projects and hardware hacking: IoT, embedded Linux, CircuitPython, and DIY electronics by Ayan Pahwa.",
+  desc: "Ayan Pahwa is a Developer Advocate writing about agentic AI systems and the live web-data layer they run on. Founder of APxTools. Work featured on Hackaday, O'Reilly, and HackerNews.",
   title: "CodeNSolder",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,

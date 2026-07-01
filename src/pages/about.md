@@ -3,20 +3,20 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-Hi, I'm Ayan — an Electronics and Instrumentation Engineer by education and an Embedded Software Engineer by profession.
+Hi, I'm Ayan. I work as a Developer Advocate, building agentic AI systems and writing about the part most people skip past: the live web-data layer that feeds them.
 
-I'm a modern-day tech flâneur—exploring self-hosted systems, privacy-first tools, and everyday carry. Between brewing good coffee and being a dad of two, I spend my time building, testing, and refining systems that make life more intentional and efficient.
+The hard part of a production AI agent isn't the model. It's the fresh, unblocked data you can get in front of it. Models keep getting cheaper and easier to swap, so the thing that decides whether an agent actually works is the harness around it, and that harness is only as good as the data it can reach. Most of my writing circles this one idea.
 
-I support open source and FOSS by contributing to projects and communities. At my core, I like making things—whether that's solving everyday problems, hacking together scrappy prototypes, or automating parts of my digital life.
+I came up as an embedded software engineer, electronics and instrumentation by training, and I still think like one: close to the hardware, slow to trust magic. That decade of writing code by hand is also what lets me notice when an agent quietly does the wrong thing, which happens more often than the demos let on.
 
-This blog is my personal archive—a place to document projects, experiments, and ideas that would otherwise fade away. You'll also find thoughts on tools, tech, and everyday carry that I actually use.
+This site is my archive: projects, experiments, and the tools I actually use, from AI and web data to the analog things I can't quit.
 
 ## Current Interests
 
 Right now, I'm exploring:
 
-* **Web scraping systems** — building reliable pipelines to extract, clean, and structure data from the open web.
 * **Agentic workflows** — designing autonomous, tool-using systems that can think, act, and iterate with minimal intervention.
+* **Web scraping systems** — building reliable pipelines to extract, clean, and structure data from the open web.
 * **Self-hosting** — owning my stack, from infrastructure to applications, with a focus on privacy and control.
 
 Alongside this, I consciously balance the digital with the analog—
@@ -26,7 +26,7 @@ vinyl records, mechanical watches, hi-fi audio systems, and the joy of driving m
 
 Work featured on Hackaday, O'Reilly, and HackerNews. Published in Electronics For You (EFY), Open Source For You (OSFY), and the Mentor Graphics (Siemens) blog. Speaker at PyCon India 2017.
 
-## Technical Skills
+## Background & technical skills
 
 ### Programming Languages
 

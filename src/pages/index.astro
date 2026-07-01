@@ -32,7 +32,12 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
 
 <Layout pageType="home">
   <Header />
-  <main id="main-content" data-layout="index" data-post-per-index={SITE.postPerIndex} class="app-layout">
+  <main
+    id="main-content"
+    data-layout="index"
+    data-post-per-index={SITE.postPerIndex}
+    class="app-layout"
+  >
     <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
       <div class="my-4 flex items-center gap-4 sm:my-8">
         <img
@@ -62,8 +67,13 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
           </a>
         </div>
       </div>
-      <p class="mb-4 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-        A tech flâneur, long on self-hosting, privacy-respecting tools, and everyday carry; dad of two, coffee nerd, and a constant tinkerer, trying to live a life driven by curiosity and many parallel expensive interests & hobbies
+      <p
+        class="mb-4 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base"
+      >
+        I'm a Developer Advocate who builds agentic AI systems in public and
+        writes about the web-data layer they run on. Away from the keyboard I'm
+        a coffee nerd, an everyday-carry obsessive, and a dad of two, running
+        more parallel expensive hobbies than is probably sensible.
       </p>
       {
         SOCIALS.length > 0 && (
@@ -84,9 +94,16 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
           ]}
         >
           <div class="flex items-baseline gap-3">
-            <h2 class="text-2xl font-semibold tracking-wide">📌 Pinned Blogs</h2>
+            <h2 class="text-2xl font-semibold tracking-wide">
+              📌 Pinned Blogs
+            </h2>
             <span class="text-foreground/30">|</span>
-            <a href="/series" class="text-sm font-medium text-accent decoration-dashed underline-offset-4 hover:underline">Blog Series</a>
+            <a
+              href="/series"
+              class="text-sm font-medium text-accent decoration-dashed underline-offset-4 hover:underline"
+            >
+              Blog Series
+            </a>
           </div>
           <ul>
             {featuredPosts.slice(0, 4).map(data => (
@@ -100,7 +117,7 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
-          <div class="flex items-center justify-between mb-1">
+          <div class="mb-1 flex items-center justify-between">
             <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
             <SortToggle />
           </div>
@@ -114,7 +131,12 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
       )
     }
 
-    <div id="non-featured-meta" data-posts={JSON.stringify(allNonFeaturedMeta)} hidden></div>
+    <div
+      id="non-featured-meta"
+      data-posts={JSON.stringify(allNonFeaturedMeta)}
+      hidden
+    >
+    </div>
 
     <div class="my-8 text-center">
       <LinkButton href="/posts/">
@@ -133,12 +155,13 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
     "@context": "https://schema.org",
     "@type": "Person",
     name: SITE.author,
+    jobTitle: "Developer Advocate",
     url: `${SITE.website}about/`,
     image: `${SITE.website}optimized/assets/images/avatar.webp`,
     description: SITE.desc,
     sameAs: [
       "https://github.com/iAyanPahwa",
-      "https://x.com/iayanpahwa",
+      "https://x.com/apxtweets",
       "https://linkedin.com/in/iAyanPahwa",
     ],
   })}
@@ -146,8 +169,18 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
 
 <script>
   const MONTHS = [
-    "Jan","Feb","Mar","Apr","May","Jun",
-    "Jul","Aug","Sep","Oct","Nov","Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   function formatDate(iso: string) {
@@ -155,13 +188,16 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
     return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}, ${d.getUTCFullYear()}`;
   }
 
-  function renderCard(p: {
-    title: string;
-    url: string;
-    description: string;
-    pubDatetime: string;
-    modDatetime: string | null;
-  }, sortBy: string) {
+  function renderCard(
+    p: {
+      title: string;
+      url: string;
+      description: string;
+      pubDatetime: string;
+      modDatetime: string | null;
+    },
+    sortBy: string
+  ) {
     const isModified =
       sortBy === "modified" &&
       p.modDatetime != null &&
@@ -186,7 +222,9 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
       sessionStorage.setItem("backUrl", "/");
     }
 
-    const metaEl = document.getElementById("non-featured-meta") as HTMLElement | null;
+    const metaEl = document.getElementById(
+      "non-featured-meta"
+    ) as HTMLElement | null;
     if (!metaEl) return;
 
     const allPosts: {
