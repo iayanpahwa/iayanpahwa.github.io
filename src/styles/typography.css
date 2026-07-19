@@ -5,8 +5,8 @@
   pre,
   kbd,
   samp {
-    font-family: var(--font-jetbrains-mono), "Fira Code", "Source Code Pro",
-      monospace;
+    font-family:
+      var(--font-jetbrains-mono), "Fira Code", "Source Code Pro", monospace;
   }
 
   /* ===== Override default Tailwind Typography styles ===== */
@@ -53,6 +53,39 @@
 
     img {
       @apply mx-auto border border-border;
+    }
+
+    /* Post figures (diagrams) — responsive, caption, optional text-wrap */
+    figure.post-figure {
+      @apply my-8;
+    }
+
+    figure.post-figure img {
+      @apply w-full rounded-lg;
+    }
+
+    figure.post-figure figcaption {
+      @apply mt-3 text-center text-sm italic opacity-70;
+    }
+
+    figure.post-figure.post-figure--float {
+      @apply float-right ms-6 mb-4 w-full max-w-[330px];
+    }
+
+    figure.post-figure.post-figure--float figcaption {
+      @apply text-start;
+    }
+
+    @media (max-width: 640px) {
+      figure.post-figure.post-figure--float {
+        @apply float-none mx-auto ms-0 max-w-full;
+      }
+    }
+
+    /* Keep section headings from riding up beside a floated figure */
+    h2,
+    h3 {
+      @apply clear-both;
     }
 
     iframe {
@@ -120,13 +153,14 @@
   .astro-code {
     /* Fixed bg distinct from Ayu Light page bg (#FAFAFA) */
     background-color: #f0f3f6;
-    border: 1px solid #D6D9DE;
+    border: 1px solid #d6d9de;
     border-radius: 0.5rem;
     padding: 1.25rem 1.5rem;
     overflow-x: auto;
     line-height: 1.7;
     color: var(--shiki-light);
-    font-family: var(--font-jetbrains-mono), "Fira Code", "Source Code Pro", monospace;
+    font-family:
+      var(--font-jetbrains-mono), "Fira Code", "Source Code Pro", monospace;
     font-size: 0.875rem;
   }
 
@@ -137,7 +171,7 @@
   html[data-theme="dark"] .astro-code {
     /* Ayu Mirage surface — elevated from page bg (#1F2430) */
     background-color: #232834;
-    border-color: #2A3040;
+    border-color: #2a3040;
     color: var(--shiki-dark);
   }
 
