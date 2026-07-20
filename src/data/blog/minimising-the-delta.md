@@ -13,6 +13,10 @@ draft: false
 
 ![Cover](/optimized/assets/images/minimising-the-delta/cover.webp)
 
+> **Changelog**
+>
+> - **2026-07-20** — Added a note in the hiring section connecting the thesis to Elizabeth Stone (Netflix CPTO) on Lenny's Podcast: Netflix is betting on systems thinkers over specialists in the AI era.
+
 A few weeks ago, Garry Tan (the president of Y Combinator, if you don't know him) published something called [gstack](https://github.com/garrytan/gstack) on Product Hunt. It was a collection of markdown files. Plain text files with instructions for his AI agents. That's it. That's the whole thing.
 
 The internet went two ways on it. One camp said it was god mode. The other laughed. "This is on Product Hunt? It's just a bunch of .md files."
@@ -58,6 +62,8 @@ It's not necessarily the best coder. Not the person who has memorised the most s
 The ceiling now is judgment. And whether you can make that judgment legible enough for an agent to act on it. Here is what I think the profile looks like:
 
 **Someone who thinks in systems.** Not someone who solves one problem in isolation, but someone who sees how the parts connect. Who can look at a workflow and immediately spot where the delta is widest. You are not an implementer anymore. You are an architect of how work gets done.
+
+Since I first published this, I came across Elizabeth Stone, Netflix's Chief Product and Technology Officer, making almost the same argument on Lenny's Podcast. Netflix is now hiring more systems thinkers and fewer narrow specialists: people who can look across the whole business and pull out the building blocks it actually needs. Her point about the ceiling matches mine. Great engineering, great data science and great creativity stay scarce, and what keeps them scarce is a person's sense of what good looks like. That is judgment, and no agent hands it to you. Worth a watch: [Why Netflix is betting on systems thinkers, not specialists, in the AI era](https://www.youtube.com/watch?v=t0GiTyz4syY).
 
 **Someone who generates ideas and can actually explain them.** This is underrated. Having a good idea is one thing. Being able to hand it to an AI agent with enough clarity that they can run with it is a completely different skill. The people who can do both are rare and increasingly valuable. Your primary output is no longer code or a deliverable. It is a well-explained intent.
 
