@@ -96,17 +96,19 @@ const nextPost =
   {
     showToc && (
       <aside
-        class="toc-sidebar hidden xl:flex fixed top-1/2 -translate-y-1/2 flex-col gap-2"
+        class="toc-sidebar fixed top-1/2 hidden -translate-y-1/2 flex-col gap-2 xl:flex"
         style="left: calc(50% + 24rem + 0.5rem)"
         data-pagefind-ignore
       >
         <div class="relative flex flex-col gap-2 border-l border-border pl-3">
-          <span class="text-xs font-semibold uppercase tracking-wider text-foreground/40 mb-1">On this page</span>
+          <span class="mb-1 text-xs font-semibold tracking-wider text-foreground/40 uppercase">
+            On this page
+          </span>
           {tocHeadings.map(h => (
             <a
               href={`#${h.slug}`}
               class:list={[
-                "toc-link text-sm text-foreground/60 transition-all duration-200 hover:text-accent leading-snug",
+                "toc-link text-sm leading-snug text-foreground/60 transition-all duration-200 hover:text-accent",
                 { "pl-3": h.depth === 3 },
               ]}
               data-heading={h.slug}
@@ -149,10 +151,7 @@ const nextPost =
       )
     }
 
-    <article
-      id="article"
-      class="app-prose mt-8 w-full max-w-app"
-    >
+    <article id="article" class="app-prose mt-8 w-full max-w-app">
       <Content />
     </article>
 
@@ -167,6 +166,32 @@ const nextPost =
     <BackToTopButton />
 
     <ShareLinks />
+
+    <div
+      class="my-6 flex items-center gap-4 rounded-lg border border-border bg-muted/40 p-4"
+    >
+      <img
+        src="/optimized/assets/images/avatar.webp"
+        alt="Ayan Pahwa"
+        width="48"
+        height="48"
+        class="size-12 flex-none rounded-full object-cover ring-2 ring-border"
+      />
+      <div class="min-w-0">
+        <p class="text-sm text-foreground/80">
+          Written by Ayan Pahwa, Developer Advocate. I write about agentic AI,
+          web data, and hardware.
+        </p>
+        <div
+          class="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-foreground/60"
+        >
+          <a href="/posts" class="hover:text-accent">More posts</a>
+          <a href="/media" class="hover:text-accent">Talks and podcasts</a>
+          <a href="/links" class="hover:text-accent">Everywhere else</a>
+          <a href="/rss.xml" class="hover:text-accent">RSS</a>
+        </div>
+      </div>
+    </div>
 
     <Giscus />
 
@@ -209,7 +234,7 @@ const nextPost =
       relatedPosts.length > 0 && (
         <div data-pagefind-ignore class="mt-8">
           <hr class="mb-6 border-dashed" />
-          <h2 class="text-lg font-semibold text-foreground/80 mb-4">Related</h2>
+          <h2 class="mb-4 text-lg font-semibold text-foreground/80">Related</h2>
           <ul>
             {relatedPosts.map(p => (
               <li class="my-4">
@@ -219,8 +244,14 @@ const nextPost =
                 >
                   {p.data.title}
                 </a>
-                <Datetime pubDatetime={p.data.pubDatetime} modDatetime={p.data.modDatetime} timezone={p.data.timezone} />
-                {p.data.description && <p class="text-sm text-foreground/70">{p.data.description}</p>}
+                <Datetime
+                  pubDatetime={p.data.pubDatetime}
+                  modDatetime={p.data.modDatetime}
+                  timezone={p.data.timezone}
+                />
+                {p.data.description && (
+                  <p class="text-sm text-foreground/70">{p.data.description}</p>
+                )}
               </li>
             ))}
           </ul>

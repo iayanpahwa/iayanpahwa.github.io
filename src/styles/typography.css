@@ -51,8 +51,15 @@
       @apply border-border;
     }
 
+    /* Framed card so light-background diagrams (e.g. rasterized Mermaid
+       WebPs) don't sit as a flat rectangle straight on the dark bg. Light
+       mode keeps it minimal: a thin border and radius, near-invisible
+       padding since the card bg sits almost on top of the page bg. Dark
+       mode gets a near-white mat so white/light diagrams read as framed
+       cards instead of floating. figure.post-figure img inherits this and
+       only adds w-full, so there is one source of truth, not two. */
     img {
-      @apply mx-auto border border-border;
+      @apply mx-auto rounded-lg border border-border bg-[#f7f7f5] p-2 dark:bg-[#f2f1ed];
     }
 
     /* Post figures (diagrams) — responsive, caption, optional text-wrap */
@@ -61,7 +68,7 @@
     }
 
     figure.post-figure img {
-      @apply w-full rounded-lg;
+      @apply w-full;
     }
 
     figure.post-figure figcaption {
