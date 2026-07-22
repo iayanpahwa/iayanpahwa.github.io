@@ -21,8 +21,12 @@ export const getStaticPaths = (async ({ paginate }) => {
     description: p.data.description,
     pubDatetime: p.data.pubDatetime.toISOString(),
     modDatetime: p.data.modDatetime?.toISOString() ?? null,
+    ogImage: typeof p.data.ogImage === "string" ? p.data.ogImage : null,
   }));
-  return paginate(sortedByPub, { pageSize: SITE.postPerPage, props: { allPostMeta } });
+  return paginate(sortedByPub, {
+    pageSize: SITE.postPerPage,
+    props: { allPostMeta },
+  });
 }) satisfies GetStaticPaths;
 
 const { page, allPostMeta } = Astro.props;
@@ -31,16 +35,32 @@ const { page, allPostMeta } = Astro.props;
 <Layout title={`Posts | ${SITE.title}`} pageType="collection">
   <Header />
   <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
-    <div class="flex items-center justify-between mb-4">
-      <SortToggle />
+    {
+      /*
+        Main.astro (shared, not edited here) caps this page at max-w-app
+        (48rem). This wrapper widens just the post list to max-w-app-wide
+        (64rem) on large viewports, where 64rem always fits within the
+        viewport (Tailwind's lg breakpoint is 64rem), so it can't cause
+        horizontal overflow at any width in between.
+      */
+    }
+    <div class="lg:mx-[-9rem] lg:w-[calc(100%_+_18rem)]">
+      <div class="mb-4 flex items-center justify-between">
+        <SortToggle />
+      </div>
+      <div id="posts-static">
+        <ul>
+          {page.data.map(data => <Card {...data} />)}
+        </ul>
+      </div>
+      <ul id="posts-dynamic" hidden></ul>
+      <p
+        id="posts-dynamic-note"
+        hidden
+        class="mt-4 text-center text-sm text-foreground/50"
+      >
+      </p>
     </div>
-    <div id="posts-static">
-      <ul>
-        {page.data.map(data => <Card {...data} />)}
-      </ul>
-    </div>
-    <ul id="posts-dynamic" hidden></ul>
-    <p id="posts-dynamic-note" hidden class="mt-4 text-sm text-foreground/50 text-center"></p>
   </Main>
 
   <Pagination {page} />
@@ -52,8 +72,18 @@ const { page, allPostMeta } = Astro.props;
 
 <script>
   const MONTHS = [
-    "Jan","Feb","Mar","Apr","May","Jun",
-    "Jul","Aug","Sep","Oct","Nov","Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   function formatDate(iso: string) {
@@ -67,23 +97,32 @@ const { page, allPostMeta } = Astro.props;
     description: string;
     pubDatetime: string;
     modDatetime: string | null;
+    ogImage: string | null;
   }) {
     const isModified = p.modDatetime != null && p.modDatetime > p.pubDatetime;
     const displayDate = formatDate(isModified ? p.modDatetime! : p.pubDatetime);
-    return `<li class="my-6">
-      <a href="${p.url}" class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 hover:underline">
-        <h2>${p.title}</h2>
-      </a>
-      <div class="flex items-center gap-x-2 opacity-80">
-        ${isModified ? '<span class="text-sm">Updated:</span>' : ""}
-        <time class="text-sm">${displayDate}</time>
+    const thumbnail = p.ogImage
+      ? `<img src="${p.ogImage}" alt="" width="80" height="80" loading="lazy" class="size-20 rounded-lg object-cover" />`
+      : `<div aria-hidden="true" class="flex size-20 items-center justify-center rounded-lg bg-muted text-2xl font-[var(--font-jetbrains-mono)] font-bold text-accent">${p.title.charAt(0).toUpperCase()}</div>`;
+    return `<li class="my-6 flex items-start gap-4">
+      <div class="hidden shrink-0 sm:block">${thumbnail}</div>
+      <div class="min-w-0 flex-1">
+        <a href="${p.url}" class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 hover:underline">
+          <h2>${p.title}</h2>
+        </a>
+        <div class="flex items-center gap-x-2 opacity-80">
+          ${isModified ? '<span class="text-sm">Updated:</span>' : ""}
+          <time class="text-sm">${displayDate}</time>
+        </div>
+        <p>${p.description}</p>
       </div>
-      <p>${p.description}</p>
     </li>`;
   }
 
   document.addEventListener("astro:page-load", () => {
-    const metaEl = document.getElementById("all-post-meta") as HTMLElement | null;
+    const metaEl = document.getElementById(
+      "all-post-meta"
+    ) as HTMLElement | null;
     if (!metaEl) return;
 
     const allPosts: {
@@ -92,6 +131,7 @@ const { page, allPostMeta } = Astro.props;
       description: string;
       pubDatetime: string;
       modDatetime: string | null;
+      ogImage: string | null;
     }[] = JSON.parse(metaEl.dataset.posts ?? "[]");
 
     const staticEl = document.getElementById("posts-static");
@@ -109,8 +149,10 @@ const { page, allPostMeta } = Astro.props;
           return db - da;
         });
 
-        if (dynamicEl) dynamicEl.innerHTML = sorted.map(p => renderCard(p)).join("");
-        if (dynamicNote) dynamicNote.textContent = `Showing all ${sorted.length} posts sorted by last updated`;
+        if (dynamicEl)
+          dynamicEl.innerHTML = sorted.map(p => renderCard(p)).join("");
+        if (dynamicNote)
+          dynamicNote.textContent = `Showing all ${sorted.length} posts sorted by last updated`;
 
         staticEl?.setAttribute("hidden", "");
         dynamicEl?.removeAttribute("hidden");

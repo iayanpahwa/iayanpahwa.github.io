@@ -5,23 +5,24 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #FAFAFA;
-  --foreground: #5C6166;
-  --accent:     #FA8532;
-  --muted:      #E3E6EA;
-  --border:     #E3E6EA;
+  --background: #fafafa;
+  --foreground: #5c6166;
+  --accent: #fa8532;
+  --muted: #e3e6ea;
+  --border: #e3e6ea;
 }
 
 html[data-theme="dark"] {
-  --background: #1F2430;
-  --foreground: #CBCCC6;
-  --accent:     #FFCD66;
-  --muted:      #232834;
-  --border:     #191F26;
+  --background: #1f2430;
+  --foreground: #cbccc6;
+  --accent: #ffcd66;
+  --muted: #232834;
+  --border: #191f26;
 }
 
 @theme inline {
-  --font-app: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-app:
+    var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
@@ -53,6 +54,10 @@ html[data-theme="dark"] {
 
 @utility max-w-app {
   @apply max-w-3xl;
+}
+
+@utility max-w-app-wide {
+  @apply max-w-5xl;
 }
 
 @utility app-layout {

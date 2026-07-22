@@ -20,6 +20,40 @@ const sortedPosts = getSortedPosts(posts, "published");
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
+// Hero stats (sourced from public/resume/index.html and src/pages/media.astro)
+const heroStats = [
+  { value: "10+", label: "Years shipping" },
+  { value: "48", label: "Guest articles" },
+  { value: "21", label: "Talks and podcasts" },
+  { value: "100K+", label: "Developers reached" },
+];
+
+// "Last shipped" build-time status strip, computed from the latest published post
+const SHORT_MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+const latestPost = sortedPosts[0];
+const latestPostUrl = latestPost
+  ? getPath(latestPost.id, latestPost.filePath)
+  : null;
+const latestPostDate = latestPost
+  ? (() => {
+      const d = new Date(latestPost.data.pubDatetime);
+      return `${d.getUTCDate()} ${SHORT_MONTHS[d.getUTCMonth()]}`;
+    })()
+  : null;
+
 // Metadata for all non-featured posts (used by client-side sort toggle)
 const allNonFeaturedMeta = recentPosts.map(p => ({
   title: p.data.title,
@@ -27,6 +61,7 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
   description: p.data.description,
   pubDatetime: p.data.pubDatetime.toISOString(),
   modDatetime: p.data.modDatetime?.toISOString() ?? null,
+  ogImage: typeof p.data.ogImage === "string" ? p.data.ogImage : null,
 }));
 ---
 
@@ -36,52 +71,88 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
     id="main-content"
     data-layout="index"
     data-post-per-index={SITE.postPerIndex}
-    class="app-layout"
+    class="mx-auto w-full max-w-app-wide px-4"
   >
     <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
-      <div class="my-4 flex items-center gap-4 sm:my-8">
-        <img
-          src="/optimized/assets/images/avatar.webp"
-          alt="Ayan Pahwa"
-          width="72"
-          height="72"
-          class="size-14 rounded-full object-cover ring-2 ring-border sm:size-[72px]"
-        />
-        <div class="flex items-center gap-3">
-          <h1 class="inline-block text-3xl font-bold sm:text-5xl">
-            Ayan Pahwa
-          </h1>
-          <a
-            target="_blank"
-            href="/rss.xml"
-            class="inline-block"
-            aria-label="rss feed"
-            title="RSS Feed"
-          >
-            <IconRss
-              width={20}
-              height={20}
-              class="scale-125 stroke-accent stroke-3"
-            />
-            <span class="sr-only">RSS Feed</span>
-          </a>
-        </div>
-      </div>
-      <p
-        class="mb-4 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base"
-      >
-        I'm a Developer Advocate who builds agentic AI systems in public and
-        writes about the web-data layer they run on. Away from the keyboard I'm
-        a coffee nerd, an everyday-carry obsessive, and a dad of two, running
-        more parallel expensive hobbies than is probably sensible.
-      </p>
-      {
-        SOCIALS.length > 0 && (
-          <div class="mt-4">
-            <Socials />
+      <div class="w-full">
+        <span
+          class="mb-4 inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/5 px-3 py-1 text-xs font-[var(--font-jetbrains-mono)] text-accent"
+        >
+          <span class="size-1.5 rounded-full bg-accent"></span>
+          Building AI Agents in public
+        </span>
+        <div class="my-4 flex items-center gap-4 sm:my-6">
+          <img
+            src="/optimized/assets/images/avatar.webp"
+            alt="Ayan Pahwa"
+            width="80"
+            height="80"
+            class="size-16 rounded-full object-cover shadow-[0_0_24px_-6px_var(--accent)] ring-2 ring-accent/30 sm:size-20"
+          />
+          <div class="flex items-center gap-3">
+            <h1 class="inline-block text-3xl font-bold sm:text-5xl">
+              Ayan Pahwa
+            </h1>
+            <a
+              target="_blank"
+              href="/rss.xml"
+              class="inline-block"
+              aria-label="rss feed"
+              title="RSS Feed"
+            >
+              <IconRss
+                width={20}
+                height={20}
+                class="scale-125 stroke-accent stroke-3"
+              />
+              <span class="sr-only">RSS Feed</span>
+            </a>
           </div>
-        )
-      }
+        </div>
+        <p
+          class="mb-4 max-w-2xl text-sm leading-relaxed text-foreground/70 sm:text-base"
+        >
+          I'm a Developer Advocate who builds agentic AI systems in public and
+          writes about the web-data layer they run on. Away from the keyboard
+          I'm a coffee nerd, an everyday-carry obsessive, and a dad of two,
+          running more parallel expensive hobbies than is probably sensible.
+        </p>
+        <div class="grid w-full grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
+          {
+            heroStats.map(stat => (
+              <div class="rounded-lg border border-border bg-muted/50 px-3 py-2.5 text-center">
+                <div class="text-lg font-[var(--font-jetbrains-mono)] font-bold text-foreground sm:text-xl">
+                  {stat.value}
+                </div>
+                <div class="mt-0.5 text-[10px] tracking-wide text-foreground/55 uppercase">
+                  {stat.label}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        {
+          SOCIALS.length > 0 && (
+            <div class="mt-5">
+              <Socials />
+            </div>
+          )
+        }
+        {
+          latestPost && (
+            <p class="mt-4 text-xs text-foreground/50">
+              Last shipped:{" "}
+              <a
+                href={latestPostUrl}
+                class="text-accent decoration-dashed underline-offset-4 hover:underline"
+              >
+                {latestPost.data.title}
+              </a>{" "}
+              ({latestPostDate})
+            </p>
+          )
+        }
+      </div>
     </section>
 
     {
@@ -196,6 +267,7 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
       description: string;
       pubDatetime: string;
       modDatetime: string | null;
+      ogImage: string | null;
     },
     sortBy: string
   ) {
@@ -204,15 +276,21 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
       p.modDatetime != null &&
       p.modDatetime > p.pubDatetime;
     const displayDate = formatDate(isModified ? p.modDatetime! : p.pubDatetime);
-    return `<li class="my-6">
-      <a href="${p.url}" class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 hover:underline">
-        <h3>${p.title}</h3>
-      </a>
-      <div class="flex items-center gap-x-2 opacity-80">
-        ${isModified ? '<span class="text-sm">Updated:</span>' : ""}
-        <time class="text-sm">${displayDate}</time>
+    const thumbnail = p.ogImage
+      ? `<img src="${p.ogImage}" alt="" width="80" height="80" loading="lazy" class="size-20 rounded-lg object-cover" />`
+      : `<div aria-hidden="true" class="flex size-20 items-center justify-center rounded-lg bg-muted text-2xl font-[var(--font-jetbrains-mono)] font-bold text-accent">${p.title.charAt(0).toUpperCase()}</div>`;
+    return `<li class="my-6 flex items-start gap-4">
+      <div class="hidden shrink-0 sm:block">${thumbnail}</div>
+      <div class="min-w-0 flex-1">
+        <a href="${p.url}" class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 hover:underline">
+          <h3>${p.title}</h3>
+        </a>
+        <div class="flex items-center gap-x-2 opacity-80">
+          ${isModified ? '<span class="text-sm">Updated:</span>' : ""}
+          <time class="text-sm">${displayDate}</time>
+        </div>
+        <p>${p.description}</p>
       </div>
-      <p>${p.description}</p>
     </li>`;
   }
 
@@ -234,6 +312,7 @@ const allNonFeaturedMeta = recentPosts.map(p => ({
       description: string;
       pubDatetime: string;
       modDatetime: string | null;
+      ogImage: string | null;
     }[] = JSON.parse(metaEl.dataset.posts ?? "[]");
 
     const mainEl = document.querySelector("#main-content") as HTMLElement;
