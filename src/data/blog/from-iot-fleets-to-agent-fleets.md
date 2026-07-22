@@ -4,6 +4,7 @@ author: "Ayan Pahwa"
 pubDatetime: 2026-07-19T10:00:00.000Z
 description: "C.H.A.R.T.E.R. is a fail-closed standard for governing a fleet of AI agents: one small file per agent lists every model, tool, host, and limit it may use, and the loader that runs it is the only door."
 tags: ["ai", "ai-agents", "agentic-ai", "prompt-injection", "security", "open-source"]
+ogImage: "/optimized/assets/images/from-iot-fleets-to-agent-fleets/cover.webp"
 featured: true
 draft: false
 ---

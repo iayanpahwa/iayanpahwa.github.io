@@ -4,6 +4,7 @@ author: "Ayan Pahwa"
 pubDatetime: 2022-06-18T16:42:21.000Z
 description: "A step-by-step guide to building a crypto miner using Raspberry Pi in under 10 minutes."
 tags: ["raspberry-pi", "crypto", "tutorial"]
+ogImage: "/optimized/assets/images/build-a-crypto-miner-using-raspberry-pi-in-10-minutes/cover.webp"
 draft: true
 ---
 

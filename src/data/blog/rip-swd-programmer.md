@@ -5,6 +5,7 @@ pubDatetime: 2020-04-22T17:20:51.000Z
 modDatetime: 2026-04-05T10:00:00.000Z
 description: "How to use a Raspberry Pi as an SWD programmer with OpenOCD to flash the CircuitPython UF2 bootloader onto a Particle Xenon (Nordic NRF52840) board."
 tags: ["raspberry-pi", "circuitpython", "embedded-systems", "tutorial"]
+ogImage: "/optimized/assets/images/swd/1.webp"
 draft: false
 featured: false
 ---
