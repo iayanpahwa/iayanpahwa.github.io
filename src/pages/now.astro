@@ -1,0 +1,82 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+
+type Tile = { label: string; title: string; body: string };
+
+const tiles: Tile[] = [
+  {
+    label: "Building",
+    title: "Agent fleets",
+    body: "AI assisted engineering experiments, mostly multi-agent orchestration and harness engineering. Blogging about what breaks and what holds up.",
+  },
+  {
+    label: "Homelab",
+    title: "Proxmox cluster",
+    body: "A small Proxmox cluster plus a handful of self-hosted services. Mostly an excuse to break things safely, on hardware nobody else depends on.",
+  },
+  {
+    label: "Printing",
+    title: "EDC gear",
+    body: "3D printing EDC gear on a Bambu Lab A1 Mini. Slow iterations, lots of failed prints, occasional keepers.",
+  },
+];
+---
+
+<Layout title={`Now | ${SITE.title}`}>
+  <Header />
+  <main id="main-content" class="app-layout pb-16">
+    <section class="pt-10 sm:pt-14">
+      <h1 class="text-2xl font-bold tracking-wide sm:text-3xl">Now</h1>
+      <p class="mt-3 max-w-2xl text-foreground/80">
+        A short, occasionally updated list of what I'm actually spending time on
+        right now, not a résumé or an aspiration list. It's a
+        <a
+          href="https://nownownow.com/about"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline decoration-dashed underline-offset-4 hover:text-accent"
+        >
+          now page
+        </a>
+        convention: fewer stale bios, more "here's what's true today."
+      </p>
+      <p
+        class="mt-2 text-xs font-[var(--font-jetbrains-mono)] tracking-wider text-foreground/50 uppercase"
+      >
+        Updated July 2026
+      </p>
+
+      <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {
+          tiles.map(tile => (
+            <div class="rounded-lg border border-border bg-muted/40 p-5">
+              <p class="text-xs font-[var(--font-jetbrains-mono)] tracking-wider text-accent uppercase">
+                {tile.label}
+              </p>
+              <p class="mt-2 text-lg font-bold text-foreground">{tile.title}</p>
+              <p class="mt-2 text-sm text-foreground/70">{tile.body}</p>
+            </div>
+          ))
+        }
+        <div class="rounded-lg border border-border bg-muted/40 p-5">
+          <p
+            class="text-xs font-[var(--font-jetbrains-mono)] tracking-wider text-accent uppercase"
+          >
+            Reading
+          </p>
+          <p class="mt-2 text-lg font-bold text-foreground">
+            India, that is Bharat
+          </p>
+          <p class="mt-2 text-sm text-foreground/70">
+            By J Sai Deepak. Also re-reading The Scout Mindset by Julia Galef,
+            worth the second pass.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
