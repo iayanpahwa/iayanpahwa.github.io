@@ -3,6 +3,28 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { SITE } from "@/config";
+import IconYoutube from "@/assets/icons/IconYoutube.svg";
+import IconPresentation from "@/assets/icons/IconPresentation.svg";
+import IconMicrophone from "@/assets/icons/IconMicrophone.svg";
+import IconArticle from "@/assets/icons/IconArticle.svg";
+
+// Maps a link's label to the icon shown next to it in a type pill.
+// Labels not listed here (mostly outlet names on Writing links, e.g.
+// "Dev.to", "Zyte") fall back to the article icon.
+const linkIcons: Record<string, typeof IconYoutube> = {
+  Video: IconYoutube,
+  Slides: IconPresentation,
+  Course: IconPresentation,
+  Podcast: IconMicrophone,
+  Spotify: IconMicrophone,
+};
+
+const sections = [
+  { id: "talks", label: "Talks" },
+  { id: "podcasts", label: "Podcasts" },
+  { id: "press", label: "Press" },
+  { id: "writing", label: "Writing" },
+];
 
 type Link = { label: string; href: string };
 type Entry = { title: string; venue: string; date: string; links: Link[] };
@@ -954,6 +976,29 @@ const writingByYear: YearGroup[] = [
 
 <Layout title={`Media | ${SITE.title}`}>
   <Header />
+
+  <!-- Sticky section sidebar (xl screens only) -->
+  <aside
+    class="media-sidebar fixed top-1/2 hidden -translate-y-1/2 flex-col items-end gap-2 xl:flex"
+    style="left: calc(50% - 24rem - 4.5rem)"
+  >
+    <div
+      class="relative flex flex-col items-end gap-3 border-r border-border pr-3"
+    >
+      {
+        sections.map(section => (
+          <a
+            href={`#${section.id}`}
+            class="media-nav-link text-xs font-[var(--font-jetbrains-mono)] text-foreground/40 transition-all duration-200 hover:text-accent"
+            data-section={section.id}
+          >
+            {section.label}
+          </a>
+        ))
+      }
+    </div>
+  </aside>
+
   <main id="main-content" class="app-layout pb-16">
     <section class="pt-10 sm:pt-14">
       <h1 class="text-2xl font-bold sm:text-3xl">Media</h1>
@@ -963,7 +1008,7 @@ const writingByYear: YearGroup[] = [
       </p>
 
       <!-- Talks -->
-      <div class="mt-10 border-t border-border pt-8">
+      <div class="mt-10 border-t border-border pt-8" data-media-section="talks">
         <h2
           id="talks"
           class="text-xl font-[var(--font-jetbrains-mono)] font-bold text-accent"
@@ -979,16 +1024,20 @@ const writingByYear: YearGroup[] = [
                   {entry.venue} &middot; {entry.date}
                 </p>
                 <div class="mt-1.5 flex flex-wrap gap-2">
-                  {entry.links.map(link => (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="rounded border border-border px-2 py-0.5 text-xs transition-colors hover:border-accent hover:text-accent"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+                  {entry.links.map(link => {
+                    const Icon = linkIcons[link.label] ?? IconArticle;
+                    return (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1 rounded border border-border px-2 py-0.5 text-xs text-foreground/70 transition-colors hover:border-accent hover:text-accent"
+                      >
+                        <Icon class="size-3 shrink-0 fill-transparent stroke-current stroke-2 opacity-70" />
+                        {link.label}
+                      </a>
+                    );
+                  })}
                 </div>
               </li>
             ))
@@ -997,7 +1046,10 @@ const writingByYear: YearGroup[] = [
       </div>
 
       <!-- Podcasts -->
-      <div class="mt-10 border-t border-border pt-8">
+      <div
+        class="mt-10 border-t border-border pt-8"
+        data-media-section="podcasts"
+      >
         <h2
           id="podcasts"
           class="text-xl font-[var(--font-jetbrains-mono)] font-bold text-accent"
@@ -1013,16 +1065,20 @@ const writingByYear: YearGroup[] = [
                   {entry.venue} &middot; {entry.date}
                 </p>
                 <div class="mt-1.5 flex flex-wrap gap-2">
-                  {entry.links.map(link => (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="rounded border border-border px-2 py-0.5 text-xs transition-colors hover:border-accent hover:text-accent"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+                  {entry.links.map(link => {
+                    const Icon = linkIcons[link.label] ?? IconArticle;
+                    return (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1 rounded border border-border px-2 py-0.5 text-xs text-foreground/70 transition-colors hover:border-accent hover:text-accent"
+                      >
+                        <Icon class="size-3 shrink-0 fill-transparent stroke-current stroke-2 opacity-70" />
+                        {link.label}
+                      </a>
+                    );
+                  })}
                 </div>
               </li>
             ))
@@ -1031,7 +1087,7 @@ const writingByYear: YearGroup[] = [
       </div>
 
       <!-- Press -->
-      <div class="mt-10 border-t border-border pt-8">
+      <div class="mt-10 border-t border-border pt-8" data-media-section="press">
         <h2
           id="press"
           class="text-xl font-[var(--font-jetbrains-mono)] font-bold text-accent"
@@ -1047,16 +1103,20 @@ const writingByYear: YearGroup[] = [
                   {entry.venue} &middot; {entry.date}
                 </p>
                 <div class="mt-1.5 flex flex-wrap gap-2">
-                  {entry.links.map(link => (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="rounded border border-border px-2 py-0.5 text-xs transition-colors hover:border-accent hover:text-accent"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+                  {entry.links.map(link => {
+                    const Icon = linkIcons[link.label] ?? IconArticle;
+                    return (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1 rounded border border-border px-2 py-0.5 text-xs text-foreground/70 transition-colors hover:border-accent hover:text-accent"
+                      >
+                        <Icon class="size-3 shrink-0 fill-transparent stroke-current stroke-2 opacity-70" />
+                        {link.label}
+                      </a>
+                    );
+                  })}
                 </div>
               </li>
             ))
@@ -1065,7 +1125,10 @@ const writingByYear: YearGroup[] = [
       </div>
 
       <!-- Writing -->
-      <div class="mt-10 border-t border-border pt-8">
+      <div
+        class="mt-10 border-t border-border pt-8"
+        data-media-section="writing"
+      >
         <h2
           id="writing"
           class="text-xl font-[var(--font-jetbrains-mono)] font-bold text-accent"
@@ -1092,16 +1155,20 @@ const writingByYear: YearGroup[] = [
                       {entry.venue} &middot; {entry.date}
                     </p>
                     <div class="mt-1.5 flex flex-wrap gap-2">
-                      {entry.links.map(link => (
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="rounded border border-border px-2 py-0.5 text-xs transition-colors hover:border-accent hover:text-accent"
-                        >
-                          {link.label}
-                        </a>
-                      ))}
+                      {entry.links.map(link => {
+                        const Icon = linkIcons[link.label] ?? IconArticle;
+                        return (
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-1 rounded border border-border px-2 py-0.5 text-xs text-foreground/70 transition-colors hover:border-accent hover:text-accent"
+                          >
+                            <Icon class="size-3 shrink-0 fill-transparent stroke-current stroke-2 opacity-70" />
+                            {link.label}
+                          </a>
+                        );
+                      })}
                     </div>
                   </li>
                 ))}
@@ -1114,3 +1181,38 @@ const writingByYear: YearGroup[] = [
   </main>
   <Footer />
 </Layout>
+
+<script is:inline>
+  function initMediaNav() {
+    const links = document.querySelectorAll(".media-nav-link");
+    const sections = document.querySelectorAll("[data-media-section]");
+
+    if (!links.length || !sections.length) return;
+
+    const setActive = section => {
+      links.forEach(link => {
+        const isActive = link.dataset.section === String(section);
+        link.classList.toggle("text-accent", isActive);
+        link.classList.toggle("font-bold", isActive);
+        link.classList.toggle("scale-110", isActive);
+        link.classList.toggle("text-foreground/40", !isActive);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.dataset.mediaSection);
+          }
+        });
+      },
+      { rootMargin: "-10% 0px -80% 0px" }
+    );
+
+    sections.forEach(s => observer.observe(s));
+  }
+
+  // Run on first load and after Astro page transitions
+  document.addEventListener("astro:page-load", initMediaNav);
+</script>
