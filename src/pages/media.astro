@@ -123,6 +123,14 @@ const talks: Entry[] = [
 
 const podcasts: Entry[] = [
   {
+    title: "Configuring a Versatile LLM Harness & Scraping the Web With Scrapy",
+    venue: "The Real Python Podcast #304",
+    date: "Jul 2026",
+    links: [
+      { label: "Podcast", href: "https://realpython.com/podcasts/rpp/304/" },
+    ],
+  },
+  {
     title: "AI Harnesses, our model usage and a Scottish dinner staple",
     venue: "ExtractPod Ep07",
     date: "2026",
@@ -365,10 +373,48 @@ const press: Entry[] = [
   },
 ];
 
+// Highlighted at the top of the page. Newest podcast episode.
+const latest: Entry = podcasts[0];
+
 const writingByYear: YearGroup[] = [
   {
     year: "2026",
     entries: [
+      {
+        title: "A guide to Scrapy item types",
+        venue: "Zyte Blog",
+        date: "Jul 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/a-guide-to-scrapy-item-types/",
+          },
+        ],
+      },
+      {
+        title:
+          "Harness Engineering #3: Headless mode, the minimal agent harness",
+        venue: "Zyte Blog",
+        date: "Jul 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/harness-engineering-3-headless-mode-the-minimal-agent-harness/",
+          },
+        ],
+      },
+      {
+        title:
+          "GPT-5.6, Fable 5, and GLM-5.2 entered a bar “crawl” and got hit by The Rate Limit",
+        venue: "Zyte Blog",
+        date: "Jul 2026",
+        links: [
+          {
+            label: "Article",
+            href: "https://www.zyte.com/blog/gpt-5-6-fable-5-and-glm-5-2-entered-a-bar-crawl-and-got-hit-by-the-rate-limit/",
+          },
+        ],
+      },
       {
         title:
           "Harness Engineering, part 2: harnessing a data extraction agent",
@@ -1006,6 +1052,37 @@ const writingByYear: YearGroup[] = [
         Talks, podcasts, press, and writing, from 2016 to now. Lately most of it
         is about agentic AI and web data.
       </p>
+
+      <!-- Latest (newest podcast, highlighted) -->
+      <div class="mt-8 rounded-lg border border-accent/40 bg-accent/5 p-4">
+        <p
+          class="text-xs font-[var(--font-jetbrains-mono)] font-bold tracking-wider text-accent uppercase"
+        >
+          Latest
+        </p>
+        <p class="mt-2 font-medium">{latest.title}</p>
+        <p class="mt-0.5 text-sm opacity-60">
+          {latest.venue} &middot; {latest.date}
+        </p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          {
+            latest.links.map(link => {
+              const Icon = linkIcons[link.label] ?? IconArticle;
+              return (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 rounded border border-accent/50 px-2 py-0.5 text-xs text-accent transition-colors hover:bg-accent hover:text-background"
+                >
+                  <Icon class="size-3 shrink-0 fill-transparent stroke-current stroke-2 opacity-70" />
+                  {link.label}
+                </a>
+              );
+            })
+          }
+        </div>
+      </div>
 
       <!-- Talks -->
       <div class="mt-10 border-t border-border pt-8" data-media-section="talks">
