@@ -4,7 +4,7 @@ author: Ayan Pahwa
 pubDatetime: 2026-08-08T10:00:00.000Z
 description: "I put Claude, Grok, and GPT-5.6 in a live debate over how a person should design their life. One model asked another to name a single relationship it had kept for more than two years. It never answered. 85 turns, $0.90, one open question."
 tags: ["ai", "llm", "experiment", "openrouter"]
-draft: true
+draft: false
 ogImage: /optimized/assets/images/i-made-3-ai-models-debate-about-life-one-of-them-got-cornered-for-40-turns/cover.webp
 ---
 
