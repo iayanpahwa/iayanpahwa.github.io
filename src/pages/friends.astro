@@ -1,0 +1,75 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+
+const friends = [
+  {
+    name: "John Watson Rooney",
+    href: "https://www.youtube.com/@JohnWatsonRooney/videos",
+    note: "Web scraping and Python YouTuber whose videos are a go-to reference.",
+  },
+  {
+    name: "Anuj Deshpande",
+    href: "https://anujdeshpande.com/",
+    note: "Fellow builder, good taste in projects.",
+  },
+  {
+    name: "Vipul Narang",
+    href: "http://indianleathercompany.com/",
+    note: "Runs Indian Leather Company, makes excellent leather goods.",
+  },
+];
+---
+
+<Layout title={`Friends | ${SITE.title}`}>
+  <Header />
+  <main id="main-content" class="app-layout pb-16">
+    <section class="flex flex-col items-center pt-10 sm:pt-14">
+      <h1 class="text-2xl font-bold tracking-wide sm:text-3xl">Friends</h1>
+      <p class="mt-2 max-w-md text-center text-sm opacity-60">
+        Some people I know well, some I only know through their work. This page
+        is a small, honest list of the ones worth your time too.
+      </p>
+
+      <div class="mt-8 flex w-full max-w-md flex-col gap-3">
+        {
+          friends.map(({ name, href, note }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-col gap-1 rounded-lg border border-border bg-muted/40 px-4 py-3.5 text-foreground transition-colors hover:border-accent hover:bg-muted"
+            >
+              <span class="font-medium group-hover:text-accent">{name}</span>
+              <span class="text-sm opacity-60">{note}</span>
+            </a>
+          ))
+        }
+      </div>
+
+      <p class="mt-10 max-w-md text-center text-xs opacity-50">
+        This is a /friends page, inspired by{" "}
+        <a
+          href="https://slashfriends.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:text-accent"
+        >
+          slashfriends.org
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://nickgray.net/friends/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:text-accent"
+        >
+          Nick Gray
+        </a>.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
