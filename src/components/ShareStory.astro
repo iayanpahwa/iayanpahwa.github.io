@@ -1,0 +1,62 @@
+---
+import IconBrandInstagram from "@/assets/icons/IconBrandInstagram.svg";
+
+type Props = { storyUrl: string; postUrl: string };
+const { storyUrl, postUrl } = Astro.props;
+---
+
+<div class="mt-3 flex flex-col items-center gap-1 md:items-start">
+  <a
+    href={storyUrl}
+    target="_blank"
+    data-story-share
+    data-story-url={storyUrl}
+    data-post-url={postUrl}
+    class="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm hover:border-accent hover:text-accent"
+  >
+    <IconBrandInstagram class="size-5" />
+    Share as Instagram Story
+  </a>
+  <span data-story-hint class="hidden max-w-xs text-xs text-foreground/60">
+    Post link copied. In Instagram, pick Story, then paste it into a Link
+    sticker.
+  </span>
+</div>
+
+<script>
+  function initStoryShare() {
+    const btn = document.querySelector<HTMLAnchorElement>("[data-story-share]");
+    if (!btn || !navigator.canShare) return; // desktop: link opens the image
+
+    const { storyUrl, postUrl } = btn.dataset as Record<string, string>;
+    // Prefetch once the button is in view, so share() runs inside the tap
+    // gesture (Safari drops the gesture after a slow await).
+    let file: File | undefined;
+    let filePromise: Promise<File> | undefined;
+    const load = () =>
+      (filePromise ??= fetch(storyUrl)
+        .then(r => r.blob())
+        .then(b => (file = new File([b], "story.jpg", { type: "image/jpeg" }))));
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(en => en.isIntersecting)) {
+        load().catch(() => {});
+        io.disconnect();
+      }
+    });
+    io.observe(btn);
+
+    btn.addEventListener("click", async e => {
+      e.preventDefault();
+      navigator.clipboard?.writeText(postUrl).catch(() => {});
+      try {
+        const f = file ?? (await load());
+        if (!navigator.canShare({ files: [f] })) throw new Error("no files");
+        document.querySelector("[data-story-hint]")?.classList.remove("hidden");
+        await navigator.share({ files: [f] });
+      } catch (err) {
+        if ((err as Error).name !== "AbortError") window.open(storyUrl, "_blank");
+      }
+    });
+  }
+  document.addEventListener("astro:page-load", initStoryShare);
+</script>
