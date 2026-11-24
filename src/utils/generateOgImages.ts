@@ -21,10 +21,7 @@ export async function generateOgImageForSite() {
   return svgBufferToPngBuffer(svg);
 }
 
-export async function generateStoryImageForPost(
-  post: CollectionEntry<"blog">,
-  postPath: string
-) {
-  const svg = await storyImage(post, postPath);
+export async function generateStoryImageForPost(post: CollectionEntry<"blog">) {
+  const svg = await storyImage(post);
   return sharp(svgBufferToPngBuffer(svg)).jpeg({ quality: 88 }).toBuffer();
 }

@@ -12,10 +12,8 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ props }) => {
-  const post = props as CollectionEntry<"blog">;
   const buffer = await generateStoryImageForPost(
-    post,
-    `${getPath(post.id, post.filePath)}/`
+    props as CollectionEntry<"blog">
   );
   return new Response(new Uint8Array(buffer), {
     headers: { "Content-Type": "image/jpeg" },
